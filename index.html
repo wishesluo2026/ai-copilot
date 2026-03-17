@@ -838,6 +838,157 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         </div>
       </div>
     </div>
+    <div class="rv" style="margin-top:28px">
+  <div class="flow-diagram-label" style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:14px">
+    交互示意 · 三类风险等级下的 AI 与人工协作模式
+  </div>
+
+  <!-- Tab 切换器 -->
+  <div style="display:flex;gap:0;border-bottom:1px solid var(--b0);margin-bottom:0">
+    <button onclick="riskTab('low')" id="rtab-low"
+      style="padding:9px 20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid #2dd4bf;color:#2dd4bf;cursor:pointer;transition:all .15s">
+      低风险
+    </button>
+    <button onclick="riskTab('mid')" id="rtab-mid"
+      style="padding:9px 20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;color:var(--t2);cursor:pointer;transition:all .15s">
+      中风险
+    </button>
+    <button onclick="riskTab('hi')" id="rtab-hi"
+      style="padding:9px 20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;color:var(--t2);cursor:pointer;transition:all .15s">
+      高风险
+    </button>
+  </div>
+
+  <!-- 低风险面板 -->
+  <div id="rpanel-low" style="background:var(--s2);border:1px solid var(--b0);border-top:none;border-radius:0 0 12px 12px;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--b0);background:var(--s3)">
+      <span style="font-size:12px;font-weight:600;color:var(--t0);flex:1">关于 2024 年度党支部工作情况的总结</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;padding:3px 9px;border-radius:4px;background:rgba(34,197,94,.1);color:#4ade80;border:1px solid rgba(34,197,94,.2)">格式校验通过</span>
+    </div>
+    <div style="padding:18px 22px;font-size:13px;color:var(--t1);line-height:1.85">
+      <span style="background:rgba(34,197,94,.12);border-radius:3px;padding:0 3px;color:var(--t0)">一、主要工作开展情况</span><br>
+      （一）党员发展工作稳步推进。全年新发展党员 8 名，<span style="background:rgba(34,197,94,.12);border-radius:3px;padding:0 3px;color:var(--t0)">均按规定程序完成培训、审查与公示</span>，入党手续规范齐全。
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 22px;border-top:1px solid var(--b0);background:var(--s3);flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--t2);flex:1">AI 已完成格式自动校验 · 3 项规范均通过 · 无需人工干预</span>
+      <span style="font-size:12px;padding:7px 16px;border-radius:6px;border:1px solid var(--b1);color:var(--t1);cursor:pointer">修改内容</span>
+      <span style="font-size:12px;padding:7px 16px;border-radius:6px;background:var(--blue);color:#fff;cursor:pointer">导出 Word</span>
+    </div>
+    <div style="padding:9px 22px;border-top:1px solid var(--b0);font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);letter-spacing:.04em">
+      低风险 — AI 自动执行，格式合规即可一键导出，无需确认步骤
+    </div>
+  </div>
+
+  <!-- 中风险面板 -->
+  <div id="rpanel-mid" style="display:none;background:var(--s2);border:1px solid var(--b0);border-top:none;border-radius:0 0 12px 12px;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--b0);background:var(--s3)">
+      <span style="font-size:12px;font-weight:600;color:var(--t0);flex:1">2024-11-15 党委扩大会议纪要（AI 提炼草稿）</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.18)" id="mid-status-pill">待人工核对 2 项</span>
+    </div>
+    <div style="padding:18px 22px;font-size:13px;color:var(--t1);line-height:1.85">
+      会议由党委书记主持，出席 11 人。<br><br>
+      <strong style="color:var(--t0)">决议事项：</strong><br>
+      1. 同意将 2025 年党费缴纳截止日期调整为
+      <span style="background:rgba(245,158,11,.15);border-radius:3px;padding:0 3px;border-bottom:2px solid #f59e0b;color:var(--t0);cursor:help;position:relative" title="AI 提炼，请核实实际会议决定日期">3 月 31 日 ⚠</span>。<br>
+      2. 要求各支部在
+      <span style="background:rgba(245,158,11,.15);border-radius:3px;padding:0 3px;border-bottom:2px solid #f59e0b;color:var(--t0);cursor:help;position:relative" title="原录音为"尽快"，AI 补充了具体时间，请确认">两周内 ⚠</span>
+      完成党员信息更新并上报。
+    </div>
+    <div style="padding:12px 22px;border-top:1px solid var(--b0);display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--t1)">
+        <div id="cb1" onclick="midCheck(1)" style="width:16px;height:16px;border-radius:4px;border:1px solid var(--b1);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s"></div>
+        <span id="cbl1">已核实：党费截止日期 3 月 31 日 确认无误</span>
+        <span style="margin-left:auto;font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(245,158,11,.1);color:#fbbf24">请确认</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--t1)">
+        <div id="cb2" onclick="midCheck(2)" style="width:16px;height:16px;border-radius:4px;border:1px solid var(--b1);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s"></div>
+        <span id="cbl2">"两周内"表述经与会领导确认</span>
+        <span style="margin-left:auto;font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(245,158,11,.1);color:#fbbf24">请确认</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 22px;border-top:1px solid var(--b0);background:var(--s3);flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--t2);flex:1" id="mid-action-hint">请先完成上方核对项，再导出</span>
+      <span style="font-size:12px;padding:7px 16px;border-radius:6px;border:1px solid var(--b1);color:var(--t1);cursor:pointer">修改内容</span>
+      <span id="mid-export-btn" style="font-size:12px;padding:7px 16px;border-radius:6px;border:1px solid var(--b1);color:var(--t2);cursor:not-allowed;opacity:.4">导出纪要</span>
+    </div>
+    <div style="padding:9px 22px;border-top:1px solid var(--b0);font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);letter-spacing:.04em">
+      中风险 — AI 生成草稿，人工勾选核对项后，导出按钮解锁
+    </div>
+  </div>
+
+  <!-- 高风险面板 -->
+  <div id="rpanel-hi" style="display:none;background:var(--s2);border:1px solid var(--b0);border-top:none;border-radius:0 0 12px 12px;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--b0);background:var(--s3)">
+      <span style="font-size:12px;font-weight:600;color:var(--t0);flex:1">关于某项重大事项的请示（草稿）</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;padding:3px 9px;border-radius:4px;background:var(--red-dim);color:var(--red-l);border:1px solid var(--red-edge)">含高风险内容 — 不可直接导出</span>
+    </div>
+    <div style="padding:18px 22px;font-size:13px;color:var(--t1);line-height:1.85">
+      根据上级指示精神，结合本单位实际情况，
+      <span style="background:var(--red-dim);border-radius:3px;padding:0 3px;border-bottom:2px solid var(--red-l);color:var(--t0);cursor:help" title="检测到政策判断表述，AI 不提供此类决策背书">拟对相关政策作出以下调整 ✕</span>，请予审核批准。<br><br>
+      具体方案如下：<span style="background:var(--red-dim);border-radius:3px;padding:0 3px;border-bottom:2px solid var(--red-l);color:var(--t0);cursor:help" title="政策口径表述，需人工审核是否符合当前政策方向">在严格执行现行规定的基础上 ✕</span>，按照实际情况灵活处理。
+    </div>
+    <div style="padding:14px 22px;border-top:1px solid var(--red-edge);background:var(--red-dim)">
+      <div style="font-size:12px;color:var(--red-l);margin-bottom:10px">检测到 2 处政策判断类表述，AI 不提供合规背书。请人工修改后方可导出。</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span onclick="showHiSuggestion(1)" style="font-size:11px;padding:5px 12px;border-radius:6px;border:1px solid var(--red-edge);color:var(--red-l);cursor:pointer;background:transparent">查看建议改法 1</span>
+        <span onclick="showHiSuggestion(2)" style="font-size:11px;padding:5px 12px;border-radius:6px;border:1px solid var(--red-edge);color:var(--red-l);cursor:pointer;background:transparent">查看建议改法 2</span>
+      </div>
+      <div id="hi-suggestion" style="display:none;margin-top:10px;font-size:12px;color:var(--t1);padding:10px 14px;background:var(--s2);border-radius:6px;border:1px solid var(--b0);line-height:1.65"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 22px;border-top:1px solid var(--b0);background:var(--s3);flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--t2);flex:1">AI 仅供参考 · 政策判断与终稿由人工全权负责</span>
+      <span style="font-size:12px;padding:7px 16px;border-radius:6px;border:1px solid var(--b1);color:var(--t1);cursor:pointer">人工编辑</span>
+      <span style="font-size:12px;padding:7px 16px;border-radius:6px;border:1px solid var(--b0);color:var(--t2);cursor:not-allowed;opacity:.35">导出（已锁定）</span>
+    </div>
+    <div style="padding:9px 22px;border-top:1px solid var(--b0);font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);letter-spacing:.04em">
+      高风险 — 导出强制锁定，仅人工修改并清除所有标记后方可解锁
+    </div>
+  </div>
+</div>
+
+<script>
+var midChecks = {1: false, 2: false};
+function riskTab(id) {
+  ['low','mid','hi'].forEach(function(k) {
+    document.getElementById('rpanel-'+k).style.display = k===id ? 'block' : 'none';
+    var btn = document.getElementById('rtab-'+k);
+    var colors = {low:'#2dd4bf', mid:'#fbbf24', hi:'var(--red-l)'};
+    btn.style.borderBottomColor = k===id ? colors[k] : 'transparent';
+    btn.style.color = k===id ? colors[k] : 'var(--t2)';
+  });
+}
+function midCheck(n) {
+  midChecks[n] = !midChecks[n];
+  var cb = document.getElementById('cb'+n);
+  var lbl = document.getElementById('cbl'+n);
+  cb.style.background = midChecks[n] ? 'rgba(34,197,94,.2)' : '';
+  cb.style.borderColor = midChecks[n] ? '#4ade80' : '';
+  cb.innerHTML = midChecks[n] ? '<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '';
+  lbl.style.textDecoration = midChecks[n] ? 'line-through' : '';
+  lbl.style.color = midChecks[n] ? 'var(--t2)' : '';
+  var allDone = midChecks[1] && midChecks[2];
+  var btn = document.getElementById('mid-export-btn');
+  var hint = document.getElementById('mid-action-hint');
+  var pill = document.getElementById('mid-status-pill');
+  btn.style.background = allDone ? 'var(--blue)' : '';
+  btn.style.color = allDone ? '#fff' : 'var(--t2)';
+  btn.style.borderColor = allDone ? 'var(--blue)' : 'var(--b1)';
+  btn.style.cursor = allDone ? 'pointer' : 'not-allowed';
+  btn.style.opacity = allDone ? '1' : '0.4';
+  hint.textContent = allDone ? '核对完成，可以导出' : '请先完成上方核对项，再导出';
+  if(allDone) { pill.textContent='核对完成'; pill.style.background='rgba(34,197,94,.1)'; pill.style.color='#4ade80'; pill.style.borderColor='rgba(34,197,94,.2)'; }
+}
+var hiSuggestions = {
+  1:'建议改写为："根据上级指示，结合本单位实际，提出以下工作建议，请予审核。"（去除"政策调整"等政策判断性表述）',
+  2:'建议改写为："在贯彻执行现行规定的前提下，就具体执行方式提出如下方案，请领导审定。"（主语转为汇报而非决策）'
+};
+function showHiSuggestion(n) {
+  var box = document.getElementById('hi-suggestion');
+  box.style.display = 'block';
+  box.textContent = '建议 '+n+'：'+hiSuggestions[n];
+}
+</script>
+
     <!-- feedback loop -->
     <div class="feedback-loop rv">
       <span class="fl-label">失败闭环</span>
@@ -918,7 +1069,8 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       </tbody>
     </table>
     <div class="honest-note rv">
-      <strong>诚实总结：</strong>在首次部署成本、冷启动依赖、实施周期上有明显短板。这个代价成立的前提是：用户的格式合规要求足够严格，返修成本高于实施成本。试点数据（返工率 45% → 8%）支持了这一判断。
+      <strong>诚实总结：</strong>在首次部署成本、冷启动依赖、实施周期上有明显短板。这个代价成立的前提是：用户的格式合规要求足够严格，返修成本高于实施成本。试点数据（返工率 45% → 8%）支持了这一判断。<br><br>
+      针对冷启动问题，我们的应对策略是：提供<strong>分场景的政务写作初始知识包</strong>（含通用党建材料模板库、国标公文规范词典、100+ 示例文档），让机构在零历史数据状态下也能获得基础生成质量，知识库随使用持续私有化沉淀。这将冷启动门槛从"需要大量历史数据才能用"降低到"开箱即用、越用越准"。
     </div>
   </div>
 </section>
@@ -1134,13 +1286,13 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         </div>
       </div>
       <div class="phase ph3 rv">
-        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 3：平台化输出</h3><span class="ph-tag">规划中</span></div>
+        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 3：纵向规范分发</h3><span class="ph-tag">规划中</span></div>
         <div class="phase-period">2025 Q2+ · 平台化</div>
         <div class="phase-body">
-          <div class="ph-item">跨机构匿名知识共享网络</div>
-          <div class="ph-item">开放 API / 插件生态</div>
-          <div class="ph-item">SaaS 订阅商业化</div>
-          <div class="ph-insight">平台化应晚于护城河形成。</div>
+          <div class="ph-item">上级主管部门向下辖机构推送标准化模板与政策口径更新</div>
+          <div class="ph-item">规范词典与合规检查规则集中维护、定向下发</div>
+          <div class="ph-item">SaaS 订阅商业化（按机构数量计费）</div>
+          <div class="ph-insight">纵向分发是体制内信息流转的自然形态，符合信息隔离逻辑。</div>
         </div>
       </div>
     </div>
