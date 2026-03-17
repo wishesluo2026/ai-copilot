@@ -14,6 +14,8 @@
   --t0:#dde4f0;--t1:#8a93ab;--t2:#4e5670;
   --blue:#2563eb;--blue-l:#4b84ff;--blue-dim:rgba(37,99,235,0.13);--blue-edge:rgba(75,132,255,0.2);
   --teal:#0d9488;--amber:#f59e0b;
+  --red-dim:rgba(239,68,68,0.12);--red-edge:rgba(239,68,68,0.22);--red-l:#f87171;
+  --green-dim:rgba(34,197,94,0.1);--green-l:#4ade80;
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
@@ -21,59 +23,71 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
 
-/* TYPOGRAPHY SYSTEM */
-.label{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--t2);margin-bottom:24px}
+/* ── TYPOGRAPHY ── */
+.label{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--t2);margin-bottom:20px}
 .label::before{content:'';width:16px;height:1px;background:var(--t2);flex-shrink:0}
 .label.accent{color:var(--blue-l)}
 .label.accent::before{background:var(--blue-l)}
-.sec-h{font-family:'Noto Serif SC',serif;font-size:clamp(26px,3vw,40px);font-weight:900;line-height:1.2;letter-spacing:-.025em;margin-bottom:14px;color:var(--t0)}
-.sec-sub{font-size:15px;color:var(--t1);max-width:540px;line-height:1.8}
+.sec-h{font-family:'Noto Serif SC',serif;font-size:clamp(24px,2.8vw,38px);font-weight:900;line-height:1.2;letter-spacing:-.025em;margin-bottom:12px;color:var(--t0)}
+.sec-sub{font-size:14.5px;color:var(--t1);max-width:560px;line-height:1.8}
+.mono{font-family:'DM Mono',monospace}
 
-/* LAYOUT */
-.sec{padding:112px 0}
+/* ── LAYOUT ── */
+.sec{padding:96px 0}
+.sec-sm{padding:64px 0}
+/* 04 sections get more breathing room */
+.sec-lg{padding:104px 0}
 .wrap{max-width:1060px;margin:0 auto;padding:0 48px}
 .s-alt{background:var(--s1)}
 .s-main{background:var(--s0)}
 .s-deep{background:var(--s2)}
+.s-accent{background:linear-gradient(135deg,rgba(37,99,235,0.08),rgba(0,0,0,0))}
 
-/* REVEAL */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .rv.on{opacity:1;transform:none}
 
-/* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(8,9,15,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--b0)}
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(8,9,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--b0)}
 .nav-logo{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--t1);display:flex;align-items:center;gap:9px}
 .nav-pip{width:6px;height:6px;border-radius:50%;background:var(--blue-l);animation:pip 3s ease infinite}
 @keyframes pip{0%,100%{opacity:.4}50%{opacity:1}}
-.nav-links{display:flex;align-items:center;gap:28px}
-.nav-links a{font-size:13px;color:var(--t2);text-decoration:none;font-family:'Noto Sans SC',sans-serif;font-weight:400;transition:color .2s}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;color:var(--t2);text-decoration:none;font-family:'Noto Sans SC',sans-serif;transition:color .2s}
 .nav-links a:hover{color:var(--t0)}
 .nav-links a.active{color:var(--t1)}
 .nav-badge{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:.1em;text-transform:uppercase}
 #progress{position:fixed;top:60px;left:0;z-index:199;height:1px;background:var(--blue-l);width:0%;transition:width .08s linear;opacity:.6}
 
-/* HERO */
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 48px 60px;position:relative;overflow:hidden}
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 48px 56px;position:relative;overflow:hidden}
 .hero-glow{position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:640px;height:480px;background:radial-gradient(ellipse,rgba(37,99,235,0.12) 0%,transparent 68%);pointer-events:none}
 .hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--b0) 1px,transparent 1px),linear-gradient(90deg,var(--b0) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 70% 52% at 50% 0%,black 20%,transparent 100%)}
-.hero-inner{position:relative;z-index:1;max-width:740px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--blue-edge);border-radius:100px;padding:7px 16px;font-family:'DM Mono',monospace;font-size:10.5px;color:var(--blue-l);margin-bottom:40px;background:var(--blue-dim);animation:fu .9s both}
+.hero-inner{position:relative;z-index:1;max-width:760px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--blue-edge);border-radius:100px;padding:7px 16px;font-family:'DM Mono',monospace;font-size:10.5px;color:var(--blue-l);margin-bottom:36px;background:var(--blue-dim);animation:fu .9s both}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pip 2s infinite}
 .hero-h{font-family:'Noto Serif SC',serif;font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.0;letter-spacing:-.035em;margin-bottom:14px;animation:fu .9s .1s both}
 .hero-h .grad{display:block;font-size:clamp(36px,5.5vw,68px);background:linear-gradient(130deg,#5b9aff 0%,#38bdf8 55%,#2dd4bf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:15px;color:var(--t1);max-width:560px;margin:0 auto 48px;line-height:1.85;animation:fu .9s .2s both}
+.hero-sub{font-size:14px;color:var(--t1);max-width:580px;margin:0 auto 40px;line-height:1.85;animation:fu .9s .2s both;letter-spacing:.01em}
 .hero-sub strong{color:var(--t0);font-weight:500}
-
-/* KPI — 2-col grid, wide row spans both */
-.hero-kpis{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--b1);border-radius:14px;overflow:hidden;max-width:540px;margin:0 auto 40px;animation:fu .9s .3s both}
-.kpi{background:var(--s2);padding:24px 20px;border-right:1px solid var(--b0);transition:background .25s}
-.kpi:last-of-type{border-right:none}
-.kpi.wide{grid-column:span 2;border-right:none;border-top:1px solid var(--b0);padding:18px 24px;display:flex;align-items:center;gap:14px;justify-content:center;background:var(--s3);flex-wrap:wrap}
-.kpi-n{font-family:'Noto Serif SC',serif;font-size:40px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:7px;color:var(--t0)}
-.kpi.wide .kpi-n{font-size:44px;margin:0}
+/* KPI: wide primary top, two secondary below */
+.hero-kpis{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--b1);border-radius:14px;overflow:hidden;max-width:540px;margin:0 auto 36px;animation:fu .9s .3s both}
+.kpi{background:var(--s2);padding:22px 20px;border-right:1px solid var(--b0);transition:background .25s}
+.kpi:nth-child(2){border-right:1px solid var(--b0)}
+.kpi:nth-child(3){border-right:none}
+.kpi.wide{grid-column:span 2;border-right:none;border-bottom:1px solid var(--b0);padding:26px 28px;display:flex;justify-content:center;align-items:center;background:linear-gradient(135deg,rgba(37,99,235,0.18),rgba(0,201,177,0.06));flex-wrap:wrap}
+.kpi-n{font-family:'Noto Serif SC',serif;font-size:36px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:6px;color:var(--t0)}
 .kpi-l{font-size:12px;color:var(--t1)}
-.kpi.wide .kpi-l{font-size:12.5px}
-.kpi-sep{color:var(--t2);font-size:16px;line-height:1;flex-shrink:0}
+.kpi-sep{color:var(--t2);font-size:14px;flex-shrink:0}
+/* primary KPI number — gradient on 5min */
+.kpi-primary-n{font-family:'Noto Serif SC',serif;font-size:58px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:6px;background:linear-gradient(130deg,#5b9aff,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.kpi-primary-l{font-size:12.5px;color:var(--t1);text-align:center}
+/* hero summary bar */
+.hero-summary{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--b0);border-radius:12px;overflow:hidden;max-width:760px;margin:0 auto 36px;animation:fu .9s .35s both}
+.hs-cell{background:var(--s1);padding:18px 16px;border-right:1px solid var(--b0)}
+.hs-cell:last-child{border-right:none}
+.hs-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:7px}
+.hs-val{font-size:13px;color:var(--t0);line-height:1.55;font-weight:500}
 .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fu .9s .4s both}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 26px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s;letter-spacing:.01em}
 .btn-fill{background:var(--blue);color:#fff;box-shadow:0 0 28px rgba(37,99,235,0.25)}
@@ -82,201 +96,203 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .btn-line:hover{color:var(--t0);border-color:var(--b2);background:var(--s2)}
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
-/* PROJECT BACKGROUND */
-.bg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:14px;overflow:hidden;margin-top:52px}
-.bg-card{background:var(--s1);padding:32px 28px;transition:background .25s}
-.bg-card:hover{background:var(--s2)}
-.bg-card.wide{grid-column:span 2;background:var(--s2)}
-.bg-card.why{border-top:1px solid var(--b0)}
-.card-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:16px}
-.bg-card h3{font-size:16px;font-weight:600;margin-bottom:9px;letter-spacing:-.01em}
-.bg-card p{font-size:14px;color:var(--t1);line-height:1.75}
-.why-list{margin-top:22px;display:flex;flex-direction:column;gap:16px}
-.why-item{display:flex;gap:16px;align-items:flex-start}
-.why-key{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--blue-l);flex-shrink:0;padding-top:3px;min-width:52px}
-.why-item p{font-size:14px;color:var(--t1);line-height:1.72;margin:0}
+/* ── 01 BACKGROUND (compressed) ── */
+.bg-compact{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bg-c-card{background:var(--s1);border:1px solid var(--b0);border-radius:10px;padding:14px 18px;transition:background .25s;opacity:.88}
+.bg-c-card:hover{background:var(--s2);opacity:1}
+.bg-c-card p{font-size:12.5px;color:var(--t1);line-height:1.55;font-weight:400}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:7px;opacity:.7}
+/* flow diagram — more presence */
+.flow-diagram{margin-top:20px;background:var(--s2);border:1px solid var(--b1);border-radius:12px;padding:22px 20px;box-shadow:0 0 0 1px var(--b0)}
+.flow-diagram-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:14px}
+.flow-compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b0);margin-top:12px;border-radius:8px;overflow:hidden}
+.fc-row{display:grid;grid-template-columns:1fr 1fr}
+.fc-cell{padding:9px 14px;font-size:12.5px;border-right:1px solid var(--b0)}
+.fc-cell:last-child{border-right:none}
+.fc-head{background:var(--s2);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)}
+.fc-old{background:var(--s1);color:var(--t2)}
+.fc-new{background:rgba(37,99,235,0.1);color:var(--t0);font-weight:500}
 
-/* PROBLEM FORMULA */
-.formula{margin-top:48px;margin-bottom:40px;display:flex;align-items:stretch;border:1px solid var(--b0);border-radius:12px;overflow:hidden}
-.f-part{flex:1;padding:20px 14px;text-align:center;background:var(--s2);border-right:1px solid var(--b0);min-width:0}
-.f-part.result{background:var(--s3);border-right:none;border-left:1px solid var(--blue-edge)}
-.f-op{padding:0 10px;font-size:17px;color:var(--t2);background:var(--s1);flex-shrink:0;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--b0)}
-.f-zh{font-size:13.5px;font-weight:500;color:var(--t0);margin-bottom:5px;line-height:1.35}
-.f-en{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:.1em}
-.f-part.result .f-zh{color:var(--blue-l)}
-.f-part.result .f-en{color:rgba(75,132,255,.55)}
+/* ── 02 PROBLEM ── */
+.problem-statement{margin-top:40px;background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));border:1px solid var(--blue-edge);border-left:3px solid var(--blue-l);border-radius:0 14px 14px 0;padding:32px 36px;text-align:left}
+.ps-quote{font-family:'Noto Serif SC',serif;font-size:clamp(18px,2.2vw,26px);font-weight:900;color:var(--t0);line-height:1.4;margin-bottom:10px;letter-spacing:-.02em}
+.ps-sub{font-size:13px;color:var(--t1);max-width:560px}
+.prob-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:28px}
+.p3-card{background:var(--s2);border:1px solid var(--b0);border-radius:12px;padding:24px 20px;border-top:2px solid var(--b0)}
+.p3-card.p-high{border-top-color:var(--red-l)}
+.p3-card.p-mid{border-top-color:var(--amber)}
+.p3-card.p-psy{border-top-color:var(--blue-l)}
+.p3-layer{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:10px}
+.p3-card h3{font-size:15px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
+.p3-card p{font-size:13px;color:var(--t1);line-height:1.65}
+/* highlight observation */
+.p-insight-bar{margin-top:18px;background:rgba(37,99,235,0.08);border:1px solid var(--blue-edge);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px}
+.pib-icon{font-size:16px;flex-shrink:0}
+.pib-text{font-size:13px;color:var(--t0);font-weight:500;line-height:1.55}
+/* quotes (2-col) */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;opacity:.85}
+.quote{background:var(--s2);border:1px solid var(--b0);border-left:2px solid var(--b2);border-radius:0 10px 10px 0;padding:20px 20px 16px}
+.quote-src{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:8px}
+.quote-text{font-size:13px;color:var(--t1);line-height:1.75;font-style:italic}
+.quote-meta{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);margin-top:8px}
 
-/* PROBLEM TABLE */
-.prob-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:12px;overflow:hidden}
-.prob-tbl th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:13px 18px;text-align:left;background:var(--s2);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
-.prob-tbl th:last-child{border-right:none}
-.prob-tbl td{padding:17px 18px;font-size:13px;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);vertical-align:top;line-height:1.6}
-.prob-tbl td:last-child{border-right:none}
-.prob-tbl tr:last-child td{border-bottom:none}
-.prob-tbl tr:hover td{background:rgba(255,255,255,.016)}
-.prob-idx{font-family:'DM Mono',monospace;font-size:11px;color:var(--t2);text-align:center}
-.prob-name{color:var(--t0);font-weight:500}
-.prob-desc{color:var(--t1)}
-.chip{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.06em;margin:2px 2px 2px 0}
-.chip-red{background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.18)}
+/* ── 03 USER RESEARCH (resistance map) ── */
+.method-line{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:.06em;margin-bottom:28px}
+.method-line span{color:var(--t1)}
+.resist-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:12px;overflow:hidden;margin-top:8px}
+.resist-tbl th{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:11px 16px;text-align:left;background:var(--s2);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
+.resist-tbl th.barrier-col{color:var(--red-l)}
+.resist-tbl th:last-child{border-right:none}
+.resist-tbl td{padding:14px 16px;font-size:13px;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);vertical-align:top;line-height:1.55}
+.resist-tbl td:last-child{border-right:none}
+.resist-tbl tr:last-child td{border-bottom:none}
+.resist-tbl tr:hover td{background:rgba(255,255,255,.014)}
+.rt-role{color:var(--t0);font-weight:500;font-size:13px}
+.rt-sub{font-family:'DM Mono',monospace;font-size:8.5px;color:var(--t2);margin-top:2px;opacity:.45;letter-spacing:.06em}
+.rt-barrier{color:var(--t1);font-size:13px}
+.rt-barrier strong{color:#ff8585;font-weight:700;font-size:13.5px}
+.rt-boundary{color:var(--t1);font-size:12.5px}
+.rt-boundary em{color:var(--blue-l);font-style:normal}
+.chip{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;margin:2px 2px 2px 0}
+.chip-red{background:var(--red-dim);color:var(--red-l);border:1px solid var(--red-edge)}
 .chip-amber{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.18)}
 .chip-blue{background:var(--blue-dim);color:var(--blue-l);border:1px solid var(--blue-edge)}
 
-/* QUOTES */
-.quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
-.quote{background:var(--s2);border:1px solid var(--b0);border-left:2px solid var(--b2);border-radius:0 10px 10px 0;padding:22px 22px 18px}
-.quote-src{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:10px}
-.quote-text{font-size:13.5px;color:var(--t1);line-height:1.75;font-style:italic}
-.quote-meta{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);margin-top:10px}
+/* ── 04-A ARCH ── */
+.arch-flow{margin-top:40px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:14px;overflow:hidden}
+.af-step{background:var(--s2);padding:20px 16px;text-align:center;position:relative}
+.af-step.core{background:var(--s3);border-bottom:2px solid var(--blue-l)}
+.af-step.guard{background:rgba(239,68,68,0.05);border-bottom:2px solid rgba(239,68,68,0.35)}
+.af-step.human{background:rgba(45,212,191,0.06);border-bottom:2px solid rgba(45,212,191,0.4)}
+.af-num{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--t2);margin-bottom:8px}
+.af-name{font-size:13px;font-weight:600;color:var(--t0);margin-bottom:6px}
+.af-desc{font-size:11.5px;color:var(--t1);line-height:1.5}
+.af-badge{display:inline-block;margin-top:8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;padding:2px 7px;border-radius:4px}
+.af-badge.core{background:var(--blue-dim);color:var(--blue-l);border:1px solid var(--blue-edge)}
+.af-badge.guard{background:var(--red-dim);color:var(--red-l);border:1px solid var(--red-edge)}
+.af-badge.human{background:rgba(45,212,191,0.1);color:#2dd4bf;border:1px solid rgba(45,212,191,0.25)}
 
-/* USER RESEARCH */
-.method-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:12px;overflow:hidden;margin-top:48px;margin-bottom:40px}
-.method-cell{background:var(--s2);padding:20px 18px}
-.method-n{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:700;color:var(--t0);line-height:1;margin-bottom:5px}
-.method-name{font-size:13px;color:var(--t1)}
-.method-en{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:.09em;margin-top:3px}
-.personas{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.persona{background:var(--s2);border:1px solid var(--b0);border-radius:13px;padding:24px 20px;transition:border-color .25s}
-.persona:hover{border-color:var(--b2)}
-.p-role{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-l);margin-bottom:3px}
-.p-freq{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);margin-bottom:14px}
-.persona h3{font-size:15px;font-weight:600;margin-bottom:9px;letter-spacing:-.01em}
-.p-goal{font-size:12.5px;font-weight:500;color:var(--t0);margin-bottom:6px}
-.p-scenario{font-size:13px;color:var(--t1);line-height:1.65;margin-bottom:12px}
-.chips{display:flex;flex-wrap:wrap;gap:4px}
+/* ── 04-B DECISION CARDS ── */
+.decision-cards{display:flex;flex-direction:column;gap:16px;margin-top:40px}
+.dc{background:var(--s2);border:1px solid var(--b0);border-radius:14px;overflow:hidden}
+.dc-head{background:var(--s3);padding:18px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:1px solid var(--b0)}
+.dc-head-left{display:flex;align-items:flex-start;gap:14px;flex:1}
+.dc-num{font-family:'DM Mono',monospace;font-size:12px;color:var(--blue-l);font-weight:500;flex-shrink:0;padding-top:2px}
+.dc-title{font-size:15.5px;font-weight:600;color:var(--t0);letter-spacing:-.01em}
+.dc-tradeoff{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--t2);white-space:nowrap;background:var(--s2);border:1px solid var(--b0);border-radius:6px;padding:4px 10px;align-self:flex-start;flex-shrink:0}
+.dc-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:var(--b0)}
+.dc-cell{background:var(--s2);padding:18px 18px}
+.dc-cell.chosen{background:rgba(37,99,235,0.08);border-top:2px solid var(--blue-l)}
+.dc-cell.cost{background:rgba(245,158,11,0.06);border-top:2px solid rgba(245,158,11,0.45)}
+.dc-cell.dropped{background:rgba(239,68,68,0.04);border-top:2px solid rgba(239,68,68,0.25)}
+.dc-cell-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:9px}
+.dc-cell.chosen .dc-cell-label{color:var(--blue-l)}
+.dc-cell.cost .dc-cell-label{color:rgba(245,158,11,0.95);font-weight:500}
+.dc-cell.dropped .dc-cell-label{color:var(--red-l)}
+.dc-cell-content{font-size:13px;color:var(--t1);line-height:1.6}
+.dc-cell-content strong{color:var(--t0);font-weight:500}
+.dc-cell.chosen .dc-cell-content{color:var(--t0)}
 
-/* SOLUTION ARCH */
-.arch{margin-top:48px;border:1px solid var(--b0);border-radius:14px;overflow:hidden}
-.arch-layer{display:grid;grid-template-columns:200px 1fr 1fr;border-bottom:1px solid var(--b0)}
-.arch-layer:last-child{border-bottom:none}
-.arch-cell{padding:26px 22px;border-right:1px solid var(--b0);transition:background .2s}
-.arch-cell:last-child{border-right:none}
-.arch-cell:hover{background:rgba(255,255,255,.018)}
-.arch-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--t2);margin-bottom:9px}
-.arch-cell.layer-lead{background:var(--s2)}
-.arch-cell.layer-lead h3{font-size:15px;font-weight:600;margin-bottom:7px}
-.arch-cell.layer-lead p{font-size:13px;color:var(--t1);line-height:1.65}
-.arch-cell h3{font-size:14px;font-weight:600;margin-bottom:9px;color:var(--t0)}
-.arch-cell ul{list-style:none;display:flex;flex-direction:column;gap:6px}
-.arch-cell ul li{font-size:13px;color:var(--t1);padding-left:12px;position:relative;line-height:1.5}
-.arch-cell ul li::before{content:'–';position:absolute;left:0;color:var(--t2);font-size:12px}
-.arch-cell .intent{font-size:11px;color:var(--t2);font-style:italic;margin-top:10px;padding-top:10px;border-top:1px solid var(--b0);line-height:1.55;font-family:'DM Mono',monospace}
+/* ── 04-C RISK ── */
+.risk-ladder{margin-top:40px;display:flex;flex-direction:column;gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:14px;overflow:hidden}
+.risk-row{display:grid;grid-template-columns:110px 1fr 1fr;border-bottom:1px solid var(--b0)}
+.risk-row:last-child{border-bottom:none}
+.risk-level{padding:20px 14px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;text-align:center;border-right:1px solid var(--b0)}
+.risk-dot{width:10px;height:10px;border-radius:50%;margin:0 auto}
+.risk-dot.low{background:#4ade80}
+.risk-dot.mid{background:#fbbf24}
+.risk-dot.hi{background:var(--red-l)}
+.risk-lbl{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:var(--t2);text-transform:uppercase}
+.risk-tasks{padding:18px 20px;border-right:1px solid var(--b0)}
+.risk-handling{padding:18px 20px}
+.risk-row.low .risk-level{background:rgba(34,197,94,.05)}
+.risk-row.mid .risk-level{background:rgba(245,158,11,.05)}
+.risk-row.hi{background:rgba(239,68,68,.03)}
+.risk-row.hi .risk-level{background:rgba(239,68,68,.08);border-right:1px solid rgba(239,68,68,.2)}
+.risk-row.hi .risk-tasks{border-right:1px solid rgba(239,68,68,.15)}
+.risk-row .rt-h3{font-size:13px;font-weight:500;color:var(--t0);margin-bottom:6px}
+.risk-row p{font-size:13px;color:var(--t1);line-height:1.6}
+.risk-boundary-callout{display:inline-block;margin-top:10px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--red-l)}
+/* feedback loop */
+.feedback-loop{margin-top:16px;background:var(--s2);border:1px solid var(--b0);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;opacity:.85}
+.fl-step{font-size:11.5px;color:var(--t1);padding:5px 10px;background:var(--s3);border-radius:5px;border:1px solid var(--b0)}
+.fl-arrow{color:var(--t2);font-size:12px}
+.fl-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:.08em;margin-right:4px}
 
-/* AI EDITOR DEMO */
-.demo{margin-top:40px;border:1px solid var(--b1);border-radius:12px;overflow:hidden;background:var(--s1)}
-.demo-titlebar{padding:11px 16px;border-bottom:1px solid var(--b0);display:flex;align-items:center;gap:8px;background:var(--s2)}
-.demo-dot{width:10px;height:10px;border-radius:50%}
-.demo-name{margin-left:10px;font-family:'DM Mono',monospace;font-size:11px;color:var(--t2)}
-.demo-body{display:grid;grid-template-columns:210px 1fr}
-.demo-nav{border-right:1px solid var(--b0);padding:14px;display:flex;flex-direction:column;gap:2px}
-.demo-nav-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);padding:0 8px;margin-bottom:8px}
-.d-item{padding:8px 10px;border-radius:6px;font-size:13px;cursor:default;display:flex;align-items:center;gap:8px;transition:background .15s;color:var(--t2)}
-.d-item.on{background:var(--blue-dim);color:var(--blue-l)}
-.d-item:not(.on):hover{background:var(--s3);color:var(--t1)}
-.demo-footer{margin-top:auto;padding:11px;background:var(--s3);border-radius:8px;border:1px solid var(--b0)}
-.demo-stat-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--t2);margin-bottom:6px}
-.demo-stat{font-size:12px;color:var(--t1);line-height:1.6}
-.demo-stat b{color:var(--blue-l);font-weight:500}
-.demo-stat em{color:#2dd4bf;font-style:normal;font-weight:500}
-.demo-editor{display:flex;flex-direction:column}
-.demo-toolbar{padding:9px 14px;border-bottom:1px solid var(--b0);display:flex;align-items:center;gap:5px;background:var(--s2);flex-wrap:wrap}
-.tb-btn{height:25px;padding:0 10px;border-radius:5px;font-size:12px;background:transparent;border:1px solid var(--b0);color:var(--t2);cursor:default;transition:all .15s;font-family:'Noto Sans SC',sans-serif}
-.tb-btn.on{background:var(--blue-dim);color:var(--blue-l);border-color:var(--blue-edge)}
-.tb-btn:hover{background:var(--s3);color:var(--t1)}
-.tb-sep{width:1px;height:16px;background:var(--b0);margin:0 3px}
-.demo-panes{display:grid;grid-template-columns:1fr 1fr}
-.demo-input{padding:18px;border-right:1px solid var(--b0)}
-.demo-output{padding:18px;position:relative}
-.pane-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:12px}
-.d-field{background:var(--s3);border:1px solid var(--b0);border-radius:6px;padding:8px 11px;font-size:13px;color:var(--t0);margin-bottom:7px;line-height:1.5}
-.d-textarea{background:var(--s3);border:1px solid var(--b0);border-radius:6px;padding:8px 11px;font-size:13px;color:var(--t1);line-height:1.65;min-height:76px;margin-bottom:7px}
-.d-gen-status{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:10px;color:var(--teal);margin-top:4px}
-.d-gen-dots{display:flex;gap:3px}
-.d-gen-dots span{width:4px;height:4px;border-radius:50%;background:var(--teal);animation:dot .9s infinite}
-.d-gen-dots span:nth-child(2){animation-delay:.2s}
-.d-gen-dots span:nth-child(3){animation-delay:.4s}
-@keyframes dot{0%,60%,100%{opacity:.3}30%{opacity:1}}
-.out-badge{position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--teal);background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.2);border-radius:20px;padding:3px 9px}
-.doc-text{font-family:'Noto Serif SC',serif;font-size:13px;color:var(--t1);line-height:1.85}
-.doc-text strong{color:var(--t0);font-weight:600;display:block;margin-bottom:4px}
-
-/* CAPABILITY MATRIX */
-.cap-matrix{margin-top:48px}
-.cap-tier-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);padding:8px 0 12px;border-bottom:1px solid var(--b0);margin-bottom:14px;display:flex;align-items:center;gap:12px}
-.cap-tier-label::after{content:'';flex:1;height:1px;background:var(--b0)}
-/* Tier 1 label: slightly brighter to signal priority */
-.cap-tier-label.t1-lbl{color:var(--t1)}
-.cap-tier-label.t1-lbl::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--t1);flex-shrink:0}
-.cap-row{display:grid;gap:10px;margin-bottom:10px}
-.cap-row.t1{grid-template-columns:1fr 1fr 1fr}
-.cap-row.t2{grid-template-columns:1fr 2fr}
-.cap-row.t3{grid-template-columns:1fr 1fr}
-.cap-card{background:var(--s2);border:1px solid var(--b0);border-radius:12px;padding:26px 22px;transition:border-color .25s;position:relative}
-.cap-card:hover{border-color:var(--b2)}
-.cap-card.primary{background:var(--s3);border-color:var(--b1)}
-.cap-card.infra{background:var(--s1);border-style:dashed;border-color:var(--b0)}
-.cap-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
-.cap-icon{width:34px;height:34px;border-radius:8px;font-size:15px;display:flex;align-items:center;justify-content:center;border:1px solid var(--b1);background:var(--s0)}
-.cap-card h3{font-size:15px;font-weight:600;margin-bottom:7px;letter-spacing:-.01em}
-.cap-card p{font-size:13px;color:var(--t1);line-height:1.7}
-.cap-tag{position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;padding:2px 7px;border-radius:4px}
-.cap-tag.solves{background:rgba(34,197,94,.1);color:#4ade80;border:1px solid rgba(34,197,94,.2)}
-.cap-tag.ux{background:var(--blue-dim);color:var(--blue-l);border:1px solid var(--blue-edge)}
-.cap-tag.moat{background:rgba(245,158,11,.09);color:#fbbf24;border:1px solid rgba(245,158,11,.16)}
-
-/* COMPARISON TABLE */
-.cmp-wrap{margin-top:52px}
-.cmp-header{margin-bottom:22px}
+/* ── 05 CAPABILITY (compact) ── */
 .cmp-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:12px;overflow:hidden}
-.cmp-tbl th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:13px 17px;text-align:left;background:var(--s2);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
+.cmp-tbl th{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:12px 16px;text-align:left;background:var(--s2);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
 .cmp-tbl th:last-child{border-right:none}
 .cmp-tbl th.hl{color:var(--blue-l);background:var(--s3)}
-.cmp-tbl td{padding:14px 17px;font-size:13px;color:var(--t1);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);line-height:1.55}
+.cmp-tbl td{padding:13px 16px;font-size:12.5px;color:var(--t1);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);line-height:1.5;vertical-align:top}
 .cmp-tbl td:last-child{border-right:none}
 .cmp-tbl td.hl{background:rgba(37,99,235,.05);color:var(--t0)}
 .cmp-tbl tr:last-child td{border-bottom:none}
-.cmp-tbl tr:hover td:not(.hl){background:rgba(255,255,255,.014)}
+.cmp-tbl tr:hover td:not(.hl){background:rgba(255,255,255,.012)}
 .icon-y{color:#4ade80}
 .icon-n{color:var(--t2)}
 .icon-p{color:#fbbf24}
+.honest-note{margin-top:16px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.18);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--t1);line-height:1.65}
+.honest-note strong{color:#fbbf24;font-weight:500}
 
-/* VALUE VALIDATION */
-.val-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:14px;overflow:hidden;margin-top:48px}
-.val-main{grid-column:span 3;background:var(--s2);padding:44px 48px;display:flex;align-items:center;gap:44px;border-bottom:1px solid var(--b0)}
-.val-num{font-family:'Noto Serif SC',serif;font-size:80px;font-weight:900;line-height:1;letter-spacing:-.04em;color:var(--t0);flex-shrink:0}
-.val-detail h3{font-size:19px;font-weight:600;margin-bottom:7px}
-.val-detail p{font-size:14px;color:var(--t1);max-width:300px;line-height:1.7}
-.before-after{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+/* ── 06-A METRICS ── */
+.val-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0);border:1px solid var(--b0);border-top:2px solid var(--blue-l);border-radius:14px;overflow:hidden;margin-top:40px}
+.val-main{grid-column:span 3;background:var(--s2);padding:40px 44px;display:flex;align-items:center;gap:40px;border-bottom:1px solid var(--b0)}
+.val-num{font-family:'Noto Serif SC',serif;font-size:76px;font-weight:900;line-height:1;letter-spacing:-.04em;color:var(--t0);flex-shrink:0}
+.val-detail h3{font-size:18px;font-weight:600;margin-bottom:7px}
+.val-detail p{font-size:13.5px;color:var(--t1);max-width:300px;line-height:1.7}
+.before-after{margin-top:16px;display:flex;flex-direction:column;gap:7px}
 .ba-row{display:flex;align-items:center;gap:12px}
-.ba-label{width:60px;font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:.06em;flex-shrink:0}
+.ba-label{width:56px;font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);letter-spacing:.06em;flex-shrink:0}
 .ba-track{flex:1;background:var(--s0);border-radius:3px;height:5px;overflow:hidden}
 .ba-fill{height:100%;border-radius:3px}
 .ba-fill.before{background:var(--t2);width:100%}
 .ba-fill.after{background:linear-gradient(90deg,var(--blue),#2dd4bf);width:1.4%}
-.ba-val{width:36px;text-align:right;font-family:'DM Mono',monospace;font-size:10px;color:var(--t1)}
-.val-card{background:var(--s1);padding:32px 26px;transition:background .25s}
+.ba-val{width:36px;text-align:right;font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t1)}
+.val-card{background:var(--s1);padding:28px 24px;transition:background .25s}
 .val-card:hover{background:var(--s2)}
-.val-card-n{font-family:'Noto Serif SC',serif;font-size:44px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:7px}
-.val-hyp{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:.06em;margin-bottom:6px}
+.val-card-n{font-family:'Noto Serif SC',serif;font-size:42px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:6px}
+.val-card-n.blue{color:var(--blue-l)}
+.val-card-n.teal{color:#2dd4bf}
+.val-card-n.purple{color:#a78bfa}
+/* cmp-tbl dimension label */
+.cmp-dim{color:var(--t0);font-weight:500}
+.val-hyp{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);letter-spacing:.06em;margin-bottom:6px}
 .val-desc{font-size:13px;color:var(--t1)}
 .val-note{font-size:11px;color:var(--t2);margin-top:4px}
-.spark{height:28px;margin-top:10px;display:flex;align-items:flex-end;gap:2px}
-.sp{flex:1;background:var(--blue-dim);border-radius:1px 1px 0 0;transition:background .2s}
-.sp:hover{background:var(--blue-l)}
-.metrics-dash{margin-top:32px;border:1px solid var(--b0);border-radius:12px;overflow:hidden}
-.dash-head{padding:14px 22px;border-bottom:1px solid var(--b0);display:flex;align-items:center;justify-content:space-between;background:var(--s2)}
-.dash-title{font-size:13px;font-weight:500;color:var(--t0)}
-.dash-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:.06em}
+.spark{height:26px;margin-top:10px;display:flex;align-items:flex-end;gap:2px}
+.sp{flex:1;background:var(--blue-dim);border-radius:1px 1px 0 0}
+/* secondary metrics — visually quieter but not disabled */
+.metrics-dash{margin-top:20px;border:1px solid var(--b0);border-radius:12px;overflow:hidden;opacity:.75}
+.dash-head{padding:11px 20px;border-bottom:1px solid var(--b0);display:flex;align-items:center;justify-content:space-between;background:var(--s2)}
+.dash-title{font-size:12px;font-weight:500;color:var(--t1)}
+.dash-meta{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:.06em}
 .dash-cells{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b0)}
-.d-cell{background:var(--s1);padding:22px 18px}
-.d-cell-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:var(--t2);margin-bottom:6px}
-.d-cell-n{font-family:'Noto Serif SC',serif;font-size:30px;font-weight:700;line-height:1;margin-bottom:5px;color:var(--t0)}
-.d-cell-change{font-size:11px;color:#4ade80}
+.d-cell{background:var(--s1);padding:18px 16px}
+.d-cell-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--t2);margin-bottom:5px}
+.d-cell-n{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;line-height:1;margin-bottom:4px;color:var(--t0)}
+.d-cell-change{font-size:10.5px;color:#4ade80}
+.metrics-dash .spark{opacity:.65}
 
-/* PRODUCT STRATEGY */
-.strategy-phases{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:48px}
+/* ── 06-B DATA METHOD ── */
+.method-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:12px;overflow:hidden;margin-top:8px}
+.method-tbl th{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:11px 16px;text-align:left;background:var(--s2);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
+.method-tbl th:last-child{border-right:none}
+.method-tbl td{padding:13px 16px;font-size:12.5px;color:var(--t1);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);vertical-align:top;line-height:1.6}
+.method-tbl td:last-child{border-right:none}
+.method-tbl tr:last-child td{border-bottom:none}
+.method-tbl td:first-child{color:var(--t0);font-weight:500}
+.limit-card{margin-top:16px;background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.16);border-radius:10px;padding:16px 20px}
+.limit-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,158,11,0.8);margin-bottom:10px}
+.limit-items{display:flex;flex-direction:column;gap:6px}
+.limit-item{font-size:12.5px;color:var(--t1);padding-left:14px;position:relative;line-height:1.5}
+.limit-item::before{content:'△';position:absolute;left:0;color:#fbbf24;font-size:10px;top:2px}
+.limit-conclusion{margin-top:12px;font-size:13px;color:var(--t1);font-style:italic;padding-top:12px;border-top:1px solid rgba(245,158,11,.12);line-height:1.65}
+
+/* ── 07-A PHASES ── */
+.strategy-phases{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:40px}
 .phase{border:1px solid var(--b0);border-radius:12px;overflow:hidden}
-.phase-head{padding:16px 18px;border-bottom:1px solid var(--b0);display:flex;align-items:center;gap:9px;background:var(--s2)}
+.phase-head{padding:15px 18px;border-bottom:1px solid var(--b0);display:flex;align-items:center;gap:9px;background:var(--s2)}
 .ph-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .ph1 .ph-dot{background:#2dd4bf}
 .ph2 .ph-dot{background:var(--blue-l)}
@@ -286,47 +302,68 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .ph1 .ph-tag{background:rgba(45,212,191,.1);color:#2dd4bf}
 .ph2 .ph-tag{background:var(--blue-dim);color:var(--blue-l)}
 .ph3 .ph-tag{background:rgba(251,191,36,.1);color:#fbbf24}
-.phase-period{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);padding:10px 18px;background:var(--s2);border-bottom:1px solid var(--b0)}
+.phase-period{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);padding:9px 18px;background:var(--s2);border-bottom:1px solid var(--b0)}
 .phase-body{padding:14px 18px}
-.ph-item{padding:8px 0;border-bottom:1px solid var(--b0);font-size:13px;color:var(--t1);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.ph-item{padding:7px 0;border-bottom:1px solid var(--b0);font-size:12.5px;color:var(--t1);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
 .ph-item:last-child{border-bottom:none}
 .ph-item::before{content:'–';color:var(--t2);font-size:11px;flex-shrink:0;margin-top:2px}
-.strategy-insight{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-.s-insight{background:var(--s2);border:1px solid var(--b0);border-radius:10px;padding:20px}
-.s-insight.key{border-left:2px solid var(--blue-l)}
-.s-insight.learned{border-left:2px solid #2dd4bf}
-.si-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:8px}
-.si-text{font-size:13px;color:var(--t1);line-height:1.7}
+.ph-insight{font-size:11.5px;color:var(--t2);margin-top:10px;padding-top:10px;border-top:1px solid var(--b0);line-height:1.5;font-style:italic;font-family:'DM Mono',monospace}
 
-/* REFLECTION */
-.takeaways{margin-top:48px;border:1px solid var(--b0);border-radius:14px;overflow:hidden}
-.tkw-row{display:grid;grid-template-columns:60px 1fr 210px;border-bottom:1px solid var(--b0)}
-.tkw-row:last-child{border-bottom:none}
-.tkw-num{display:flex;align-items:flex-start;justify-content:center;padding:28px 0 0;background:var(--s2);border-right:1px solid var(--b0)}
-.tkw-n{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:900;color:var(--t2);line-height:1}
-.tkw-body{padding:26px;transition:background .2s}
-.tkw-body:hover{background:rgba(255,255,255,.012)}
-.tkw-body h3{font-size:15.5px;font-weight:600;margin-bottom:9px;letter-spacing:-.01em}
-.tkw-body p{font-size:14px;color:var(--t1);line-height:1.78}
-.tkw-aside{padding:26px 22px;background:var(--s2);border-left:1px solid var(--b0);display:flex;flex-direction:column;justify-content:center}
-.tkw-aside-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:6px}
-.tkw-aside-val{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700;color:var(--blue-l);margin-bottom:4px}
-.tkw-aside-desc{font-size:11.5px;color:var(--t2);line-height:1.55}
-.closing{margin-top:36px;display:grid;grid-template-columns:1fr 210px;gap:0;border:1px solid var(--b0);border-radius:13px;overflow:hidden}
-.closing-main{padding:34px;background:var(--s1)}
-.closing-main p{font-size:15px;color:var(--t1);line-height:1.8}
-.closing-main p+p{margin-top:14px}
+/* ── 07-B DEFENSE ── */
+.defense-block{margin-top:24px;background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(0,0,0,0));border:1px solid var(--blue-edge);border-top:2px solid var(--blue-l);border-radius:14px;overflow:hidden}
+.defense-head{padding:28px 28px 22px;border-bottom:1px solid var(--b0);background:rgba(37,99,235,0.08)}
+.defense-head-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-l);margin-bottom:8px}
+.defense-head h3{font-size:18px;font-weight:700;color:var(--t0);letter-spacing:-.015em;margin-bottom:6px}
+.defense-head p{font-size:13px;color:var(--t1)}
+.defense-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0)}
+.def-cell{background:var(--s1);padding:24px 20px;border-left:3px solid transparent}
+.def-cell:nth-child(1){border-left-color:rgba(37,99,235,0.5)}
+.def-cell:nth-child(2){border-left-color:rgba(75,132,255,0.5)}
+.def-cell:nth-child(3){border-left-color:rgba(45,212,191,0.5)}
+.def-num{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:var(--blue-l);margin-bottom:10px}
+.def-cell h4{font-size:13.5px;font-weight:600;margin-bottom:8px;color:var(--t0)}
+.def-cell p{font-size:13px;color:var(--t1);line-height:1.65}
+.defense-footer{padding:16px 24px;border-top:1px solid var(--b0);background:rgba(37,99,235,0.05)}
+.defense-footer p{font-size:13px;color:var(--t1);line-height:1.65}
+.defense-footer strong{color:var(--blue-l);font-weight:500}
+/* inline emphasis used in defense cells and strategy */
+.hl-t0{color:var(--t0)}
+.hl-blue{color:var(--blue-l)}
+
+/* ── 08 REFLECTION ── */
+.tkw-cards{display:flex;flex-direction:column;gap:14px;margin-top:40px}
+.tkw{background:var(--s2);border:1px solid var(--b0);border-radius:14px;overflow:hidden}
+.tkw-top{display:grid;grid-template-columns:56px 1fr;background:var(--s3);border-bottom:1px solid var(--b0)}
+.tkw-num{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--b0);padding:20px 0}
+.tkw-n{font-family:'Noto Serif SC',serif;font-size:26px;font-weight:900;color:var(--t2);line-height:1}
+.tkw-header{padding:20px 24px}
+.tkw-header h3{font-size:15.5px;font-weight:600;color:var(--t0);letter-spacing:-.01em;margin-bottom:4px}
+.tkw-header .tkw-sub{font-size:12.5px;color:var(--t1)}
+.tkw-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0)}
+.tkw-col{background:var(--s2);padding:20px 20px}
+.tkw-col-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:9px}
+.tkw-col p{font-size:13px;color:var(--t1);line-height:1.6}
+.tkw-col.chosen{background:rgba(37,99,235,0.07);border-top:2px solid var(--blue-l)}
+.tkw-col.chosen .tkw-col-label{color:var(--blue-l)}
+.tkw-col.chosen p{color:var(--t0)}
+/* closing */
+.closing{margin-top:32px;display:grid;grid-template-columns:1fr 200px;border:1px solid var(--b0);border-radius:13px;overflow:hidden}
+.closing-main{padding:32px;background:var(--s1)}
+.closing-main p{font-size:15px;color:var(--t1);line-height:1.82}
+.closing-main p+p{margin-top:13px}
 .closing-main strong{color:var(--t0);font-weight:500}
-.closing-meta{background:var(--s2);border-left:1px solid var(--b0);padding:26px 22px;display:flex;flex-direction:column;gap:16px;justify-content:center}
+.closing-meta{background:var(--s2);border-left:1px solid var(--b0);padding:24px 20px;display:flex;flex-direction:column;gap:15px;justify-content:center}
 .cm-item .cm-l{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:4px}
 .cm-item .cm-v{font-size:12.5px;color:var(--t1)}
 
 /* FOOTER */
-footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;display:flex;align-items:center;justify-content:space-between}
+footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;display:flex;align-items:center;justify-content:space-between}
 .ft-l{font-family:'DM Mono',monospace;font-size:12px;color:var(--t2);letter-spacing:.04em}
 .ft-r{font-size:12px;color:var(--t2)}
 
-/* ─── RESPONSIVE ─────────────────────────── */
+/* table cell helpers — avoids repetitive inline styles */
+.td-dim{color:var(--t2);font-size:12.5px}
+.td-body{color:var(--t1);font-size:12.5px}
 @media(max-width:960px){
   #nav{padding:0 20px}
   .nav-links{display:none}
@@ -334,45 +371,35 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
   #hero{padding:72px 20px 48px}
   .hero-kpis{max-width:100%}
   .kpi.wide{grid-column:span 2}
-  .bg-grid{grid-template-columns:1fr}
-  .bg-card.wide{grid-column:span 1}
-  .method-bar{grid-template-columns:1fr 1fr}
-  .personas{grid-template-columns:1fr 1fr}
-  .arch-layer{grid-template-columns:1fr}
+  .hero-summary{grid-template-columns:1fr 1fr}
+  .bg-compact{grid-template-columns:1fr}
+  .arch-flow{grid-template-columns:1fr 1fr}
+  .decision-cards .dc-grid{grid-template-columns:1fr 1fr}
+  .dc-head{flex-wrap:wrap;gap:8px}
+  .dc-tradeoff{order:3;flex-basis:100%}
+  .risk-row{grid-template-columns:1fr}
+  .prob-3col,.strategy-phases,.defense-grid{grid-template-columns:1fr}
   .val-top{grid-template-columns:1fr}
-  .val-main{grid-column:span 1;flex-direction:column;gap:22px;padding:28px}
-  .val-num{font-size:56px}
-  .cap-row.t1,.cap-row.t2,.cap-row.t3{grid-template-columns:1fr}
-  .demo-body{grid-template-columns:1fr}
-  .demo-nav{display:none}
-  .demo-panes{grid-template-columns:1fr}
-  .strategy-phases{grid-template-columns:1fr}
-  .strategy-insight{grid-template-columns:1fr}
+  .val-main{grid-column:span 1;flex-direction:column;gap:20px;padding:28px}
+  .val-num{font-size:60px}
+  .tkw-body{grid-template-columns:1fr}
   .dash-cells{grid-template-columns:1fr 1fr}
-  .tkw-row{grid-template-columns:1fr}
-  .tkw-num{display:none}
-  .tkw-aside{border-left:none;border-top:1px solid var(--b0)}
   .closing{grid-template-columns:1fr}
   .closing-meta{border-left:none;border-top:1px solid var(--b0)}
   .quotes{grid-template-columns:1fr}
-  .cmp-tbl{display:block;overflow-x:auto}
+  .cmp-tbl,.method-tbl{display:block;overflow-x:auto}
   footer{flex-direction:column;gap:8px;text-align:center}
+  .sec-lg{padding:80px 0}
 }
 @media(max-width:640px){
-  .sec{padding:80px 0}
+  .sec,.sec-sm,.sec-lg{padding:72px 0}
   .hero-kpis{grid-template-columns:1fr}
   .kpi{border-right:none;border-bottom:1px solid var(--b0)}
   .kpi.wide{grid-column:span 1;flex-direction:column;gap:6px;text-align:center}
   .kpi-sep{display:none}
-  /* Formula stacks vertically on mobile */
-  .formula{flex-direction:column}
-  .f-part{border-right:none;border-bottom:1px solid var(--b0);padding:16px 20px}
-  .f-part.result{border-left:none;border-top:1px solid var(--blue-edge);border-bottom:none}
-  .f-op{padding:8px 20px;border-right:none;border-bottom:1px solid var(--b0);min-height:auto;font-size:16px}
-  .f-op.eq-op{border-bottom:none}
-  .personas{grid-template-columns:1fr}
-  .method-bar{grid-template-columns:1fr 1fr}
-  .dash-cells{grid-template-columns:1fr 1fr}
+  .hero-summary{grid-template-columns:1fr}
+  .tkw-top{grid-template-columns:1fr}
+  .tkw-num{display:none}
 }
 </style>
 </head>
@@ -412,10 +439,34 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
       <span class="grad">AI Copilot</span>
     </h1>
     <p class="hero-sub">
-      面向党建材料、公文报告与会议纪要场景的结构化 AI 写作 Copilot<br>
-      以<strong>知识库、规则引擎与专域模型</strong>协同，在保障合规的前提下系统性提升写作效率
+      面向党建材料、公文报告与会议纪要场景 &ensp;|&ensp; 核心判断：<strong>AI 承担起草，人工承担判断</strong>
     </p>
+    <div class="hero-summary">
+      <div class="hs-cell">
+        <div class="hs-label">Problem</div>
+        <div class="hs-val">生成能力与合规责任之间的断层</div>
+      </div>
+      <div class="hs-cell">
+        <div class="hs-label">Core Decision</div>
+        <div class="hs-val">结构化输入 + 规则约束解码，而非叠 Prompt</div>
+      </div>
+      <div class="hs-cell">
+        <div class="hs-label">Result</div>
+        <div class="hs-val">三项核心假设在试点中得到验证</div>
+      </div>
+      <div class="hs-cell">
+        <div class="hs-label">My Role</div>
+        <div class="hs-val">独立 PM，产品定义到试点验证，12 个月</div>
+      </div>
+    </div>
+    <!-- KPI: 5min primary row, two secondary below -->
     <div class="hero-kpis">
+      <div class="kpi wide">
+        <div style="text-align:center">
+          <div class="kpi-primary-n">5 分钟</div>
+          <div class="kpi-primary-l">初稿生成时间 &ensp;·&ensp; 原先需要 4–8 小时</div>
+        </div>
+      </div>
       <div class="kpi">
         <div class="kpi-n">60%</div>
         <div class="kpi-l">写作效率提升</div>
@@ -423,11 +474,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
       <div class="kpi">
         <div class="kpi-n">70%</div>
         <div class="kpi-l">审稿工作量下降</div>
-      </div>
-      <div class="kpi wide">
-        <div class="kpi-n">5 分钟</div>
-        <span class="kpi-sep">·</span>
-        <div class="kpi-l">初稿生成时间 &ensp;原先需要 4–8 小时</div>
       </div>
     </div>
     <div class="hero-actions">
@@ -440,46 +486,58 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
   </div>
 </section>
 
-<!-- 01 · PROJECT BACKGROUND -->
-<section class="sec s-alt" id="context">
+<!-- 01 · PROJECT BACKGROUND (compressed) -->
+<section class="sec-sm s-alt" id="context">
   <div class="wrap">
     <div class="rv">
       <div class="label accent">01 · Project Background</div>
-      <h2 class="sec-h">项目背景：高规范写作场景的效率困境</h2>
-      <p class="sec-sub">体制内写作具有高度规范性、政策依赖和结构化要求，传统写作方式难以在效率与合规之间取得平衡。</p>
+      <h2 class="sec-h">立题：四个让这个问题值得被认真设计的判断</h2>
     </div>
-    <div class="bg-grid">
-      <div class="bg-card rv">
-        <div class="card-label">Scenario 01</div>
-        <h3>党建材料</h3>
-        <p>党支部工作报告、年度总结、党员教育材料等，格式严格，政治表达有特定规范。从零起草平均耗时 4–8 小时，容错率极低。</p>
+    <div class="bg-compact rv">
+      <div class="bg-c-card">
+        <div class="card-label">Scale</div>
+        <p>高频刚需，不是小众效率问题</p>
       </div>
-      <div class="bg-card rv">
-        <div class="card-label">Scenario 02</div>
-        <h3>公文报告</h3>
-        <p>请示、报告、通知、函等正式公文，行文结构、标题层级、落款规范均有明确要求，不熟悉规范者极易出错，每次提交都面临退稿风险。</p>
+      <div class="bg-c-card">
+        <div class="card-label">Pain</div>
+        <p>格式、语境、安全三重约束同时成立</p>
       </div>
-      <div class="bg-card rv">
-        <div class="card-label">Scenario 03</div>
-        <h3>会议纪要</h3>
-        <p>会议产生大量信息，手动整理耗时耗力，关键决议和行动项容易遗漏，纪要质量参差不齐，影响后续落实。</p>
+      <div class="bg-c-card">
+        <div class="card-label">Timing</div>
+        <p>技术窗口首次打开：RAG + 规则约束让垂直助手可落地</p>
       </div>
-      <div class="bg-card wide why rv">
-        <div class="card-label">Why This Problem Is Worth Redesigning</div>
-        <h3>为什么这是一个值得被重新设计的产品问题</h3>
-        <div class="why-list">
-          <div class="why-item">
-            <span class="why-key">Scale</span>
-            <p>全国机关事业单位工作人员超过 5000 万。写作是绝大多数岗位的高频必备技能，占工作日时间估计在 20–40% 之间。这不是小众场景，是被长期低估的大规模效率问题。</p>
-          </div>
-          <div class="why-item">
-            <span class="why-key">Pain</span>
-            <p>现有工具（Word 模板、通用 AI）对体制内写作规范的理解几乎为零——前者不智能，后者不专业。两类工具都无法同时满足"格式合规、语境准确、数据不出内网"三项基本要求。</p>
-          </div>
-          <div class="why-item">
-            <span class="why-key">Timing</span>
-            <p>大模型中文写作能力在 2023–2024 年出现明显提升，配合 RAG 与规则约束解码，具备了构建专业写作助手的技术基础。时间窗口相对明确，先进入的产品有积累优势。</p>
-          </div>
+      <div class="bg-c-card">
+        <div class="card-label">核心判断</div>
+        <p>本质不是写作工具升级，而是工作流重设计</p>
+      </div>
+    </div>
+    <!-- 传统流程 vs AI 协作流程 对比 -->
+    <div class="flow-diagram rv">
+      <div class="flow-diagram-label">传统流程 vs AI 协作流程</div>
+      <div class="flow-compare">
+        <div class="fc-row">
+          <div class="fc-cell fc-head">传统流程</div>
+          <div class="fc-cell fc-head">AI 协作流程</div>
+        </div>
+        <div class="fc-row">
+          <div class="fc-cell fc-old">明确写作任务</div>
+          <div class="fc-cell fc-new">明确写作任务</div>
+        </div>
+        <div class="fc-row">
+          <div class="fc-cell fc-old">翻找历史文件 / 模板</div>
+          <div class="fc-cell fc-new">结构化要素填写（2 min）</div>
+        </div>
+        <div class="fc-row">
+          <div class="fc-cell fc-old">从零起草（2–6h）</div>
+          <div class="fc-cell fc-new">AI 生成初稿（&lt;5 min）</div>
+        </div>
+        <div class="fc-row">
+          <div class="fc-cell fc-old">反复调整格式（1–2h）</div>
+          <div class="fc-cell fc-new">格式自动校验 + 内联修复</div>
+        </div>
+        <div class="fc-row">
+          <div class="fc-cell fc-old">领导审稿 → 多轮返修</div>
+          <div class="fc-cell fc-new">人工判断 + 最终定稿</div>
         </div>
       </div>
     </div>
@@ -491,60 +549,34 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
   <div class="wrap">
     <div class="rv">
       <div class="label accent">02 · Problem Definition</div>
-      <h2 class="sec-h">核心问题：低效率与高风险并存</h2>
-      <p class="sec-sub">通过访谈、工作流观察与试点分析，将问题归纳为三个根因：格式规范复杂、自动化能力不足与经验依赖严重。</p>
+      <h2 class="sec-h">真正的问题不是"写不出来"，而是"写出来也不敢直接用"</h2>
+      <p class="sec-sub">通过访谈与工作流观察，问题被拆解为三层：内容生成难、流程规范重、心理信任缺。</p>
     </div>
-    <div class="formula rv">
-      <div class="f-part">
-        <div class="f-zh">格式规范复杂</div>
-        <div class="f-en">Format Complexity</div>
+    <div class="problem-statement rv">
+      <div class="ps-quote">AI 能做什么 ≠ 用户愿意交给 AI 做什么</div>
+      <div class="ps-sub">这是贯穿整个方案设计的核心约束。政务场景中，合规责任无法被外包给 AI，产品必须解决"用得上"和"放得心"两件事。</div>
+    </div>
+    <div class="prob-3col rv">
+      <div class="p3-card p-high">
+        <div class="p3-layer">Layer 1 · 内容层</div>
+        <h3>起草效率极低</h3>
+        <p>党建材料平均耗时 4–8 小时。公文格式涉及 200+ 项规则，无工具辅助下全靠记忆，格式错误率高、审稿往返频繁。</p>
       </div>
-      <div class="f-op">+</div>
-      <div class="f-part">
-        <div class="f-zh">自动化能力不足</div>
-        <div class="f-en">Low Automation</div>
+      <div class="p3-card p-mid">
+        <div class="p3-layer">Layer 2 · 流程层</div>
+        <h3>重复劳动挤占判断空间</h3>
+        <p>约 80% 的文件是在既有文件上修改，但缺乏结构化工具仍需逐字重写。经验者的判断力被格式调整等低价值工作消耗。</p>
       </div>
-      <div class="f-op">+</div>
-      <div class="f-part">
-        <div class="f-zh">经验依赖严重</div>
-        <div class="f-en">Experience Dependency</div>
-      </div>
-      <div class="f-op eq-op">=</div>
-      <div class="f-part result">
-        <div class="f-zh">低效率 + 高风险</div>
-        <div class="f-en">Core Problem</div>
+      <div class="p3-card p-psy">
+        <div class="p3-layer">Layer 3 · 心理层（被忽视的核心）</div>
+        <h3>用户不信任 AI 能承担合规责任</h3>
+        <p>政务文件涉及政治表达和组织责任，用户对"AI 全权生成"有根本性顾虑。<br>这不是能力问题，是责任归属问题。</p>
       </div>
     </div>
-    <table class="prob-tbl rv">
-      <thead>
-        <tr>
-          <th style="width:48px">#</th>
-          <th style="width:172px">问题</th>
-          <th>根因分析</th>
-          <th style="width:152px">优先级</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prob-idx">P1</td>
-          <td class="prob-name">起草时间成本高</td>
-          <td class="prob-desc">一篇党建材料平均耗时 4–8 小时，核心原因是缺乏结构化初稿生成能力，导致每次都需从零组织内容。</td>
-          <td><span class="chip chip-red">高影响</span><span class="chip chip-red">高频次</span></td>
-        </tr>
-        <tr>
-          <td class="prob-idx">P2</td>
-          <td class="prob-name">格式规范认知负担</td>
-          <td class="prob-desc">公文格式涉及 200+ 项规则，无工具辅助下全靠记忆，格式错误率高，审稿往返频繁</td>
-          <td><span class="chip chip-amber">中影响</span><span class="chip chip-red">高频次</span></td>
-        </tr>
-        <tr>
-          <td class="prob-idx">P3</td>
-          <td class="prob-name">重复劳动挤占判断空间</td>
-          <td class="prob-desc">约 80% 的文件是在既有文件上修改，但缺乏结构化工具，仍需逐字重写，有经验者的判断力被低价值工作消耗</td>
-          <td><span class="chip chip-amber">中影响</span><span class="chip chip-amber">中频次</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="p-insight-bar rv">
+      <span class="pib-icon">💡</span>
+      <span class="pib-text">关键设计洞察：产品的价值主张不是"AI 替代写作"，而是"AI 承担起草，人工承担判断"——这个边界划定决定了所有后续的方案选择。</span>
+    </div>
     <div class="quotes rv">
       <div class="quote">
         <div class="quote-src">User Interview · 基层办公室人员</div>
@@ -560,365 +592,351 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
   </div>
 </section>
 
-<!-- 03 · USER RESEARCH -->
-<section class="sec s-alt" id="research">
+<!-- 03 · USER RESEARCH (resistance map) -->
+<section class="sec-sm s-alt" id="research">
   <div class="wrap">
     <div class="rv">
       <div class="label accent">03 · User Research</div>
-      <h2 class="sec-h">用户研究</h2>
-      <p class="sec-sub">采用混合研究方法，在资源有限的情况下兼顾覆盖广度与洞察深度，确保问题定义基于真实用户行为而非假设。</p>
+      <h2 class="sec-h">用户阻力地图</h2>
+      <p class="sec-sub">重点不是描述用户是谁，而是理解各角色对 AI 的不信任来自哪里，以及他们能接受 AI 做什么。</p>
     </div>
-    <div class="method-bar rv">
-      <div class="method-cell">
-        <div class="method-n">22</div>
-        <div class="method-name">深度访谈</div>
-        <div class="method-en">In-Depth Interview</div>
-      </div>
-      <div class="method-cell">
-        <div class="method-n">6</div>
-        <div class="method-name">工作流影随观察</div>
-        <div class="method-en">Contextual Inquiry</div>
-      </div>
-      <div class="method-cell">
-        <div class="method-n">134</div>
-        <div class="method-name">问卷有效填写</div>
-        <div class="method-en">Survey Responses</div>
-      </div>
-      <div class="method-cell">
-        <div class="method-n">3</div>
-        <div class="method-name">原型可用性测试</div>
-        <div class="method-en">Usability Testing Rounds</div>
-      </div>
+    <div class="method-line rv">
+      研究方法：<span>深度访谈 22 人</span> · <span>工作流影随观察 6 次</span> · <span>问卷 134 份</span> · <span>原型可用性测试 3 轮</span>
     </div>
-    <div class="personas">
-      <div class="persona rv">
-        <div class="p-role">Primary User</div>
-        <div class="p-freq">每日使用 · 样本占比 45%</div>
-        <h3>基层办公室人员</h3>
-        <div class="p-goal">核心目标：快速完成初稿，减少格式返工</div>
-        <div class="p-scenario">主要场景是起草党建材料与各类通知，格式不熟悉，修改压力大，对工具易用性要求高，是影响产品落地的关键角色。</div>
-        <div class="chips"><span class="chip chip-red">格式不熟</span><span class="chip chip-red">反复修改</span></div>
-      </div>
-      <div class="persona rv">
-        <div class="p-role">Decision Maker</div>
-        <div class="p-freq">每周使用 · 样本占比 27%</div>
-        <h3>部门负责人</h3>
-        <div class="p-goal">核心目标：提升材料质量，减少审稿往返</div>
-        <div class="p-scenario">自身需撰写重要汇报材料，同时承担审核职责。时间紧张，对质量要求高，是推动工具在部门落地的关键决策者。</div>
-        <div class="chips"><span class="chip chip-red">时间紧张</span><span class="chip chip-amber">审稿负担</span></div>
-      </div>
-      <div class="persona rv">
-        <div class="p-role">Frequent User</div>
-        <div class="p-freq">每周使用 · 样本占比 18%</div>
-        <h3>会议记录员</h3>
-        <div class="p-goal">核心目标：准确提炼决议，降低遗漏风险</div>
-        <div class="p-scenario">频繁参与各类会议，手动整理纪要耗时长，关键决议和行动项容易遗漏，对准确性和完整性要求高。</div>
-        <div class="chips"><span class="chip chip-red">易遗漏</span><span class="chip chip-amber">整理费时</span></div>
-      </div>
-      <div class="persona rv">
-        <div class="p-role">Growth User</div>
-        <div class="p-freq">每日使用 · 样本占比 10%</div>
-        <h3>新入职人员</h3>
-        <div class="p-goal">核心目标：快速达到可用标准，降低犯错风险</div>
-        <div class="p-scenario">缺乏公文写作经验，不熟悉机关文风规范，学习曲线陡峭，格式问题容易影响职业形象。</div>
-        <div class="chips"><span class="chip chip-amber">规范不熟</span><span class="chip chip-blue">学习成本高</span></div>
-      </div>
-    </div>
+    <table class="resist-tbl rv">
+      <thead>
+        <tr>
+          <th style="width:140px">用户角色</th>
+          <th style="width:140px">关键任务</th>
+          <th class="barrier-col">最高阻力点</th>
+          <th>可接受的 AI 边界</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="rt-role">基层办公室人员</div><div class="rt-sub">Primary User</div></td>
+          <td class="td-dim">起草党建材料、通知、情况汇报</td>
+          <td class="rt-barrier"><strong>格式错误被退稿的风险</strong>——不确定 AI 生成的格式是否合规，不敢直接提交</td>
+          <td class="rt-boundary">愿意让 AI <em>生成初稿</em>，但需要<em>格式校验可见</em>才敢使用</td>
+        </tr>
+        <tr>
+          <td><div class="rt-role">部门负责人</div><div class="rt-sub">Decision Maker</div></td>
+          <td class="td-dim">撰写汇报材料、审核下属文件</td>
+          <td class="rt-barrier"><strong>政治表达出错的合规风险</strong>——AI 语气是否符合当前政策方向，没有把握</td>
+          <td class="rt-boundary">愿意用 AI <em>提升初稿质量</em>，但<em>最终判断必须自己做</em></td>
+        </tr>
+        <tr>
+          <td><div class="rt-role">会议记录员</div><div class="rt-sub">Frequent User</div></td>
+          <td class="td-dim">整理会议纪要、提炼决议行动项</td>
+          <td class="rt-barrier"><strong>遗漏关键决议的责任风险</strong>——AI 提炼是否准确，需要反复核对，成本高</td>
+          <td class="rt-boundary">愿意让 AI <em>完成转写和结构提炼</em>，但<em>决议表述需人工确认</em></td>
+        </tr>
+        <tr>
+          <td><div class="rt-role">新入职人员</div><div class="rt-sub">Growth User</div></td>
+          <td class="td-dim">各类公文写作，学习规范</td>
+          <td class="rt-barrier"><strong>不知道 AI 生成的内容是否符合规范</strong>——缺乏判断基准，不敢修改</td>
+          <td class="rt-boundary">愿意<em>完全依赖 AI 初稿</em>，但需要<em>规范说明和修改建议</em></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
-<!-- 04 · SOLUTION DESIGN -->
+<!-- 04-A · SOLUTION: ARCH -->
 <section class="sec s-main" id="solution">
   <div class="wrap">
     <div class="rv">
-      <div class="label accent">04 · Solution Design</div>
-      <h2 class="sec-h">系统架构：三层设计，每层有明确的产品决策依据</h2>
-      <p class="sec-sub">核心判断：体制内写作的复杂性无法靠"更好的 Prompt"解决，必须在系统层面内置专业知识与规范约束。</p>
+      <div class="label accent">04-A · Solution Design · 总体架构</div>
+      <h2 class="sec-h">五层架构：每层对应一个产品设计问题</h2>
+      <p class="sec-sub">核心判断：体制内写作的复杂性无法靠更好的 Prompt 解决，需要在系统层内置专业知识与规范约束，并在最终输出前保留人工确认层。</p>
+      <p style="font-family:'DM Mono',monospace;font-size:10.5px;color:var(--t2);margin-top:10px;letter-spacing:.04em">前两层解决输入质量，第三层解决生成能力，后两层解决可控性与责任归属。</p>
     </div>
-    <div class="arch rv">
-      <div class="arch-layer">
-        <div class="arch-cell layer-lead">
-          <div class="arch-num">Layer 01 · Interaction</div>
-          <h3>用户交互层</h3>
-          <p>混合结构化表单与对话界面，让用户以最低认知成本表达需求，同时保证系统获取足够精准的生成信号。</p>
-        </div>
-        <div class="arch-cell">
-          <div class="arch-num">Input Design</div>
-          <h3>场景引导式输入</h3>
-          <ul>
-            <li>场景类型选择（党建材料 / 公文报告 / 会议纪要）</li>
-            <li>结构化关键要素填写，降低用户表达负担</li>
-            <li>参考文档 / 会议录音附件上传</li>
-            <li>语气风格偏好设置</li>
-          </ul>
-          <div class="intent">设计意图：用结构化输入替代 Prompt 技巧，让不会写 Prompt 的用户也能精准驱动生成。</div>
-        </div>
-        <div class="arch-cell">
-          <div class="arch-num">Output Design</div>
-          <h3>透明可审的输出</h3>
-          <ul>
-            <li>流式生成，实时呈现写作过程</li>
-            <li>格式规范问题内联标注，可见可修</li>
-            <li>历史版本对比与一键回滚</li>
-            <li>Word / PDF 标准导出</li>
-          </ul>
-          <div class="intent">设计意图：输出可见性降低用户对"AI 黑盒"的不信任感，建立可审核的人机协作流程。</div>
-        </div>
+    <div class="arch-flow rv">
+      <div class="af-step">
+        <div class="af-num">Layer 01</div>
+        <div class="af-name">结构化输入</div>
+        <div class="af-desc">场景选择 + 要素填写 + 文件上传</div>
       </div>
-      <div class="arch-layer">
-        <div class="arch-cell layer-lead">
-          <div class="arch-num">Layer 02 · Understanding</div>
-          <h3>场景理解层</h3>
-          <p>系统自动完成意图解析与格式匹配。用户不需要了解 RAG 是什么，也能获得专业精准的支持。</p>
-        </div>
-        <div class="arch-cell">
-          <div class="arch-num">Intent Engine</div>
-          <h3>意图识别与要素提取</h3>
-          <ul>
-            <li>场景分类模型（内测准确率 &gt;95%）</li>
-            <li>关键要素自动结构化提取</li>
-            <li>多轮对话上下文连续追踪</li>
-            <li>格式模板智能匹配</li>
-          </ul>
-          <div class="intent">设计意图：把"理解用户真实需求"的负担从用户侧转移到系统侧。</div>
-        </div>
-        <div class="arch-cell">
-          <div class="arch-num">RAG Retrieval</div>
-          <h3>知识库检索增强</h3>
-          <ul>
-            <li>机构历史文档私有检索库</li>
-            <li>公文规范知识图谱</li>
-            <li>政策术语与惯用表达词典</li>
-            <li>相似案例语义向量检索</li>
-          </ul>
-          <div class="intent">设计意图：没有 RAG，通用大模型无法"懂规矩"——生成质量将无法满足合规要求。RAG 是专业化的核心。</div>
-        </div>
+      <div class="af-step">
+        <div class="af-num">Layer 02</div>
+        <div class="af-name">场景理解</div>
+        <div class="af-desc">意图识别 + RAG 检索 + 模板匹配</div>
       </div>
-      <div class="arch-layer">
-        <div class="arch-cell layer-lead">
-          <div class="arch-num">Layer 03 · Generation &amp; Control</div>
-          <h3>生成与质控层</h3>
-          <p>专域微调 + 规则约束解码 + 闭环反馈。确保输出文风符合体制内规范，并通过用户行为持续迭代。</p>
-        </div>
-        <div class="arch-cell">
-          <div class="arch-num">Generation Model</div>
-          <h3>专域微调大模型</h3>
-          <ul>
-            <li>10 万+ 体制内写作语料监督微调（SFT）</li>
-            <li>机关文风偏好人类反馈对齐（RLHF）</li>
-            <li>格式规范约束解码策略</li>
-            <li>敏感内容过滤与合规性检查</li>
-          </ul>
-          <div class="intent">设计意图：通用模型在这个场景必须经过领域微调——Prompt 无法替代领域知识的内置。</div>
-        </div>
-        <div class="arch-cell">
-          <div class="arch-num">Quality Control</div>
-          <h3>输出质控与反馈闭环</h3>
-          <ul>
-            <li>200+ 项格式规范自动校验</li>
-            <li>前后文语义一致性检查</li>
-            <li>用户修改行为采集与分析</li>
-            <li>异常样本人工标注进入训练迭代</li>
-          </ul>
-          <div class="intent">设计意图：规则约束确保下限，反馈闭环持续抬升上限——产品越用越准。</div>
-        </div>
+      <div class="af-step core">
+        <div class="af-num">Layer 03</div>
+        <div class="af-name">生成引擎</div>
+        <div class="af-desc">专域微调模型 + 规则约束解码</div>
+        <div class="af-badge core">核心差异化</div>
       </div>
-    </div>
-
-    <!-- AI EDITOR DEMO -->
-    <div class="demo rv">
-      <div class="demo-titlebar">
-        <div class="demo-dot" style="background:#ff5f57"></div>
-        <div class="demo-dot" style="background:#febc2e"></div>
-        <div class="demo-dot" style="background:#28c840"></div>
-        <div class="demo-name">体制内写作 AI Copilot — 编辑器 · 党建材料场景</div>
+      <div class="af-step guard">
+        <div class="af-num">Layer 04</div>
+        <div class="af-name">质控层</div>
+        <div class="af-desc">格式校验 + 一致性检查 + 反馈闭环</div>
+        <div class="af-badge guard">风险兜底</div>
       </div>
-      <div class="demo-body">
-        <div class="demo-nav">
-          <div class="demo-nav-label">文档类型</div>
-          <div class="d-item on">📋 &nbsp;党建材料</div>
-          <div class="d-item">📄 &nbsp;工作报告</div>
-          <div class="d-item">🗒 &nbsp;会议纪要</div>
-          <div class="d-item">📮 &nbsp;请示报告</div>
-          <div class="d-item">📢 &nbsp;通知公告</div>
-          <div class="demo-footer" style="margin-top:auto">
-            <div class="demo-stat-label">本次会话</div>
-            <div class="demo-stat">已生成 <b>3</b> 份材料</div>
-            <div class="demo-stat">节省约 <em>6h</em></div>
-          </div>
-        </div>
-        <div class="demo-editor">
-          <div class="demo-toolbar">
-            <button class="tb-btn on">党建材料</button>
-            <div class="tb-sep"></div>
-            <button class="tb-btn">格式检查</button>
-            <button class="tb-btn">继续完善</button>
-            <button class="tb-btn">调整语气</button>
-            <div class="tb-sep"></div>
-            <button class="tb-btn">导出 Word</button>
-            <button class="tb-btn">导出 PDF</button>
-          </div>
-          <div class="demo-panes">
-            <div class="demo-input">
-              <div class="pane-label">输入要素</div>
-              <div class="d-field">党支部年度工作总结</div>
-              <div class="d-field">2024 年度 · 某区委组织部第二党支部</div>
-              <div class="d-textarea">全年重点开展：党员发展工作（新发展党员 8 名）、主题教育活动（主题党日 12 次）、组织生活会（4 次），全年无违规违纪问题……</div>
-              <div class="d-gen-status">
-                <div class="d-gen-dots"><span></span><span></span><span></span></div>
-                生成中 · 格式规范校验中
-              </div>
-            </div>
-            <div class="demo-output">
-              <div class="out-badge">格式校验通过</div>
-              <div class="pane-label">生成结果</div>
-              <div class="doc-text">
-                <strong>关于 2024 年度党支部工作情况的总结</strong>
-                2024 年，我支部在区委组织部的坚强领导下，以习近平新时代中国特色社会主义思想为指导，认真贯彻落实党章党规党纪，扎实推进党建各项工作，圆满完成年度目标任务。<br><br>
-                <strong>一、主要工作开展情况</strong>
-                （一）党员发展工作稳步推进。全年新发展党员 8 名，均按规定程序完成培训、审查与公示，入党手续规范齐全。（二）主题教育活动深入开展。全年组织主题党日活动 12 次，参与率达 98%……
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="af-step human">
+        <div class="af-num">Layer 05</div>
+        <div class="af-name">人工确认</div>
+        <div class="af-desc">审核修改 + 最终定稿 + 导出</div>
+        <div class="af-badge human">责任边界</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 05 · CAPABILITY DESIGN -->
-<section class="sec s-deep" id="capability">
+<!-- 04-B · DECISION CARDS -->
+<section class="sec-lg s-deep" id="solution-decisions">
   <div class="wrap">
     <div class="rv">
-      <div class="label accent">05 · Capability Design</div>
-      <h2 class="sec-h">核心能力矩阵</h2>
-      <p class="sec-sub">按用户价值层级划分：Tier 1 直接解决核心问题，Tier 2 降低使用门槛，Tier 3 构建长期护城河。</p>
+      <div class="label accent">04-B · Solution Design · 关键取舍决策</div>
+      <h2 class="sec-h">三个决定这个方案不平凡的设计选择</h2>
+      <p class="sec-sub">区分高级 PM 的信号不是选了什么，而是清楚地知道放弃了什么、接受了什么代价。</p>
     </div>
-    <div class="cap-matrix rv">
-      <div class="cap-tier-label t1-lbl">Tier 1 · Core Differentiation &ensp;核心差异化能力，无法被通用工具替代</div>
-      <div class="cap-row t1">
-        <div class="cap-card primary">
-          <div class="cap-tag solves">解决 P1</div>
-          <div class="cap-head"><div class="cap-icon">✍️</div></div>
-          <h3>场景化文档生成</h3>
-          <p>专域模型深度理解公文场景，输入结构化要素后秒级生成符合规范的完整初稿，支持 20+ 种公文文体，显著压缩起草时间。</p>
+    <div class="decision-cards rv">
+
+      <!-- Decision 1 -->
+      <div class="dc">
+        <div class="dc-head">
+          <div class="dc-head-left">
+            <span class="dc-num">Decision 01</span>
+            <span class="dc-title">结构化表单 + 对话补充 vs 纯聊天式创作</span>
+          </div>
+          <span class="dc-tradeoff">牺牲灵活性，换可控的生成精度</span>
         </div>
-        <div class="cap-card primary">
-          <div class="cap-tag solves">解决 P2</div>
-          <div class="cap-head"><div class="cap-icon">🔍</div></div>
-          <h3>格式规范自动校验</h3>
-          <p>内置 200+ 项公文格式规则引擎，内联标注格式问题，可一键修复。将审稿往返从平均 3 轮压缩至 1 轮以内。</p>
-        </div>
-        <div class="cap-card primary">
-          <div class="cap-tag solves">高频场景</div>
-          <div class="cap-head"><div class="cap-icon">🎙</div></div>
-          <h3>会议纪要全流程自动化</h3>
-          <p>录音上传 → 转写 → 发言人识别 → 决议提炼 → 行动清单 → 规范纪要，端到端自动完成，无需人工逐字整理。</p>
-        </div>
-      </div>
-      <div class="cap-tier-label" style="margin-top:18px">Tier 2 · Experience Enhancement &ensp;体验增强，降低使用门槛</div>
-      <div class="cap-row t2">
-        <div class="cap-card">
-          <div class="cap-tag ux">体验增强</div>
-          <div class="cap-head"><div class="cap-icon">💬</div></div>
-          <h3>对话式迭代修改</h3>
-          <p>无需重新填写表单，通过自然语言指令（"第三段语气更正式"、"补充政策依据"）直接驱动局部修改，保持上下文连贯。</p>
-        </div>
-        <div class="cap-card" style="background:var(--s1)">
-          <div style="font-size:13px;color:var(--t1);line-height:1.75;padding-top:6px">
-            <strong style="color:var(--t0);font-weight:500;display:block;margin-bottom:8px">为什么这个能力属于 Tier 2 而非 Tier 1？</strong>
-            对话修改是体验差异，而非场景差异——用户在没有它的情况下仍能完成任务。它的价值是降低摩擦，而不是解决根本问题。这个判断直接决定了它的研发优先级：低于格式校验与文档生成，高于知识库基础设施。
+        <div class="dc-grid">
+          <div class="dc-cell">
+            <div class="dc-cell-label">问题是什么</div>
+            <div class="dc-cell-content">用户不会写 Prompt，聊天式界面依赖用户自主组织意图，生成信号噪声大、结果不稳定。</div>
+          </div>
+          <div class="dc-cell dropped">
+            <div class="dc-cell-label">放弃了什么</div>
+            <div class="dc-cell-content">纯对话式体验。开放式聊天能覆盖更多长尾需求，但牺牲了生成精度。</div>
+          </div>
+          <div class="dc-cell chosen">
+            <div class="dc-cell-label">最终选择</div>
+            <div class="dc-cell-content"><strong>结构化表单引导关键要素，对话层仅用于迭代修改。</strong>用界面结构替代 Prompt 技巧。</div>
+          </div>
+          <div class="dc-cell cost">
+            <div class="dc-cell-label">为此接受的代价</div>
+            <div class="dc-cell-content">上手需学习表单字段；长尾场景覆盖受限；灵活性弱于纯对话方案。</div>
           </div>
         </div>
       </div>
-      <div class="cap-tier-label" style="margin-top:18px">Tier 3 · Infrastructure &ensp;基础设施能力，随时间增值、构建护城河</div>
-      <div class="cap-row t3">
-        <div class="cap-card infra">
-          <div class="cap-tag moat">护城河</div>
-          <div class="cap-head"><div class="cap-icon">📚</div></div>
-          <h3>机构专属知识库</h3>
-          <p>私有化语料库持续积累机构历史文档、专属术语和风格偏好。知识库越丰富，生成质量越高，用户迁移成本越大——产生正向网络效应。</p>
+
+      <!-- Decision 2 -->
+      <div class="dc">
+        <div class="dc-head">
+          <div class="dc-head-left">
+            <span class="dc-num">Decision 02</span>
+            <span class="dc-title">规则引擎 + RAG + 专域模型协同 vs 单靠更强通用模型</span>
+          </div>
+          <span class="dc-tradeoff">放弃轻量，换专业下限有保障</span>
         </div>
-        <div class="cap-card infra">
-          <div class="cap-tag moat">合规准入</div>
-          <div class="cap-head"><div class="cap-icon">🔐</div></div>
-          <h3>安全合规基础设施</h3>
-          <p>支持私有化本地部署，数据不出内网，满足政务系统等保三级要求，支持信创国产化适配。这不是加分项，是政务场景的准入门槛。</p>
+        <div class="dc-grid">
+          <div class="dc-cell">
+            <div class="dc-cell-label">问题是什么</div>
+            <div class="dc-cell-content">通用大模型（含 GPT-4）公文生成在政治术语和格式细节上偏差率超 30%，不可接受。</div>
+          </div>
+          <div class="dc-cell dropped">
+            <div class="dc-cell-label">放弃了什么</div>
+            <div class="dc-cell-content">直接调用 API + 精心设计 Prompt 的轻量方案。开发成本低，但无法解决规范下限问题。</div>
+          </div>
+          <div class="dc-cell chosen">
+            <div class="dc-cell-label">最终选择</div>
+            <div class="dc-cell-content"><strong>三层协同：规则引擎保障格式下限，RAG 注入领域知识，专域微调模型对齐文风。</strong></div>
+          </div>
+          <div class="dc-cell cost">
+            <div class="dc-cell-label">为此接受的代价</div>
+            <div class="dc-cell-content">开发周期更长；知识库需持续运营；冷启动阶段质量依赖语料丰富度。</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="cmp-wrap rv">
-      <div class="cmp-header">
-        <div class="label">Design Rationale · 产品定位论证</div>
-        <h3 style="font-family:'Noto Serif SC',serif;font-size:21px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em">为什么必须是垂直产品，而不是在通用工具上叠加 Prompt</h3>
-        <p style="font-size:14px;color:var(--t1);max-width:560px;line-height:1.75">体制内写作的合规性要求决定了它不能容忍"通用但不精准"。以下对比说明了这一判断。</p>
+
+      <!-- Decision 3 -->
+      <div class="dc">
+        <div class="dc-head">
+          <div class="dc-head-left">
+            <span class="dc-num">Decision 03</span>
+            <span class="dc-title">80 分初稿 + 人审 vs 终稿自动化</span>
+          </div>
+          <span class="dc-tradeoff">放弃效率上限，换用户信任</span>
+        </div>
+        <div class="dc-grid">
+          <div class="dc-cell">
+            <div class="dc-cell-label">问题是什么</div>
+            <div class="dc-cell-content">政务文件涉及组织责任，用户对"AI 全权输出可用稿"存在信任障碍——这是责任归属问题，不是能力问题。</div>
+          </div>
+          <div class="dc-cell dropped">
+            <div class="dc-cell-label">放弃了什么</div>
+            <div class="dc-cell-content">终稿自动化（最大化效率）。早期版本曾尝试，用户接受度仅 41%。</div>
+          </div>
+          <div class="dc-cell chosen">
+            <div class="dc-cell-label">最终选择</div>
+            <div class="dc-cell-content"><strong>AI 承担起草，人工承担判断。产品定位为"高质量初稿生成器"，而非"文件自动生成器"。</strong></div>
+          </div>
+          <div class="dc-cell cost">
+            <div class="dc-cell-label">为此接受的代价</div>
+            <div class="dc-cell-content">效率提升上限受审核步骤制约；对高信任用户，存在过度审核的冗余成本。</div>
+          </div>
+        </div>
       </div>
-      <table class="cmp-tbl">
-        <thead>
-          <tr>
-            <th>能力维度</th>
-            <th class="hl">体制内写作 AI Copilot</th>
-            <th>ChatGPT / 通义等通用 AI</th>
-            <th>传统公文软件</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>公文格式规范内置</td>
-            <td class="hl"><span class="icon-y">✓</span>&ensp;200+ 项规则深度内置，自动校验</td>
-            <td><span class="icon-p">△</span>&ensp;依赖用户在 Prompt 中描述规范</td>
-            <td><span class="icon-y">✓</span>&ensp;模板固定，但无生成能力</td>
-          </tr>
-          <tr>
-            <td>体制内文风与政治术语</td>
-            <td class="hl"><span class="icon-y">✓</span>&ensp;专域语料微调，文风贴合</td>
-            <td><span class="icon-n">✗</span>&ensp;通用语气，政治表达易出偏差</td>
-            <td><span class="icon-n">✗</span>&ensp;无 AI 生成能力</td>
-          </tr>
-          <tr>
-            <td>机构专属知识接入</td>
-            <td class="hl"><span class="icon-y">✓</span>&ensp;私有知识库持续积累，越用越准</td>
-            <td><span class="icon-n">✗</span>&ensp;无法接入机构内部文档</td>
-            <td><span class="icon-n">✗</span>&ensp;无</td>
-          </tr>
-          <tr>
-            <td>会议纪要端到端自动化</td>
-            <td class="hl"><span class="icon-y">✓</span>&ensp;录音→纪要全流程，无需人工介入</td>
-            <td><span class="icon-p">△</span>&ensp;需手动转录后再提交，流程割裂</td>
-            <td><span class="icon-n">✗</span>&ensp;无</td>
-          </tr>
-          <tr>
-            <td>数据安全与合规部署</td>
-            <td class="hl"><span class="icon-y">✓</span>&ensp;私有化部署，数据不出内网</td>
-            <td><span class="icon-n">✗</span>&ensp;默认无法满足私有化与内网部署要求</td>
-            <td><span class="icon-y">✓</span>&ensp;本地存储</td>
-          </tr>
-          <tr>
-            <td>上手门槛</td>
-            <td class="hl"><span class="icon-y">✓</span>&ensp;场景化引导，无需 Prompt 能力</td>
-            <td><span class="icon-p">△</span>&ensp;需要一定的 Prompt 构建技巧</td>
-            <td><span class="icon-p">△</span>&ensp;需学习软件操作，学习曲线中等</td>
-          </tr>
-        </tbody>
-      </table>
+
     </div>
   </div>
 </section>
 
-<!-- 06 · VALUE VALIDATION -->
-<section class="sec s-main" id="metrics">
+<!-- 04-C · RISK STRATIFICATION -->
+<section class="sec-sm s-main" id="solution-risk">
   <div class="wrap">
     <div class="rv">
-      <div class="label accent">06 · Value Validation</div>
+      <div class="label accent">04-C · Solution Design · 风险分层与人工接管</div>
+      <h2 class="sec-h">不是所有任务都适合 AI 自动完成</h2>
+      <p class="sec-sub">明确划定 AI 的自动化边界，是建立用户信任的核心机制。</p>
+    </div>
+    <div class="risk-ladder rv">
+      <div class="risk-row low">
+        <div class="risk-level">
+          <div class="risk-dot low"></div>
+          <div class="risk-lbl">低风险</div>
+        </div>
+        <div class="risk-tasks">
+          <div class="rt-h3">格式校验 · 模板套用 · 标点纠错</div>
+          <p>客观规则可枚举，AI 判断与人工判断高度一致，错误可快速发现和修复。</p>
+        </div>
+        <div class="risk-handling">
+          <div class="rt-h3">处理方式：全自动</div>
+          <p>AI 自动执行并内联标注，用户确认即可，无需逐一审查。</p>
+        </div>
+      </div>
+      <div class="risk-row mid">
+        <div class="risk-level">
+          <div class="risk-dot mid"></div>
+          <div class="risk-lbl">中风险</div>
+        </div>
+        <div class="risk-tasks">
+          <div class="rt-h3">纪要提炼 · 结构建议 · 表达润色</div>
+          <p>需要理解语义和上下文，AI 输出质量参差不齐，存在遗漏或误解风险。</p>
+        </div>
+        <div class="risk-handling">
+          <div class="rt-h3">处理方式：AI 建议 + 人工审查</div>
+          <p>AI 生成结构化初稿，人工核对关键信息点，确认无误后提交。</p>
+        </div>
+      </div>
+      <div class="risk-row hi">
+        <div class="risk-level">
+          <div class="risk-dot hi"></div>
+          <div class="risk-lbl">高风险</div>
+        </div>
+        <div class="risk-tasks">
+          <div class="rt-h3">敏感口径 · 政策判断 · 终稿定版</div>
+          <p>涉及政治表达、组织责任和政策方向，AI 判断错误代价极高，无法靠规则约束兜底。</p>
+        </div>
+        <div class="risk-handling">
+          <div class="rt-h3">产品边界：明确人工全权负责</div>
+          <p>AI 仅供参考，不提供置信度背书。</p>
+          <div class="risk-boundary-callout">仅提供建议，不自动替代人工判断</div>
+        </div>
+      </div>
+    </div>
+    <!-- feedback loop -->
+    <div class="feedback-loop rv">
+      <span class="fl-label">失败闭环</span>
+      <div class="fl-step">错误样本被捕获</div>
+      <span class="fl-arrow">→</span>
+      <div class="fl-step">人工标注原因</div>
+      <span class="fl-arrow">→</span>
+      <div class="fl-step">规则库 / 检索库更新</div>
+      <span class="fl-arrow">→</span>
+      <div class="fl-step">模型迭代训练</div>
+      <span class="fl-arrow">→</span>
+      <div class="fl-step">同类错误减少</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · CAPABILITY (compact, honest) -->
+<section class="sec-sm s-deep" id="capability">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">05 · Capability · 替代方案对比</div>
+      <h2 class="sec-h">为什么这个方案，而不是更简单的替代方案</h2>
+      <p class="sec-sub">诚实的产品定位：我们的优势建立在更深场景耦合上，代价是更重的实施与知识运营成本。</p>
+    </div>
+    <table class="cmp-tbl rv">
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>通用大模型 + Prompt</th>
+          <th>模板库 / OA 插件</th>
+          <th>垂直行业通用工具</th>
+          <th class="hl">体制内写作 AI Copilot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cmp-dim">公文格式规范</td>
+          <td><span class="icon-p">△</span> Prompt 描述，不稳定</td>
+          <td><span class="icon-y">✓</span> 模板固定，准确但死板</td>
+          <td><span class="icon-p">△</span> 覆盖部分规范</td>
+          <td class="hl"><span class="icon-y">✓</span> 200+ 规则内置，实时校验</td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">体制内文风与术语</td>
+          <td><span class="icon-n">✗</span> 通用语气，政治表达易偏</td>
+          <td><span class="icon-n">✗</span> 无 AI 生成能力</td>
+          <td><span class="icon-p">△</span> 通用文风，非政务专用</td>
+          <td class="hl"><span class="icon-y">✓</span> 专域语料微调，文风贴合</td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">机构专属知识</td>
+          <td><span class="icon-n">✗</span> 无法接入内部文档</td>
+          <td><span class="icon-n">✗</span> 无</td>
+          <td><span class="icon-n">✗</span> 无私有化方案</td>
+          <td class="hl"><span class="icon-y">✓</span> 私有知识库，越用越准</td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">数据安全合规</td>
+          <td><span class="icon-n">✗</span> 默认无法满足内网部署</td>
+          <td><span class="icon-y">✓</span> 本地存储</td>
+          <td><span class="icon-p">△</span> 部分支持私有化</td>
+          <td class="hl"><span class="icon-y">✓</span> 私有化部署，数据不出内网</td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">实施成本</td>
+          <td><span class="icon-y">✓</span> 即开即用</td>
+          <td><span class="icon-y">✓</span> 低，套模板即可</td>
+          <td><span class="icon-p">△</span> 中等</td>
+          <td class="hl"><span class="icon-p">△</span> <strong>较高 — 需知识运营与冷启动</strong></td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">上手门槛</td>
+          <td><span class="icon-p">△</span> 需要 Prompt 技巧</td>
+          <td><span class="icon-y">✓</span> 低，操作直观</td>
+          <td><span class="icon-p">△</span> 中等</td>
+          <td class="hl"><span class="icon-y">✓</span> 场景引导，无需 Prompt</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="honest-note rv">
+      <strong>诚实总结：</strong>在首次部署成本、冷启动依赖、实施周期上有明显短板。这个代价成立的前提是：用户的格式合规要求足够严格，返修成本高于实施成本。试点数据（返工率 45% → 8%）支持了这一判断。
+    </div>
+  </div>
+</section>
+
+<!-- 06-A · VALUE VALIDATION -->
+<section class="sec-lg s-main" id="metrics">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">06-A · Value Validation · 结果看板</div>
       <h2 class="sec-h">产品价值验证</h2>
-      <p class="sec-sub">3 个部门、约 200 名用户、历时 3 个月的试点验证。以下数据用于检验核心假设是否成立，不用于宣传。</p>
+      <p class="sec-sub">3 个部门、约 200 名用户、历时 3 个月的试点验证。数据用于检验核心假设，不用于宣传。</p>
     </div>
     <div class="val-top">
       <div class="val-main rv">
         <div class="val-num">5min</div>
         <div class="val-detail">
           <h3>党建材料初稿生成时间</h3>
-          <p>原先需要 4–8 小时的党建材料，现在 5 分钟内完成初稿生成。时间压缩比约 72:1，核心假设 H1 得到验证。人工只需审核与最终润色。</p>
+          <p>原先 4–8 小时，现在 5 分钟内完成初稿。时间压缩比约 72:1，核心假设 H1 验证。人工只需审核与最终润色。</p>
           <div class="before-after">
             <div class="ba-row">
               <span class="ba-label">引入前</span>
@@ -935,7 +953,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
       </div>
       <div class="val-card rv">
         <div class="val-hyp">Validates H1 · 写作效率</div>
-        <div class="val-card-n" style="color:var(--blue-l)">60%</div>
+        <div class="val-card-n blue">60%</div>
         <div class="val-desc">写作效率提升</div>
         <div class="val-note">人均日产文件量 1.2 → 1.9 篇</div>
         <div class="spark">
@@ -947,7 +965,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
       </div>
       <div class="val-card rv">
         <div class="val-hyp">Validates H2 · 审稿负担</div>
-        <div class="val-card-n" style="color:#2dd4bf">70%</div>
+        <div class="val-card-n teal">70%</div>
         <div class="val-desc">审稿工作量下降</div>
         <div class="val-note">格式返工率 45% → 8%</div>
         <div class="spark">
@@ -959,6 +977,18 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
           <div class="sp" style="height:24%;background:#2dd4bf"></div>
           <div class="sp" style="height:15%;background:#2dd4bf"></div>
           <div class="sp" style="height:8%;background:#2dd4bf"></div>
+        </div>
+      </div>
+      <div class="val-card rv">
+        <div class="val-hyp">Validates H3 · 产品接受度</div>
+        <div class="val-card-n purple">87%</div>
+        <div class="val-desc">用户接受度（初稿定位）</div>
+        <div class="val-note">vs 终稿自动化定位时的 41%</div>
+        <div class="spark">
+          <div class="sp" style="height:30%"></div><div class="sp" style="height:38%"></div>
+          <div class="sp" style="height:45%"></div><div class="sp" style="height:55%"></div>
+          <div class="sp" style="height:68%"></div><div class="sp" style="height:80%"></div>
+          <div class="sp" style="height:100%"></div>
         </div>
       </div>
     </div>
@@ -1017,57 +1047,139 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
   </div>
 </section>
 
-<!-- 07 · PRODUCT STRATEGY -->
-<section class="sec s-alt" id="planning">
+<!-- 06-B · DATA METHOD -->
+<section class="sec-sm s-alt" id="metrics-method">
   <div class="wrap">
     <div class="rv">
-      <div class="label accent">07 · Product Strategy</div>
+      <div class="label accent">06-B · Value Validation · 数据方法说明</div>
+      <h2 class="sec-h">这些数字是怎么算出来的</h2>
+      <p class="sec-sub">主动披露方法与局限，是对数据负责任的态度，也是可信度的来源。</p>
+    </div>
+    <table class="method-tbl rv">
+      <thead>
+        <tr>
+          <th style="width:110px">指标</th>
+          <th>计算方式</th>
+          <th style="width:130px">样本范围</th>
+          <th style="width:140px">主要偏差</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>初稿生成时间</td>
+          <td class="td-body">系统埋点：任务创建 → 首次导出；对照组为用户自述历史时长</td>
+          <td class="td-body">试点 3 个月所有完成任务（n=847）</td>
+          <td class="td-body">引入前数据来自自述，存在回忆偏差</td>
+        </tr>
+        <tr>
+          <td>写作效率提升</td>
+          <td class="td-body">人均日产文件量变化率 = (引入后 − 引入前) / 引入前</td>
+          <td class="td-body">试点用户 vs 同部门未引入对照组</td>
+          <td class="td-body">对照组非随机分配，存在选择偏差</td>
+        </tr>
+        <tr>
+          <td>审稿工作量下降</td>
+          <td class="td-body">格式返工率 = 首稿因格式问题被退回的文件比例</td>
+          <td class="td-body">试点期内所有经审核文件</td>
+          <td class="td-body">与引入前 3 个月历史数据对比</td>
+        </tr>
+        <tr>
+          <td>用户接受度 87%</td>
+          <td class="td-body">「是否愿意以 AI 初稿作为工作起点？」问卷中选"是/基本是"的比例</td>
+          <td class="td-body">试点满意度调研（n=134）</td>
+          <td class="td-body">与第一版（终稿自动化定位）同类问卷对比</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="limit-card rv">
+      <div class="limit-label">Sample & Method Limitations</div>
+      <div class="limit-items">
+        <div class="limit-item">试点部门为主动申请参与，样本偏友好用户，接受度可能高于全量均值</div>
+        <div class="limit-item">对照组非随机分配，效率对比存在选择性偏差，无法完全排除部门差异</div>
+        <div class="limit-item">会议纪要场景转写准确率在多人同发言 / 噪音环境下明显下降</div>
+        <div class="limit-item">引入前数据来自用户自述，存在回忆偏差</div>
+      </div>
+      <div class="limit-conclusion">方向性成立，但证据强度仍停留在试点级别。进入规模化前，必须补上更严格的 A/B 测试设计。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07-A · PRODUCT STRATEGY -->
+<section class="sec s-main" id="planning">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">07-A · Product Strategy · 三阶段路线图</div>
       <h2 class="sec-h">从工具到平台</h2>
-      <p class="sec-sub">三阶段策略围绕一个核心判断：知识库积累是从写作工具演化为机构智能资产平台的拐点，也是真正的护城河来源。</p>
+      <p class="sec-sub">知识库积累是从"写作工具"演化为"机构智能资产平台"的关键拐点——它让护城河从技术优势转变为数据优势。</p>
     </div>
     <div class="strategy-phases">
       <div class="phase ph1 rv">
-        <div class="phase-head"><div class="ph-dot"></div><h3>阶段一：立足工具</h3><span class="ph-tag">已完成</span></div>
-        <div class="phase-period">2024 Q2–Q3 · MVP 验证</div>
+        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 1：验证单点价值</h3><span class="ph-tag">已完成</span></div>
+        <div class="phase-period">2024 Q2–Q3 · MVP</div>
         <div class="phase-body">
-          <div class="ph-item">党建材料智能生成（核心场景）</div>
+          <div class="ph-item">党建材料生成（核心场景验证）</div>
           <div class="ph-item">公文格式规范校验引擎上线</div>
-          <div class="ph-item">基础对话式修改交互</div>
-          <div class="ph-item">Word / PDF 标准导出</div>
           <div class="ph-item">3 个部门试点，采集基线数据</div>
+          <div class="ph-insight">先验证信任与单点价值。</div>
         </div>
       </div>
       <div class="phase ph2 rv">
-        <div class="phase-head"><div class="ph-dot"></div><h3>阶段二：扩大覆盖</h3><span class="ph-tag">进行中</span></div>
+        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 2：沉淀知识资产</h3><span class="ph-tag">进行中</span></div>
         <div class="phase-period">2024 Q4–2025 Q1 · 完整产品</div>
         <div class="phase-body">
           <div class="ph-item">会议纪要端到端自动化</div>
-          <div class="ph-item">机构专属知识库上线（关键拐点）</div>
-          <div class="ph-item">多部门协同与权限分级</div>
+          <div class="ph-item">机构专属知识库上线（<strong class="hl-blue">关键拐点</strong>）</div>
           <div class="ph-item">OA 系统 / 审批流程集成</div>
-          <div class="ph-item">移动端适配</div>
+          <div class="ph-insight">知识库上线后，产品开始具备迁移成本。</div>
         </div>
       </div>
       <div class="phase ph3 rv">
-        <div class="phase-head"><div class="ph-dot"></div><h3>阶段三：演化平台</h3><span class="ph-tag">规划中</span></div>
+        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 3：平台化输出</h3><span class="ph-tag">规划中</span></div>
         <div class="phase-period">2025 Q2+ · 平台化</div>
         <div class="phase-body">
           <div class="ph-item">跨机构匿名知识共享网络</div>
-          <div class="ph-item">政策文件智能解读与推送</div>
           <div class="ph-item">开放 API / 插件生态</div>
-          <div class="ph-item">多地方政府标准化复制</div>
           <div class="ph-item">SaaS 订阅商业化</div>
+          <div class="ph-insight">平台化应晚于护城河形成。</div>
         </div>
       </div>
     </div>
-    <div class="strategy-insight">
-      <div class="s-insight key rv">
-        <div class="si-label">Core Assumption · 已验证</div>
-        <div class="si-text">用户接受"80 分初稿 + 人工修改"的协作模式，而非要求"AI 直接输出可用稿"。试点修改率 &lt;30%，说明用户愿意为高质量初稿付费，且接受 AI 辅助而非 AI 替代的定位。这个假设的验证是整个产品策略的前提。</div>
+  </div>
+</section>
+
+<!-- 07-B · COMPETITIVE DEFENSE -->
+<section class="sec-lg s-alt" id="planning-defense">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">07-B · Product Strategy · 竞争防御</div>
+      <h2 class="sec-h">真正难复制的，不是模型能力，而是组织嵌入深度</h2>
+      <p class="sec-sub">大厂最容易复制的是能力，最难复制的是组织已经形成的工作方式。</p>
+    </div>
+    <div class="defense-block rv">
+      <div class="defense-head">
+        <div class="defense-head-label">Competitive Moat Analysis</div>
+        <h3>如果腾讯政务 / 讯飞星火在 12 个月内进入，我们靠什么守住？</h3>
+        <p>模型能力可以快速复制。以下三层防御更难被规模化覆盖。</p>
       </div>
-      <div class="s-insight learned rv">
-        <div class="si-label">Key Learning · 超出预期</div>
-        <div class="si-text">知识库积累的网络效应强于预期：第 2 个月用户自发上传历史文档的比例达 64%，说明用户主动参与知识沉淀。这是产品从"有用"变为"不可替代"的关键早期信号。</div>
+      <div class="defense-grid">
+        <div class="def-cell">
+          <div class="def-num">Defense 01 · 深场景适配</div>
+          <h4>200+ 项规范内置，不是靠模型规模能补的</h4>
+          <p>党建材料的政治表达要求、公文的标题层级规范，是对具体场景的深度耦合。大厂通用平台在初期难以覆盖这个粒度。这是<strong class="hl-t0">场景积累壁垒</strong>，不是技术壁垒。</p>
+        </div>
+        <div class="def-cell">
+          <div class="def-num">Defense 02 · 机构专属知识资产</div>
+          <h4>知识库随时间非线性增值，无法迁移</h4>
+          <p>机构历史文档、领导风格偏好、惯用表达，都沉淀在私有知识库中。用得越久，生成越准，<strong class="hl-t0">替换成本越高</strong>。大厂进入时，早期用户的知识资产已无法带走。</p>
+        </div>
+        <div class="def-cell">
+          <div class="def-num">Defense 03 · 工作流嵌入能力</div>
+          <h4>成为工作流的一部分，而不是独立工具</h4>
+          <p>通过 OA 系统和审批流程嵌入，产品已内化为日常工作节奏。工作流嵌入产生的<strong class="hl-t0">习惯性依赖</strong>比功能优势更难打破。</p>
+        </div>
+      </div>
+      <div class="defense-footer">
+        <p><strong>战略核心：</strong>模型能力可以被复制，<strong>组织嵌入和知识沉淀不能</strong>。在大厂到来之前，把产品从"可替换的写作工具"变成"机构的知识基础设施"——这是唯一能让护城河随时间加深而非消失的策略。</p>
       </div>
     </div>
   </div>
@@ -1078,51 +1190,89 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
   <div class="wrap">
     <div class="rv">
       <div class="label accent">08 · Reflection</div>
-      <h2 class="sec-h">Key Takeaways</h2>
-      <p class="sec-sub">三个在这个项目中形成的判断，它们不只适用于体制内写作，也适用于更广泛的 AI 垂直产品设计。</p>
+      <h2 class="sec-h">三个产品判断，每个都锚定到一个具体决策</h2>
+      <p class="sec-sub">不是感悟，是可复用的判断框架。</p>
     </div>
-    <div class="takeaways rv">
-      <div class="tkw-row">
-        <div class="tkw-num"><div class="tkw-n">01</div></div>
-        <div class="tkw-body">
-          <h3>垂直场景的护城河是"内置的专业性"，不是功能数量</h3>
-          <p>通用 AI 工具在体制内写作场景的局限，根本原因不是 Prompt 不够好，而是格式规范、政治术语、机构风格这三类知识根本没有内置。判断"是否值得做垂直产品"的核心问题，不是"通用工具能否满足需求"，而是"需求的规范密度是否高到通用工具无法用 Prompt 补偿"。体制内写作恰好跨越了这条线，这使得垂直化设计的投入是值得的。</p>
+    <div class="tkw-cards rv">
+
+      <div class="tkw">
+        <div class="tkw-top">
+          <div class="tkw-num"><div class="tkw-n">01</div></div>
+          <div class="tkw-header">
+            <h3>规范密度决定垂直化是否值得</h3>
+            <div class="tkw-sub">判断"做垂直产品还是叠 Prompt"的核心标准</div>
+          </div>
         </div>
-        <div class="tkw-aside">
-          <div class="tkw-aside-label">Validated By</div>
-          <div class="tkw-aside-val">72:1</div>
-          <div class="tkw-aside-desc">时间压缩比（6h → 5min），专业化设计密度的直接量化</div>
+        <div class="tkw-body">
+          <div class="tkw-col">
+            <div class="tkw-col-label">我的判断</div>
+            <p>当规范密度高到 Prompt 无法补偿时，垂直化投入就值得。体制内写作已经越过这条线。</p>
+          </div>
+          <div class="tkw-col chosen">
+            <div class="tkw-col-label">因此我选择了</div>
+            <p>独立建设规则引擎 + 专域微调模型，接受更长研发周期和更重维护成本。</p>
+          </div>
+          <div class="tkw-col">
+            <div class="tkw-col-label">我没有选择</div>
+            <p>GPT-4 + 精细化 Prompt 快速验证。开发成本低，但格式合规率存在结构性上限，无法商业化。</p>
+          </div>
         </div>
       </div>
-      <div class="tkw-row">
-        <div class="tkw-num"><div class="tkw-n">02</div></div>
-        <div class="tkw-body">
-          <h3>AI 产品的人机协作边界，由用户心理决定，而非技术能力</h3>
-          <p>早期设计追求 AI 直接输出可用稿，但调研发现用户对"AI 全权生成的内容"存在明确的信任障碍——在政务场景中尤其体现为合规性顾虑，而非能力质疑。将产品定位从"AI 替代写作"调整为"AI 生成高质量初稿，人工做最终判断"后，用户接受度从 41% 提升至 87%。设计 AI 产品时，最关键的判断不是"AI 能做什么"，而是"用户愿意让 AI 做什么、做到哪一步"。</p>
+
+      <div class="tkw">
+        <div class="tkw-top">
+          <div class="tkw-num"><div class="tkw-n">02</div></div>
+          <div class="tkw-header">
+            <h3>AI 的介入边界由用户的责任心理决定</h3>
+            <div class="tkw-sub">设计 AI 产品时最容易被忽视的约束</div>
+          </div>
         </div>
-        <div class="tkw-aside">
-          <div class="tkw-aside-label">Acceptance Rate</div>
-          <div class="tkw-aside-val">87%</div>
-          <div class="tkw-aside-desc">重新定位后 vs 原定位 41%，差距源于对用户心理边界的准确判断</div>
+        <div class="tkw-body">
+          <div class="tkw-col">
+            <div class="tkw-col-label">我的判断</div>
+            <p>政务场景中，用户对 AI 的信任障碍是责任归属顾虑，不是能力质疑。"AI 写错了谁负责？"这个问题只能在产品定位层面回答，不能靠提升模型能力解决。</p>
+          </div>
+          <div class="tkw-col chosen">
+            <div class="tkw-col-label">因此我选择了</div>
+            <p>产品定位为"初稿生成器"而非"文件生成器"。AI 承担起草，人工承担判断。接受效率上限受审核步骤制约。</p>
+          </div>
+          <div class="tkw-col">
+            <div class="tkw-col-label">我没有选择</div>
+            <p>追求终稿自动化。用户接受度从 41% 提升到 87% 的数据证明：心理边界不在技术一侧，强推会制造不信任。</p>
+          </div>
         </div>
       </div>
-      <div class="tkw-row">
-        <div class="tkw-num"><div class="tkw-n">03</div></div>
-        <div class="tkw-body">
-          <h3>知识库是将线性工具变为复利平台的机制，需要在设计期就埋入</h3>
-          <p>大多数 SaaS 工具的价值是线性的：你用它，它帮你；不用，它不变化。知识库改变了这个结构——每次使用都在沉淀数据，产品对机构的理解持续增长，用户替换成本持续上升。这种"越用越难替换"的特性，才是 B2G SaaS 的真实护城河。知识沉淀路径必须在产品设计阶段规划好，不能当作后期运营工作处理。</p>
+
+      <div class="tkw">
+        <div class="tkw-top">
+          <div class="tkw-num"><div class="tkw-n">03</div></div>
+          <div class="tkw-header">
+            <h3>知识库必须在设计期埋入，不能当运营工作</h3>
+            <div class="tkw-sub">B2G SaaS 护城河的真正来源</div>
+          </div>
         </div>
-        <div class="tkw-aside">
-          <div class="tkw-aside-label">Retention Signal</div>
-          <div class="tkw-aside-val">68%</div>
-          <div class="tkw-aside-desc">知识库活跃用户 7 日留存 81%，非活跃 52%，差距证明护城河机制已在起效</div>
+        <div class="tkw-body">
+          <div class="tkw-col">
+            <div class="tkw-col-label">我的判断</div>
+            <p>大多数 SaaS 工具的价值是线性的。知识库让价值变为复利——每次使用都在沉淀，产品理解持续增长，替换成本持续上升。但这需要在架构阶段就设计好沉淀路径。</p>
+          </div>
+          <div class="tkw-col chosen">
+            <div class="tkw-col-label">因此我选择了</div>
+            <p>MVP 阶段就内置知识库上传和结构化存储，接受早期投入不能立即转化为用户价值的时间差成本。</p>
+          </div>
+          <div class="tkw-col">
+            <div class="tkw-col-label">我没有选择</div>
+            <p>把知识库延后到 Phase 2 运营功能。试点第 2 个月 64% 的用户自发上传历史文档——越早埋入，护城河效应越早启动。</p>
+          </div>
         </div>
       </div>
+
     </div>
+
     <div class="closing rv">
       <div class="closing-main">
-        <p>AI 产品经理的核心判断力不在于会用 AI，而在于能回答三个问题：<strong>哪些场景的专业密度足够高，值得专门设计</strong>；<strong>在这个场景中，AI 的介入边界应该划在哪里</strong>；<strong>如何让系统越用越好，而不是越用越让人依赖</strong>。</p>
-        <p>体制内写作恰好是三个问题都有清晰答案的场景——专业密度极高，边界在初稿而非终稿，知识可积累。正是因为这个场景的规范壁垒，使得真正做专的产品有机会创造通用工具无法替代的价值。</p>
+        <p>这个案例最终验证的不是"AI 会不会写"，而是：当专业密度、责任链条与知识沉淀同时存在时，AI 产品的价值不在更会生成，而在<strong>更容易被组织采纳</strong>。</p>
+        <p>体制内写作之所以成立，不是因为它容易，而是因为它同时具备通用工具最难跨过的三道门槛：<strong>规范约束、责任边界和机构知识</strong>。</p>
       </div>
       <div class="closing-meta">
         <div class="cm-item">
@@ -1138,7 +1288,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:26px 48px;dis
           <div class="cm-v">2024 Q1–Q4 · 12 个月</div>
         </div>
         <div class="cm-item">
-          <div class="cm-l">Current Stage</div>
+          <div class="cm-l">Stage</div>
           <div class="cm-v">试点验证完成 · 商业化推进中</div>
         </div>
       </div>
@@ -1159,10 +1309,10 @@ window.addEventListener('scroll', () => {
 }, {passive:true});
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
-}, {threshold:0.08, rootMargin:'0px 0px -28px 0px'});
+}, {threshold:0.07, rootMargin:'0px 0px -24px 0px'});
 document.querySelectorAll('.rv').forEach(el => ro.observe(el));
-document.querySelectorAll('.bg-grid, .personas, .strategy-phases').forEach(parent => {
-  parent.querySelectorAll('.rv').forEach((k, i) => { k.style.transitionDelay = (i * 60) + 'ms'; });
+document.querySelectorAll('.bg-compact, .strategy-phases, .defense-grid, .tkw-cards, .prob-3col').forEach(parent => {
+  parent.querySelectorAll('.rv').forEach((k, i) => { k.style.transitionDelay = (i * 55) + 'ms'; });
 });
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -1172,7 +1322,7 @@ const navObs = new IntersectionObserver(entries => {
       l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
     });
   });
-}, {threshold:0.3});
+}, {threshold:0.25});
 sections.forEach(s => navObs.observe(s));
 </script>
 </body>
