@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>长文本创作 AI 辅助系统 — PM Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --s0:#08090f;--s1:#0d1017;--s2:#111620;--s3:#161c28;
+  --b0:rgba(255,255,255,0.05);--b1:rgba(255,255,255,0.09);--b2:rgba(255,255,255,0.15);
+  --t0:#dde4f0;--t1:#8a93ab;--t2:#4e5670;
+  --green:#1D9E75;--green-l:#2dd4a0;--green-dim:rgba(29,158,117,0.12);--green-edge:rgba(29,158,117,0.28);
+  --amber:#f59e0b;--red-l:#f87171;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--green);color:#fff}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:none}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(8,9,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--b0)}
+.nav-logo{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--t1);display:flex;align-items:center;gap:9px}
+.nav-pip{width:6px;height:6px;border-radius:50%;background:var(--green-l);animation:pip 3s ease infinite}
+@keyframes pip{0%,100%{opacity:.4}50%{opacity:1}}
+.nav-back{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);text-decoration:none;display:flex;align-items:center;gap:7px;transition:color .2s}
+.nav-back:hover{color:var(--t0)}
+.nav-badge{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:.1em;text-transform:uppercase}
+#progress{position:fixed;top:60px;left:0;z-index:199;height:1px;background:var(--green-l);width:0%;transition:width .08s linear;opacity:.7}
+
+/* HERO */
+#hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;padding:100px 48px 72px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-200px;right:-100px;width:600px;height:500px;background:radial-gradient(ellipse,rgba(29,158,117,0.1) 0%,transparent 65%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--b0) 1px,transparent 1px),linear-gradient(90deg,var(--b0) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 50% at 80% 10%,black 0%,transparent 70%)}
+.hero-inner{position:relative;z-index:1;max-width:1060px;margin:0 auto;width:100%}
+.case-type{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-l);margin-bottom:16px;display:flex;align-items:center;gap:8px;animation:fu .8s both}
+.ct-dot{width:5px;height:5px;border-radius:50%;background:var(--green-l)}
+.case-type span{color:var(--t2)}
+h1{font-family:'Noto Serif SC',serif;font-size:clamp(32px,4.5vw,58px);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px;animation:fu .8s .08s both}
+h1 .sub-title{display:block;font-size:clamp(20px,2.8vw,34px);color:var(--t1);font-weight:700;margin-top:6px}
+.hero-conflict{background:var(--green-dim);border:1px solid var(--green-edge);border-left:3px solid var(--green-l);border-radius:0 12px 12px 0;padding:20px 24px;max-width:680px;margin-top:28px;animation:fu .8s .16s both}
+.hc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-l);margin-bottom:7px}
+.hc-text{font-size:14px;font-weight:500;color:var(--t0);line-height:1.6;font-family:'Noto Serif SC',serif}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--b0);border-radius:10px;overflow:hidden;max-width:680px;margin-top:28px;animation:fu .8s .22s both}
+.hm-cell{background:var(--s1);padding:14px 16px;border-right:1px solid var(--b0)}
+.hm-cell:last-child{border-right:none}
+.hm-label{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:5px}
+.hm-val{font-size:12px;color:var(--t0);font-weight:500;line-height:1.4}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* LAYOUT */
+.wrap{max-width:1060px;margin:0 auto;padding:0 48px}
+.sec{padding:80px 0}
+.sec-sm{padding:56px 0}
+.s-alt{background:var(--s1)}
+.s-main{background:var(--s0)}
+.s-deep{background:var(--s2)}
+
+/* SECTION LABELS */
+.label{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--t2);margin-bottom:18px}
+.label::before{content:'';width:16px;height:1px;background:var(--t2);flex-shrink:0}
+.label.accent{color:var(--green-l)}
+.label.accent::before{background:var(--green-l)}
+.sec-h{font-family:'Noto Serif SC',serif;font-size:clamp(22px,2.6vw,34px);font-weight:900;line-height:1.2;letter-spacing:-.025em;margin-bottom:10px}
+.sec-sub{font-size:14px;color:var(--t1);max-width:560px;line-height:1.8}
+
+/* DECISION CARD (single, prose style) */
+.decision-prose{background:var(--s2);border:1px solid var(--b0);border-radius:14px;overflow:hidden;margin-top:36px}
+.dp-head{background:var(--s3);padding:20px 28px;border-bottom:1px solid var(--b0);display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dp-title{font-size:16px;font-weight:600;color:var(--t0);letter-spacing:-.01em}
+.dp-pill{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:var(--t2);background:var(--s2);border:1px solid var(--b0);border-radius:5px;padding:3px 10px;flex-shrink:0}
+.dp-body{padding:28px 28px;font-size:13.5px;color:var(--t1);line-height:1.8}
+.dp-body p+p{margin-top:14px}
+.dp-body strong{color:var(--t0);font-weight:500}
+.dp-body em{color:var(--green-l);font-style:normal;font-weight:500}
+
+/* DESIGN DETAIL: deviation levels */
+.deviation-ladder{margin-top:36px;display:flex;flex-direction:column;gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:14px;overflow:hidden}
+.dv-row{display:grid;grid-template-columns:100px 1fr 1fr;border-bottom:1px solid var(--b0)}
+.dv-row:last-child{border-bottom:none}
+.dv-level{padding:18px 14px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;text-align:center;border-right:1px solid var(--b0)}
+.dv-dot{width:9px;height:9px;border-radius:50%;margin:0 auto}
+.dv-dot.minor{background:#4ade80}
+.dv-dot.mid{background:#fbbf24}
+.dv-dot.major{background:var(--red-l)}
+.dv-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--t2);text-transform:uppercase}
+.dv-row.minor .dv-level{background:rgba(74,222,128,.05)}
+.dv-row.mid .dv-level{background:rgba(251,191,36,.05)}
+.dv-row.major .dv-level{background:rgba(248,113,113,.04)}
+.dv-content{padding:16px 20px;border-right:1px solid var(--b0)}
+.dv-action{padding:16px 20px}
+.dv-h{font-size:13px;font-weight:500;color:var(--t0);margin-bottom:5px}
+.dv-p{font-size:12.5px;color:var(--t1);line-height:1.6}
+.dv-principle{margin-top:10px;font-size:12px;color:var(--t2);font-style:italic;padding-top:10px;border-top:1px solid var(--b0)}
+
+/* METHOD CONTRAST */
+.method-contrast{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:12px;overflow:hidden}
+.mc-cell{padding:24px 22px}
+.mc-cell.dropped{background:rgba(248,113,113,.03);border-top:2px solid rgba(248,113,113,.25)}
+.mc-cell.chosen{background:rgba(29,158,117,.07);border-top:2px solid var(--green)}
+.mc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:10px}
+.mc-cell.dropped .mc-label{color:var(--red-l)}
+.mc-cell.chosen .mc-label{color:var(--green-l)}
+.mc-title{font-size:14px;font-weight:600;color:var(--t0);margin-bottom:8px;letter-spacing:-.01em}
+.mc-body{font-size:13px;color:var(--t1);line-height:1.65}
+.mc-body strong{color:var(--t0);font-weight:500}
+
+/* PHILOSOPHY BOX */
+.philosophy{margin-top:36px;background:linear-gradient(135deg,rgba(29,158,117,0.1),rgba(0,0,0,0));border:1px solid var(--green-edge);border-left:3px solid var(--green-l);border-radius:0 14px 14px 0;padding:28px 32px}
+.phil-quote{font-family:'Noto Serif SC',serif;font-size:clamp(16px,2vw,22px);font-weight:900;color:var(--t0);line-height:1.4;margin-bottom:10px;letter-spacing:-.02em}
+.phil-sub{font-size:13px;color:var(--t1);max-width:540px;line-height:1.75}
+
+/* CLOSING */
+.closing-block{margin-top:36px;background:var(--s2);border:1px solid var(--b0);border-radius:13px;padding:36px 40px}
+.closing-block p{font-size:14.5px;color:var(--t1);line-height:1.85}
+.closing-block p+p{margin-top:14px}
+.closing-block strong{color:var(--t0);font-weight:500}
+.closing-block em{color:var(--green-l);font-style:normal}
+
+/* FOOTER */
+footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;display:flex;align-items:center;justify-content:space-between}
+.ft-l{font-family:'DM Mono',monospace;font-size:12px;color:var(--t2);letter-spacing:.04em}
+.ft-r{font-size:12px;color:var(--t2)}
+
+@media(max-width:900px){
+  #nav{padding:0 20px}
+  #hero,.wrap{padding-left:20px;padding-right:20px}
+  .hero-meta{grid-template-columns:1fr 1fr}
+  .method-contrast{grid-template-columns:1fr}
+  .dv-row{grid-template-columns:1fr}
+  footer{padding:20px;flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="nav-pip"></span>
+    长文本创作 AI 辅助
+  </div>
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    返回作品集
+  </a>
+  <span class="nav-badge">副案例 A · C端创意</span>
+</nav>
+<div id="progress"></div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="case-type">
+      <span class="ct-dot"></span>
+      副案例 A · C端 · 创意发散型 · 概念案例
+      <span>·</span>
+      <span>与主案例形成方法论反差</span>
+    </div>
+    <h1>
+      长文本创作 AI 辅助系统
+      <span class="sub-title">能感知全局状态的写作协作工具</span>
+    </h1>
+    <div class="hero-conflict">
+      <div class="hc-label">核心设计矛盾</div>
+      <div class="hc-text">AI 按段落生成，创作却按全书弧线评判——局部顺滑，常常破坏人物弧光、伏笔链条和节奏的全局一致性。</div>
+    </div>
+    <div class="hero-meta">
+      <div class="hm-cell">
+        <div class="hm-label">受众</div>
+        <div class="hm-val">长篇小说创作者</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">核心能力</div>
+        <div class="hm-val">创意发散 · 全局状态感知</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">边界触发机制</div>
+        <div class="hm-val">心理主权保护</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">与主案例反差</div>
+        <div class="hm-val">降低 AI 存在感而非审核摩擦</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 PROBLEM -->
+<section class="sec s-alt" id="problem">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">01 · Problem</div>
+      <h2 class="sec-h">所有现有工具都在解决"怎么继续写"，没有人认真解决"写下去时如何不丢全局状态"</h2>
+      <p class="sec-sub">Sudowrite、NovelAI、Claude 都预设了用户知道自己想要什么，AI 负责执行。但长篇小说创作者真正的痛点在别处。</p>
+    </div>
+    <div class="method-contrast rv">
+      <div class="mc-cell dropped">
+        <div class="mc-label">现有工具的假设</div>
+        <div class="mc-title">用户明确需求 → AI 执行续写</div>
+        <div class="mc-body">生成优先：给一段上文，AI 续写下文。用户会写 Prompt，AI 负责生成流畅段落。这个模式在短文本场景成立，但在十万字的长篇里，<strong>每次续写都在消耗全局一致性的预算</strong>。</div>
+      </div>
+      <div class="mc-cell chosen">
+        <div class="mc-label">真实的长篇创作痛点</div>
+        <div class="mc-title">全局状态漂移 → 创作者无法感知</div>
+        <div class="mc-body">写到第十二章，AI 把第五章定义为内向的角色写成了话痨——没有人发现这个漂移。第三章的伏笔在第十章被无意间提前揭示。支线在第八章意外比主线更有张力，但已经写了六万字，改动代价极高。<em>这些问题的根源不是续写能力，而是 AI 没有感知全局状态的机制。</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 DECISION -->
+<section class="sec s-main" id="decision">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">02 · Key Decision</div>
+      <h2 class="sec-h">放弃"直接续写"，选择"先审后写"</h2>
+      <p class="sec-sub">这个顺序的反转是整个案例最值钱的设计判断。</p>
+    </div>
+    <div class="decision-prose rv">
+      <div class="dp-head">
+        <div class="dp-title">AI 先当审稿人，再当执笔人</div>
+        <div class="dp-pill">牺牲即时出字感，换长篇一致性与作者主权</div>
+      </div>
+      <div class="dp-body">
+        <p>早期版本直接续写正文，用户反馈集中在两个问题：续写内容流畅但和前文人物性格有细微偏差；AI 的风格逐渐覆盖了作者自己的叙事语感。这两个问题指向同一个根因：<strong>AI 在生成时没有感知全局状态</strong>。</p>
+        <p>我放弃了即时续写的交互模式，改为"先审后写"：用户提交新写的段落后，系统先输出一份全局状态检查报告——这段内容对主线进度、人物弧光、已埋伏笔的偏离程度各是多少——<strong>作者确认或调整之后，AI 再提供受约束的改写建议</strong>。</p>
+        <p>接受这个代价的前提判断是：长篇创作者更在意全书的完整性，而不是单段生成的速度。且"AI 先当审稿人、再当执笔人"的角色定位更符合作者对<em>创作主权</em>的心理预期——这不同于政务场景里"合规责任无法外包"的外部约束，而是作者内心对"这是我的作品"的主权感需要被保护。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DESIGN DETAIL -->
+<section class="sec s-deep" id="design">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">03 · Design Detail · 大纲偏离分级提示机制</div>
+      <h2 class="sec-h">AI 不判断偏离是好是坏，只呈现偏离的事实和影响范围</h2>
+      <p class="sec-sub">决定权始终在作者手里——轻微偏离可能是有意为之的风格尝试，严重偏离可能是正在做的戏剧性转折。AI 的职责是确保作者是在有意识地做选择，而不是无意识地漂移。</p>
+    </div>
+    <div class="deviation-ladder rv">
+      <div class="dv-row minor">
+        <div class="dv-level">
+          <div class="dv-dot minor"></div>
+          <div class="dv-lbl">轻微偏离</div>
+        </div>
+        <div class="dv-content">
+          <div class="dv-h">风格细节差异 · 叙事节奏轻微变化</div>
+          <p class="dv-p">当前段落用词密度与前文有细微差异，或对话比例略高于全书均值。不影响人物一致性和主线逻辑。</p>
+        </div>
+        <div class="dv-action">
+          <div class="dv-h">处理：静默处理，不打断创作流</div>
+          <p class="dv-p">AI 记录状态变化但不展示提示。创作者的心流优先于数据准确性——轻微偏离绝大多数是有意的风格选择，打断只会制造噪音。</p>
+          <div class="dv-principle">设计原则：心流 > 数据精度</div>
+        </div>
+      </div>
+      <div class="dv-row mid">
+        <div class="dv-level">
+          <div class="dv-dot mid"></div>
+          <div class="dv-lbl">中度偏离</div>
+        </div>
+        <div class="dv-content">
+          <div class="dv-h">人物行为与性格弧光冲突 · 支线篇幅超出大纲预期</div>
+          <p class="dv-p">角色的行为决策与前文建立的性格弧光有明显冲突，或某条支线在大纲中预期占 15% 但已经写到 28%。</p>
+        </div>
+        <div class="dv-action">
+          <div class="dv-h">处理：黄色提示 · 可选忽略</div>
+          <p class="dv-p">在段落右侧出现非阻断式提示，说明偏离内容和潜在影响范围。作者可选择"知道了，继续"或"查看详情"。不阻断保存和继续写作。</p>
+          <div class="dv-principle">设计原则：告知而非阻断</div>
+        </div>
+      </div>
+      <div class="dv-row major">
+        <div class="dv-level">
+          <div class="dv-dot major"></div>
+          <div class="dv-lbl">严重偏离</div>
+        </div>
+        <div class="dv-content">
+          <div class="dv-h">关键伏笔提前揭示 · 大纲标注的存活角色出现死亡迹象</div>
+          <p class="dv-p">一处关键伏笔被提前揭示，或大纲中标注"第十八章死亡"的角色在第十二章出现了可能提前死亡的情节走向。</p>
+        </div>
+        <div class="dv-action">
+          <div class="dv-h">处理：强制确认弹窗</div>
+          <p class="dv-p">需要作者主动选择：<strong>接受偏离并更新大纲</strong>（AI 同步更新全局状态记录），或<strong>撤回这段内容</strong>。两个选项视觉权重相同，不暗示"正确答案"。</p>
+          <div class="dv-principle">设计原则：作者决策，AI 同步</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PHILOSOPHY -->
+<section class="sec s-alt" id="philosophy">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">04 · 方法论定位 · 与主案例的核心差异</div>
+      <h2 class="sec-h">同样是"AI 不替代人做最终决策"，但触发机制完全不同</h2>
+    </div>
+    <div class="philosophy rv">
+      <div class="phil-quote">主案例：责任归属触发的边界（外部约束）<br>本案例：心理主权触发的边界（内在需求）</div>
+      <div class="phil-sub">政务写作里的边界是外部强制的——合规责任无法外包给 AI，这是组织结构决定的。创作辅助里的边界是内在的——作者的心理主权决定了 AI 必须是隐形的协作者，而不是主笔。前者的设计目标是降低人工介入的摩擦成本，后者的设计目标是降低 AI 本身的存在感。这两个案例合在一起说明：AI 产品的介入边界不是一个技术参数，而是由责任结构和用户心理共同决定的设计变量。</div>
+    </div>
+    <div class="closing-block rv">
+      <p>这个案例验证的核心判断是：<strong>在长文本创作场景，AI 的最大价值不是替创作者写，而是成为创作者的外部记忆系统</strong>——帮助他们在十万字的体量下维持对整个故事的掌控感。</p>
+      <p>Sudowrite 解决的是"怎么继续写"，这个产品解决的是<em>"长篇写下去时，如何不丢全局状态和作者主权"</em>。这是两个不同层次的问题：前者是 AI 能力问题，后者是人机协作的控制权设计问题。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="ft-l">副案例 A · 长文本创作 AI 辅助系统 · 概念案例</span>
+  <a href="index.html" style="font-size:12px;color:var(--t2);text-decoration:none">← 返回作品集</a>
+</footer>
+
+<script>
+const prog = document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+},{passive:true});
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});
+},{threshold:0.07,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
