@@ -13,21 +13,18 @@
   --b0:rgba(255,255,255,0.05);--b1:rgba(255,255,255,0.09);--b2:rgba(255,255,255,0.15);
   --t0:#dde4f0;--t1:#8a93ab;--t2:#4e5670;
   --blue:#2563eb;--blue-l:#4b84ff;--blue-dim:rgba(37,99,235,0.13);--blue-edge:rgba(75,132,255,0.2);
-  --teal:#0d9488;--amber:#f59e0b;
-  --green:#1D9E75;--green-dim:rgba(29,158,117,0.12);--green-edge:rgba(29,158,117,0.25);
-  --purple:#7c5cbf;--purple-dim:rgba(124,92,191,0.12);--purple-edge:rgba(124,92,191,0.25);
+  --green:#1D9E75;--green-l:#2dd4a0;--green-dim:rgba(29,158,117,0.12);--green-edge:rgba(29,158,117,0.25);
+  --purple:#7c5cbf;--purple-l:#a78bfa;--purple-dim:rgba(124,92,191,0.12);--purple-edge:rgba(124,92,191,0.25);
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--blue);color:#fff}
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
-
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
 .rv.on{opacity:1;transform:none}
 
-/* ── NAV ── */
+/* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(8,9,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--b0)}
 .nav-logo{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--t1);display:flex;align-items:center;gap:9px}
 .nav-pip{width:6px;height:6px;border-radius:50%;background:var(--blue-l);animation:pip 3s ease infinite}
@@ -36,7 +33,7 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .nav-link{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);text-decoration:none;transition:color .2s}
 .nav-link:hover{color:var(--t0)}
 
-/* ── HERO ── */
+/* HERO */
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 48px 80px;position:relative;overflow:hidden;max-width:1060px;margin:0 auto}
 .hero-grid-bg{position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(var(--b0) 1px,transparent 1px),linear-gradient(90deg,var(--b0) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 60% at 20% 10%,black 0%,transparent 70%);z-index:0}
 .hero-glow{position:fixed;top:-200px;left:-100px;width:700px;height:600px;background:radial-gradient(ellipse,rgba(37,99,235,0.08) 0%,transparent 65%);pointer-events:none;z-index:0}
@@ -46,113 +43,119 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .hero-h .accent{background:linear-gradient(130deg,#5b9aff 0%,#38bdf8 55%,#2dd4bf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-body{font-size:15px;color:var(--t1);max-width:520px;line-height:1.85;animation:fu .8s .16s both;margin-bottom:40px}
 .hero-body strong{color:var(--t0);font-weight:500}
-
-/* ability chips */
 .ability-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;animation:fu .8s .22s both}
 .ability-chip{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px;border:1px solid var(--b1);color:var(--t2);background:var(--s1)}
-.ability-chip.hi{border-color:var(--blue-edge);color:var(--blue-l);background:var(--blue-dim)}
-
-/* scroll hint */
+.ability-chip.hi{border-color:rgba(75,132,255,0.2);color:var(--blue-l);background:rgba(37,99,235,0.13)}
 .scroll-hint{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);display:flex;align-items:center;gap:10px;animation:fu .8s .3s both}
 .scroll-line{width:40px;height:1px;background:var(--t2)}
-
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-/* ── WORKS SECTION ── */
-#works{padding:0 48px 120px;max-width:1060px;margin:0 auto}
-.works-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--t2);margin-bottom:32px;display:flex;align-items:center;gap:12px}
-.works-label::after{content:'';flex:1;height:1px;background:var(--b1)}
+/* LAYOUT */
+.page-wrap{padding:0 48px;max-width:1060px;margin:0 auto}
+.section-rule{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--t2);margin-bottom:32px;display:flex;align-items:center;gap:12px}
+.section-rule::after{content:'';flex:1;height:1px;background:var(--b1)}
+.sp-xl{height:104px}
+.sp-lg{height:72px}
+.sp-md{height:52px}
 
-/* ── FLAGSHIP CARD ── */
-.flagship{background:var(--s2);border:1px solid var(--b1);border-top:2px solid var(--blue-l);border-radius:16px;overflow:hidden;margin-bottom:16px;transition:border-color .25s}
+/* FLAGSHIP */
+.flagship{background:var(--s2);border:1px solid var(--b1);border-top:2px solid var(--blue-l);border-radius:16px;overflow:hidden;transition:border-color .25s}
 .flagship:hover{border-color:var(--b2);border-top-color:var(--blue-l)}
-.flagship-inner{display:grid;grid-template-columns:1fr 380px;min-height:320px}
-.flagship-left{padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--b0)}
-.flagship-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--blue-l);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.fe-dot{width:5px;height:5px;border-radius:50%;background:var(--blue-l)}
-.flagship-title{font-family:'Noto Serif SC',serif;font-size:clamp(22px,2.5vw,32px);font-weight:900;line-height:1.2;letter-spacing:-.025em;margin-bottom:14px;color:var(--t0)}
-.flagship-desc{font-size:13.5px;color:var(--t1);line-height:1.8;max-width:440px;margin-bottom:28px}
-.flagship-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:28px}
+.flagship-body{padding:36px 44px 32px}
+.flagship-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--blue-l);margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fe-dot{width:5px;height:5px;border-radius:50%;background:var(--blue-l);flex-shrink:0}
+.scheme-tag{font-family:'DM Mono',monospace;font-size:8.5px;padding:2px 8px;border-radius:4px;background:rgba(78,86,112,0.22);color:var(--t2);border:1px solid rgba(78,86,112,0.35);letter-spacing:.06em;text-transform:uppercase}
+.flagship-title{font-family:'Noto Serif SC',serif;font-size:clamp(24px,2.8vw,36px);font-weight:900;line-height:1.2;letter-spacing:-.025em;margin-bottom:22px;color:var(--t0)}
+/* lightweight inline statements — no box, no background */
+.flagship-stmts{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.flagship-stmt{display:flex;gap:14px;align-items:baseline}
+.fs-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);white-space:nowrap;padding-top:1px;flex-shrink:0;min-width:56px}
+.fs-text{font-size:13px;color:var(--t1);line-height:1.72}
+.fs-text strong{color:var(--t0);font-weight:500}
+.flagship-arch{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px}
 .ftag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;padding:3px 10px;border-radius:4px;border:1px solid var(--b0);color:var(--t2);background:var(--s3)}
-.flagship-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue-l);text-decoration:none;transition:gap .2s}
-.flagship-link:hover{gap:13px}
+.flagship-cta-row{padding-top:18px;border-top:1px solid var(--b0)}
+.flagship-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue-l);text-decoration:none;transition:all .2s;background:var(--blue-dim);border:1px solid var(--blue-edge);border-radius:8px;padding:10px 22px}
+.flagship-link:hover{gap:13px;background:rgba(37,99,235,.22)}
 .flagship-link svg{transition:transform .2s}
 .flagship-link:hover svg{transform:translateX(3px)}
 
-.flagship-right{padding:40px 36px;display:flex;flex-direction:column;gap:20px;background:var(--s3)}
-.f-kpi-row{display:flex;flex-direction:column;gap:4px}
-.f-kpi-n{font-family:'Noto Serif SC',serif;font-size:42px;font-weight:900;line-height:1;letter-spacing:-.03em;color:var(--t0)}
-.f-kpi-n.grad{background:linear-gradient(130deg,#5b9aff,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.f-kpi-l{font-size:12px;color:var(--t1)}
-.f-kpi-note{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);margin-top:2px}
-.f-divider{height:1px;background:var(--b0)}
-.f-meta-row{display:flex;flex-direction:column;gap:10px}
-.f-meta-item{display:flex;justify-content:space-between;align-items:center}
-.f-meta-k{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)}
-.f-meta-v{font-size:12px;color:var(--t1)}
-.f-contrast-badge{margin-top:auto;background:var(--blue-dim);border:1px solid var(--blue-edge);border-radius:8px;padding:10px 14px}
-.f-contrast-label{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-l);margin-bottom:5px}
-.f-contrast-text{font-size:11.5px;color:var(--t1);line-height:1.5}
-
-/* ── SECONDARY CARDS ── */
-.secondary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.sec-card{background:var(--s1);border:1px solid var(--b0);border-radius:14px;overflow:hidden;text-decoration:none;display:block;transition:background .25s,border-color .25s;position:relative}
+/* SECONDARY CARDS */
+.secondary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.sec-card{background:var(--s1);border:1px solid var(--b0);border-radius:14px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:background .25s,border-color .25s}
 .sec-card:hover{background:var(--s2);border-color:var(--b1)}
-.sec-card-inner{padding:32px 32px 28px}
-.sc-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:7px}
-.sc-dot{width:5px;height:5px;border-radius:50%}
-.sc-eyebrow.novel{color:var(--green)}
-.sc-eyebrow.novel .sc-dot{background:var(--green)}
-.sc-eyebrow.sub{color:var(--purple)}
-.sc-eyebrow.sub .sc-dot{background:var(--purple)}
-.sc-title{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:900;line-height:1.25;letter-spacing:-.02em;margin-bottom:10px;color:var(--t0)}
-.sc-desc{font-size:13px;color:var(--t1);line-height:1.75;margin-bottom:20px}
-.sc-contrast{font-size:11.5px;color:var(--t2);padding:9px 12px;border-radius:7px;border:1px solid var(--b0);background:var(--s2);line-height:1.55;margin-bottom:20px}
-.sc-contrast strong{font-weight:500}
-.sc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
-.sctag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;padding:3px 9px;border-radius:4px;border:1px solid var(--b0);color:var(--t2)}
-.sc-link{font-size:12.5px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:gap .2s}
-.sc-link.novel{color:var(--green)}
-.sc-link.sub{color:var(--purple)}
+.sec-card-body{padding:32px 30px 24px;flex:1;display:flex;flex-direction:column;gap:18px}
+.sc-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.sc-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.sc-eyebrow.novel{color:var(--green-l)}
+.sc-eyebrow.novel .sc-dot{background:var(--green-l)}
+.sc-eyebrow.agent{color:var(--purple-l)}
+.sc-eyebrow.agent .sc-dot{background:var(--purple-l)}
+.sc-title{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:900;line-height:1.25;letter-spacing:-.02em;color:var(--t0)}
+.sc-item-label{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:5px}
+.sc-item-text{font-size:13px;color:var(--t1);line-height:1.65}
+.sc-item-text strong{color:var(--t0);font-weight:500}
+.sc-contrast-box{font-size:12px;color:var(--t2);padding:10px 13px;border-radius:6px;border:1px solid var(--b0);background:var(--s2);line-height:1.6}
+.sc-contrast-box strong{color:var(--t1);font-weight:500}
+.sc-footer{border-top:1px solid var(--b0);padding:15px 30px;display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.sc-link{font-size:12.5px;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:gap .2s;text-decoration:none}
+.sc-link.novel{color:var(--green-l)}
+.sc-link.agent{color:var(--purple-l)}
 .sec-card:hover .sc-link{gap:11px}
-.sc-bottom{border-top:1px solid var(--b0);padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
-.sc-bottom-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)}
-.sc-bottom-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;padding:3px 9px;border-radius:4px}
-.sc-bottom-tag.novel{background:var(--green-dim);color:var(--green);border:1px solid var(--green-edge)}
-.sc-bottom-tag.sub{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-edge)}
+.sc-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;padding:3px 9px;border-radius:4px}
+.sc-tag.novel{background:var(--green-dim);color:var(--green-l);border:1px solid var(--green-edge)}
+.sc-tag.agent{background:var(--purple-dim);color:var(--purple-l);border:1px solid var(--purple-edge)}
 
-/* ── ABILITY MATRIX ── */
-#matrix{padding:0 48px 120px;max-width:1060px;margin:0 auto}
-.matrix-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--t2);margin-bottom:24px;display:flex;align-items:center;gap:12px}
-.matrix-label::after{content:'';flex:1;height:1px;background:var(--b1)}
+/* METHODOLOGY MATRIX */
+.matrix-intro{font-size:13px;color:var(--t2);margin-bottom:24px;max-width:640px;line-height:1.78}
+.matrix-intro strong{color:var(--t1);font-weight:500}
 .matrix-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:12px;overflow:hidden}
 .matrix-tbl th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;padding:12px 18px;text-align:left;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
 .matrix-tbl th:last-child{border-right:none}
 .matrix-tbl th:first-child{background:var(--s2);color:var(--t2)}
-.matrix-tbl th.col-flagship{background:rgba(37,99,235,.08);color:var(--blue-l)}
-.matrix-tbl th.col-novel{background:rgba(29,158,117,.06);color:var(--green)}
-.matrix-tbl th.col-sub{background:rgba(124,92,191,.06);color:var(--purple)}
-.matrix-tbl td{padding:13px 18px;font-size:12.5px;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);vertical-align:top;line-height:1.5}
+.matrix-tbl th.col-f{background:rgba(37,99,235,.08);color:var(--blue-l)}
+.matrix-tbl th.col-n{background:rgba(29,158,117,.06);color:var(--green-l)}
+.matrix-tbl th.col-s{background:rgba(124,92,191,.06);color:var(--purple-l)}
+.matrix-tbl td{padding:12px 18px;font-size:12px;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);vertical-align:top;line-height:1.55;color:var(--t1)}
 .matrix-tbl td:last-child{border-right:none}
 .matrix-tbl tr:last-child td{border-bottom:none}
-.matrix-tbl td:first-child{color:var(--t1);font-weight:500;background:var(--s1)}
-.matrix-tbl td.col-flagship{background:rgba(37,99,235,.04);color:var(--t0)}
-.matrix-tbl td.col-novel{background:rgba(29,158,117,.03);color:var(--t0)}
-.matrix-tbl td.col-sub{background:rgba(124,92,191,.03);color:var(--t0)}
+.matrix-tbl td:first-child{color:var(--t1);font-weight:500;background:var(--s1);font-size:11.5px}
+.matrix-tbl td.col-f{background:rgba(37,99,235,.04);color:var(--t0)}
+.matrix-tbl td.col-n{background:rgba(29,158,117,.03);color:var(--t0)}
+.matrix-tbl td.col-s{background:rgba(124,92,191,.03);color:var(--t0)}
 
-/* ── FOOTER ── */
+/* ABOUT */
+.about-wrap{background:var(--s1);border:1px solid var(--b0);border-radius:14px;overflow:hidden}
+.about-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0)}
+.about-col{background:var(--s1);padding:32px 30px}
+.about-col-label{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--t2);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.about-col-label::before{content:'';width:12px;height:1px;background:var(--t2);flex-shrink:0}
+.about-col p{font-size:13px;color:var(--t1);line-height:1.82}
+.about-col p strong{color:var(--t0);font-weight:500}
+.about-col p+p{margin-top:12px}
+.about-footer{padding:16px 30px;border-top:1px solid var(--b0);display:flex;align-items:center;justify-content:space-between;background:var(--s2)}
+.about-footer-text{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);letter-spacing:.04em}
+.about-footer-hint{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--blue-l);letter-spacing:.04em}
+
+/* FOOTER */
 footer{border-top:1px solid var(--b0);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1060px;margin:0 auto}
 .ft-l{font-family:'DM Mono',monospace;font-size:11px;color:var(--t2);letter-spacing:.04em}
 .ft-r{font-size:12px;color:var(--t2)}
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media(max-width:900px){
   #nav{padding:0 20px}
-  #hero,#works,#matrix{padding-left:20px;padding-right:20px}
-  .flagship-inner{grid-template-columns:1fr}
-  .flagship-right{border-right:none;border-top:1px solid var(--b0)}
+  #hero,.page-wrap{padding-left:20px;padding-right:20px}
   .secondary-grid{grid-template-columns:1fr}
+  .about-cols{grid-template-columns:1fr}
   footer{padding:20px;flex-direction:column;gap:8px;text-align:center}
+  .flagship-body{padding:28px 24px}
+  .sp-xl{height:72px}
+  .sp-lg{height:48px}
+}
+@media(max-width:640px){
+  #hero{padding:80px 20px 64px}
+  .matrix-tbl{display:block;overflow-x:auto}
 }
 </style>
 </head>
@@ -168,8 +171,9 @@ footer{border-top:1px solid var(--b0);padding:28px 48px;display:flex;align-items
     AI PM · Portfolio
   </div>
   <div class="nav-right">
-    <a href="#works" class="nav-link">作品集</a>
-    <a href="#matrix" class="nav-link">能力矩阵</a>
+    <a href="#works" class="nav-link">案例</a>
+    <a href="#matrix" class="nav-link">方法论</a>
+    <a href="#about" class="nav-link">关于</a>
   </div>
 </nav>
 
@@ -182,7 +186,7 @@ footer{border-top:1px solid var(--b0);padding:28px 48px;display:flex;align-items
       <span class="accent">成为产品设计变量</span>
     </h1>
     <p class="hero-body rv">
-      三个案例，覆盖<strong>合规场景的规则收敛</strong>、<strong>创意场景的主权保护</strong>与<strong>Agent工作流的置信度分层</strong>——每个案例都在回答同一个元问题：AI 应该在哪里停下来，由谁来做最终判断。
+      三个案例，覆盖<strong>合规场景的规则收敛</strong>、<strong>创意场景的主权保护</strong>与<strong>Agent 工作流的置信度分层</strong>。每个案例都在回答同一个问题：AI 应该在哪里停下来，由谁来做最终判断。
     </p>
     <div class="ability-row rv">
       <span class="ability-chip hi">B2G SaaS</span>
@@ -201,63 +205,45 @@ footer{border-top:1px solid var(--b0);padding:28px 48px;display:flex;align-items
 </section>
 
 <!-- WORKS -->
-<section id="works">
-  <div class="works-label rv">案例研究 · 3 Cases</div>
+<div class="sp-md"></div>
+<section class="page-wrap" id="works">
+  <div class="section-rule rv">案例研究 · 1 深度 + 2 方法论副案例</div>
 
   <!-- FLAGSHIP -->
   <div class="flagship rv">
-    <div class="flagship-inner">
-      <div class="flagship-left">
-        <div>
-          <div class="flagship-eyebrow">
-            <span class="fe-dot"></span>
-            深度主案例 · Flagship · B2G SaaS · 12个月
-          </div>
-          <h2 class="flagship-title">体制内写作<br>AI Copilot</h2>
-          <p class="flagship-desc">面向党建材料、公文报告与会议纪要的结构化写作助手。核心设计判断：政务场景中合规责任无法外包给AI，产品必须让AI承担起草、人工承担判断。从MVP范围收敛到风险分层交互，完整展示高规范密度场景下的AI产品方法论。</p>
-          <div class="flagship-tags">
-            <span class="ftag">RAG + SFT</span>
-            <span class="ftag">规则引擎</span>
-            <span class="ftag">风险分层交互</span>
-            <span class="ftag">B2G商业化</span>
-            <span class="ftag">知识库护城河</span>
-          </div>
+    <div class="flagship-body">
+      <div class="flagship-eyebrow">
+        <span class="fe-dot"></span>
+        深度主案例 · B2G SaaS · 用户研究 + 产品设计
+        <span class="scheme-tag">设计方案</span>
+      </div>
+      <h2 class="flagship-title">体制内写作 AI Copilot</h2>
+
+      <div class="flagship-stmts">
+        <div class="flagship-stmt">
+          <span class="fs-label">问题</span>
+          <span class="fs-text">政务写作的难点不是写不出来，而是 <strong>AI 写出来也不敢直接用</strong>。</span>
         </div>
+        <div class="flagship-stmt">
+          <span class="fs-label">判断</span>
+          <span class="fs-text">在高责任场景里，产品边界由责任结构决定：<strong>AI 负责起草，人工负责判断</strong>。</span>
+        </div>
+      </div>
+
+      <div class="flagship-arch">
+        <span class="ftag">RAG + SFT</span>
+        <span class="ftag">规则引擎</span>
+        <span class="ftag">Human-in-the-loop</span>
+        <span class="ftag">风险分层</span>
+        <span class="ftag">合规约束解码</span>
+        <span class="ftag">B2G 知识库</span>
+      </div>
+
+      <div class="flagship-cta-row">
         <a href="copilot.html" class="flagship-link">
           阅读完整案例
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-      </div>
-      <div class="flagship-right">
-        <div class="f-kpi-row">
-          <div class="f-kpi-n grad">5 min</div>
-          <div class="f-kpi-l">单次初稿生成时间</div>
-          <div class="f-kpi-note">原先需要 4–8 小时 · 压缩比 72:1</div>
-        </div>
-        <div class="f-divider"></div>
-        <div class="f-meta-row">
-          <div class="f-meta-item">
-            <span class="f-meta-k">整体效率提升</span>
-            <span class="f-meta-v">60%</span>
-          </div>
-          <div class="f-meta-item">
-            <span class="f-meta-k">审稿负担下降</span>
-            <span class="f-meta-v">70%</span>
-          </div>
-          <div class="f-meta-item">
-            <span class="f-meta-k">用户接受度</span>
-            <span class="f-meta-v">87%</span>
-          </div>
-          <div class="f-meta-item">
-            <span class="f-meta-k">试点规模</span>
-            <span class="f-meta-v">3 部门 · ~200 人</span>
-          </div>
-        </div>
-        <div class="f-divider"></div>
-        <div class="f-contrast-badge">
-          <div class="f-contrast-label">核心能力定位</div>
-          <div class="f-contrast-text">责任归属触发的边界设计 · 规范收敛型 · 慢决策合规前置</div>
-        </div>
       </div>
     </div>
   </div>
@@ -265,123 +251,150 @@ footer{border-top:1px solid var(--b0);padding:28px 48px;display:flex;align-items
   <!-- SECONDARY CARDS -->
   <div class="secondary-grid">
 
-    <!-- Novel -->
     <a href="novel.html" class="sec-card rv">
-      <div class="sec-card-inner">
+      <div class="sec-card-body">
         <div class="sc-eyebrow novel">
           <span class="sc-dot"></span>
-          副案例 A · C端创意发散 · 概念案例
+          副案例 A · C端创意场景 · 概念设计
         </div>
         <h3 class="sc-title">长文本创作<br>AI 辅助系统</h3>
-        <p class="sc-desc">面向长篇小说创作者的全局状态感知系统。核心设计矛盾：AI按段落生成，但创作质量按全书弧线评判——局部顺滑常常破坏人物弧光和伏笔一致性。</p>
-        <div class="sc-contrast">
-          <strong>与主案例的核心反差：</strong>AI不能夺走作者对作品方向的决定权（心理主权触发的边界），而非合规责任触发的边界。设计目标是降低AI的存在感，而非降低审核摩擦。
+        <div>
+          <div class="sc-item-label">核心矛盾</div>
+          <div class="sc-item-text">AI 的生成单元是局部的，但创作质量的评判是全局的——<strong>局部顺滑，常常正在摧毁全书的人物弧光和伏笔一致性</strong>。</div>
         </div>
-        <div class="sc-tags">
-          <span class="sctag">长文本处理</span>
-          <span class="sctag">全局状态追踪</span>
-          <span class="sctag">C端即时反馈</span>
-          <span class="sctag">创意发散型</span>
+        <div>
+          <div class="sc-item-label">核心判断</div>
+          <div class="sc-item-text">AI 不替创作者写，而是成为<strong>外部记忆系统</strong>：先当审稿人、再当执笔人，让作者始终掌控故事方向。</div>
         </div>
+        <div>
+          <div class="sc-item-label">与主案例的反差</div>
+          <div class="sc-contrast-box">从责任归属边界 → <strong>创作主权边界</strong>。设计目标是降低 AI 的存在感，而非降低人工审核摩擦。</div>
+        </div>
+      </div>
+      <div class="sc-footer">
         <span class="sc-link novel">
           查看案例
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </span>
       </div>
-      <div class="sc-bottom">
-        <span class="sc-bottom-label">技术侧重</span>
-        <span class="sc-bottom-tag novel">个性化偏好建模 · 上下文状态管理</span>
-      </div>
     </a>
 
-    <!-- Subscription -->
     <a href="subscription.html" class="sec-card rv">
-      <div class="sec-card-inner">
-        <div class="sc-eyebrow sub">
+      <div class="sec-card-body">
+        <div class="sc-eyebrow agent">
           <span class="sc-dot"></span>
-          副案例 B · Agent工作流 · 概念案例
+          副案例 B · Agent 工作流 · 概念设计
         </div>
         <h3 class="sc-title">订阅价值评估<br>Agent</h3>
-        <p class="sc-desc">把分散在邮件和账单里的订阅信号，汇聚成足以支撑取消决策的信息密度。核心判断：用户不缺取消订阅的意愿，缺乏的是做决策的信息质量。</p>
-        <div class="sc-contrast">
-          <strong>与主案例的核心反差：</strong>单轮生成→多步推理链条，规则约束→工具调用编排。置信度分层展示是核心设计——单条识别错误对整体信任的损伤是非线性的。
+        <div>
+          <div class="sc-item-label">核心矛盾</div>
+          <div class="sc-item-text">用户不缺取消订阅的意愿——缺的是<strong>做决策的信息密度</strong>。分散在邮件与账单里的信号，无法独立支撑真实的取消决策。</div>
         </div>
-        <div class="sc-tags">
-          <span class="sctag">Agent工具调用</span>
-          <span class="sctag">状态管理</span>
-          <span class="sctag">置信度分层</span>
-          <span class="sctag">异常降级</span>
+        <div>
+          <div class="sc-item-label">核心判断</div>
+          <div class="sc-item-text">Agent 的职责是把信号汇聚成决策密度，而非替用户做决策。<strong>置信度分层</strong>是核心机制：单条错误对整体信任的损伤是非线性的。</div>
         </div>
-        <span class="sc-link sub">
+        <div>
+          <div class="sc-item-label">与主案例的反差</div>
+          <div class="sc-contrast-box">从单轮生成 → <strong>多步推理链条</strong>；从规则约束 → 工具调用编排与异常降级。</div>
+        </div>
+      </div>
+      <div class="sc-footer">
+        <span class="sc-link agent">
           查看案例
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </span>
-      </div>
-      <div class="sc-bottom">
-        <span class="sc-bottom-label">技术侧重</span>
-        <span class="sc-bottom-tag sub">Agent工具编排 · 多步推理 · 降级策略</span>
       </div>
     </a>
 
   </div>
 </section>
 
-<!-- ABILITY MATRIX -->
-<section id="matrix">
-  <div class="matrix-label rv">三案例能力反差矩阵 · Capability Matrix</div>
-  <table class="matrix-tbl rv">
+<!-- METHODOLOGY MATRIX -->
+<div class="sp-xl"></div>
+<section class="page-wrap" id="matrix">
+  <div class="section-rule rv">AI PM 判断框架矩阵 · Methodology Matrix</div>
+  <p class="matrix-intro rv">三个案例共同回答一个问题：<strong>在不同场景下，是什么因素决定了 AI 的介入边界应该划在哪里？</strong>矩阵揭示的不是案例差异，而是同一套判断框架在不同约束条件下的迁移。</p>
+  <div class="rv" style="overflow-x:auto">
+  <table class="matrix-tbl">
     <thead>
       <tr>
-        <th>维度</th>
-        <th class="col-flagship">主案例 · 体制内写作 Copilot</th>
-        <th class="col-novel">副案例 A · 长文本创作辅助</th>
-        <th class="col-sub">副案例 B · 订阅价值评估 Agent</th>
+        <th style="width:120px">判断维度</th>
+        <th class="col-f">体制内写作 Copilot</th>
+        <th class="col-n">长文本创作辅助</th>
+        <th class="col-s">订阅价值评估 Agent</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>受众</td>
-        <td class="col-flagship">政务 B/G 端用户</td>
-        <td class="col-novel">长篇小说创作者 C 端</td>
-        <td class="col-sub">个人用户 C 端</td>
+        <td>边界触发机制</td>
+        <td class="col-f">责任归属（外部约束）<br>合规责任无法外包给 AI</td>
+        <td class="col-n">心理主权（内在需求）<br>创作决定权不能让渡</td>
+        <td class="col-s">置信度（数据质量）<br>低置信只展示证据不给建议</td>
       </tr>
       <tr>
-        <td>核心能力</td>
-        <td class="col-flagship">规则收敛 · 格式合规保障</td>
-        <td class="col-novel">创意发散 · 全局状态感知</td>
-        <td class="col-sub">信号聚合 · 决策信息密度提升</td>
+        <td>错误的代价</td>
+        <td class="col-f">合规风险 · 组织责任 · 后果不可逆</td>
+        <td class="col-n">创作体验崩溃 · 主权感丧失</td>
+        <td class="col-s">单条错误摧毁整体信任 · 非线性损伤</td>
       </tr>
       <tr>
-        <td>AI边界触发机制</td>
-        <td class="col-flagship">责任归属触发（外部约束）合规责任无法外包</td>
-        <td class="col-novel">心理主权触发（内在需求）创作决定权不能让渡</td>
-        <td class="col-sub">置信度触发（数据质量）低置信不给建议，只展示证据</td>
+        <td>人工接管点</td>
+        <td class="col-f">终稿判断 · 政策口径 · 导出前必须确认</td>
+        <td class="col-n">大纲偏离决策 · 叙事方向选择</td>
+        <td class="col-s">中低置信订阅确认 · 人机判断冲突时的三选项</td>
       </tr>
       <tr>
-        <td>技术架构</td>
-        <td class="col-flagship">RAG + SFT + 规则引擎</td>
-        <td class="col-novel">长文本上下文 + 状态追踪 + 偏好建模</td>
-        <td class="col-sub">Agent 工具调用 + 多步推理 + 状态管理</td>
+        <td>设计目标</td>
+        <td class="col-f">降低审核摩擦成本 · 格式合规保障</td>
+        <td class="col-n">降低 AI 存在感 · 保护创作心流</td>
+        <td class="col-s">提升决策信息密度 · 不替用户选择</td>
       </tr>
       <tr>
-        <td>迭代节奏</td>
-        <td class="col-flagship">慢决策 · 合规前置 · 审批驱动</td>
-        <td class="col-novel">即时反馈 · 心流优先 · 用户行为驱动</td>
-        <td class="col-sub">异常触发 · 置信度驱动 · 降级优先</td>
-      </tr>
-      <tr>
-        <td>案例深度</td>
-        <td class="col-flagship">万字深度长文 · 完整验证数据</td>
-        <td class="col-novel">聚焦关键决策 · 概念验证</td>
-        <td class="col-sub">聚焦关键决策 · 概念验证</td>
+        <td>技术架构侧重</td>
+        <td class="col-f">RAG + SFT + 规则引擎</td>
+        <td class="col-n">长文本上下文 + 全局状态追踪</td>
+        <td class="col-s">Agent 工具调用 + 多步推理 + 降级策略</td>
       </tr>
     </tbody>
   </table>
+  </div>
 </section>
+
+<!-- ABOUT -->
+<div class="sp-xl"></div>
+<section class="page-wrap" id="about">
+  <div class="section-rule rv">关于这份作品集</div>
+  <div class="about-wrap rv">
+    <div class="about-cols">
+      <div class="about-col">
+        <div class="about-col-label">背景与转型路径</div>
+        <p>我来自高约束业务场景——长期在党建宣传与政务文件写作中工作，熟悉规范密度极高、容错率极低的工作流逻辑。这段经历让我形成了一个判断习惯：<strong>在复杂规则与真实用户需求之间找到可执行的边界</strong>，而不是把约束当做阻碍。</p>
+        <p>我不是半路随便转 AI。我把在传统高约束场景里磨出来的抽象能力，转译到 AI 产品的边界设计里来。这是一种迁移，不是重新开始。</p>
+      </div>
+      <div class="about-col">
+        <div class="about-col-label">三个案例的真实性说明</div>
+        <p><strong>体制内写作 Copilot</strong> 有完整的真实用户研究支撑：22 次深度访谈、6 次工作流观察、134 份问卷。产品设计方案已完成，开发与规模化验证尚待推进。</p>
+        <p><strong>长文本创作辅助</strong>和<strong>订阅价值评估 Agent</strong> 是基于真实场景认知的概念设计。它们的价值不在证据量，而在于展示方法论能否在不同约束条件下保持一致。不同案例的证据类型不同，我对这条线是清楚的。</p>
+      </div>
+      <div class="about-col">
+        <div class="about-col-label">我在寻找的方向</div>
+        <p>我适合的问题类型是：<strong>高规范密度、AI 边界不清晰、用户对自动化存在顾虑</strong>的场景——无论是企业内部的 AI Copilot、面向专业用户的 Agent 工具，还是涉及合规与责任链条的 AI 产品。</p>
+        <p>我希望加入正在认真设计人机协作边界的团队。如果你的产品在问"AI 应该在哪里停下来"，我们可能有共同语言。</p>
+      </div>
+    </div>
+    <div class="about-footer">
+      <span class="about-footer-text">AI PM Portfolio · 用户研究 + 产品设计方案</span>
+      <span class="about-footer-hint">欢迎联系交流 →</span>
+    </div>
+  </div>
+</section>
+
+<div class="sp-xl"></div>
 
 <footer>
   <span class="ft-l">AI PM Portfolio · Case Studies</span>
-  <span class="ft-r">© 2025</span>
+  <span class="ft-r">© 2026</span>
 </footer>
 
 <script>
@@ -389,7 +402,6 @@ const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
 }, {threshold:0.07, rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.rv').forEach(el => ro.observe(el));
-
 document.querySelectorAll('.secondary-grid .rv').forEach((el, i) => {
   el.style.transitionDelay = (i * 80) + 'ms';
 });

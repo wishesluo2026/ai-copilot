@@ -66,8 +66,14 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pip 2s infinite}
 .hero-h{font-family:'Noto Serif SC',serif;font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.0;letter-spacing:-.035em;margin-bottom:14px;animation:fu .9s .1s both}
 .hero-h .grad{display:block;font-size:clamp(36px,5.5vw,68px);background:linear-gradient(130deg,#5b9aff 0%,#38bdf8 55%,#2dd4bf 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:14px;color:var(--t1);max-width:580px;margin:0 auto 40px;line-height:1.85;animation:fu .9s .2s both;letter-spacing:.01em}
+.hero-sub{font-size:14px;color:var(--t1);max-width:580px;margin:0 auto 20px;line-height:1.85;animation:fu .9s .2s both;letter-spacing:.01em}
 .hero-sub strong{color:var(--t0);font-weight:500}
+
+/* ── DISCLAIMER NOTE ── */
+.hero-disclaimer{display:inline-flex;align-items:flex-start;gap:10px;background:rgba(78,86,112,0.18);border:1px solid rgba(78,86,112,0.32);border-radius:8px;padding:11px 18px;max-width:600px;margin:0 auto 36px;animation:fu .9s .25s both;text-align:left}
+.hd-icon{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);flex-shrink:0;margin-top:1px;letter-spacing:.04em}
+.hd-text{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);line-height:1.6;letter-spacing:.02em}
+
 /* KPI */
 .hero-kpis{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--b1);border-radius:14px;overflow:hidden;max-width:540px;margin:0 auto 36px;animation:fu .9s .3s both}
 .kpi{background:var(--s2);padding:22px 20px;border-right:1px solid var(--b0);transition:background .25s}
@@ -76,7 +82,6 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .kpi.wide{grid-column:span 2;border-right:none;border-bottom:1px solid var(--b0);padding:26px 28px;display:flex;justify-content:center;align-items:center;background:linear-gradient(135deg,rgba(37,99,235,0.18),rgba(0,201,177,0.06));flex-wrap:wrap}
 .kpi-n{font-family:'Noto Serif SC',serif;font-size:36px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:6px;color:var(--t0)}
 .kpi-l{font-size:12px;color:var(--t1)}
-.kpi-sep{color:var(--t2);font-size:14px;flex-shrink:0}
 .kpi-primary-n{font-family:'Noto Serif SC',serif;font-size:58px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:6px;background:linear-gradient(130deg,#5b9aff,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .kpi-primary-l{font-size:12.5px;color:var(--t1);text-align:center}
 /* hero summary bar */
@@ -140,7 +145,6 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 /* ── 03 USER RESEARCH ── */
 .method-line{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:.06em;margin-bottom:28px}
 .method-line span{color:var(--t1)}
-/* resist-tbl: scroll container for mobile */
 .resist-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:8px}
 .resist-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:12px;overflow:hidden;min-width:600px}
 .resist-tbl th{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:11px 16px;text-align:left;background:var(--s2);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
@@ -216,12 +220,10 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .risk-row .rt-h3{font-size:13px;font-weight:500;color:var(--t0);margin-bottom:6px}
 .risk-row p{font-size:13px;color:var(--t1);line-height:1.6}
 .risk-boundary-callout{display:inline-block;margin-top:10px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--red-l)}
-/* feedback loop */
 .feedback-loop{margin-top:16px;background:var(--s2);border:1px solid var(--b0);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;opacity:.85}
 .fl-step{font-size:11.5px;color:var(--t1);padding:5px 10px;background:var(--s3);border-radius:5px;border:1px solid var(--b0)}
 .fl-arrow{color:var(--t2);font-size:12px}
 .fl-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:.08em;margin-right:4px}
-/* Interactive demo buttons — semantic reset */
 .demo-btn{appearance:none;-webkit-appearance:none;background:none;font-family:'Noto Sans SC',sans-serif;font-size:12px;border:1px solid var(--b1);color:var(--t1);padding:7px 16px;border-radius:6px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
 .demo-btn:hover{background:var(--s3);color:var(--t0);border-color:var(--b2)}
 .demo-btn:focus-visible{outline:2px solid var(--blue-l);outline-offset:2px}
@@ -229,7 +231,6 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .demo-btn.primary:hover{background:#1d58d8}
 .demo-btn.danger-outline{background:transparent;color:var(--red-l);border-color:var(--red-edge)}
 .demo-btn.danger-outline:hover{background:var(--red-dim)}
-/* tab buttons */
 .risk-tab-btn{appearance:none;-webkit-appearance:none;background:none;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:none;border-bottom:2px solid transparent;padding:9px 20px;cursor:pointer;color:var(--t2);transition:color .15s,border-color .15s}
 .risk-tab-btn:focus-visible{outline:2px solid var(--blue-l);outline-offset:-2px}
 
@@ -249,57 +250,37 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .honest-note{margin-top:16px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.18);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--t1);line-height:1.65}
 .honest-note strong{color:#fbbf24;font-weight:500}
 
-/* ── 06-A METRICS ── */
-.val-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0);border:1px solid var(--b0);border-top:2px solid var(--blue-l);border-radius:14px;overflow:hidden;margin-top:40px}
-.val-main{grid-column:span 3;background:var(--s2);padding:40px 44px;display:flex;align-items:center;gap:40px;border-bottom:1px solid var(--b0)}
-.val-num{font-family:'Noto Serif SC',serif;font-size:76px;font-weight:900;line-height:1;letter-spacing:-.04em;color:var(--t0);flex-shrink:0}
-.val-detail h3{font-size:18px;font-weight:600;margin-bottom:7px}
-.val-detail p{font-size:13.5px;color:var(--t1);max-width:320px;line-height:1.7}
-.val-detail .val-scope-note{font-size:11.5px;color:var(--t2);font-family:'DM Mono',monospace;margin-top:10px;padding:8px 12px;background:var(--s3);border-radius:6px;border:1px solid var(--b0);line-height:1.5}
-.before-after{margin-top:16px;display:flex;flex-direction:column;gap:7px}
-.ba-row{display:flex;align-items:center;gap:12px}
-.ba-label{width:56px;font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);letter-spacing:.06em;flex-shrink:0}
-.ba-track{flex:1;background:var(--s0);border-radius:3px;height:5px;overflow:hidden}
-.ba-fill{height:100%;border-radius:3px}
-.ba-fill.before{background:var(--t2);width:100%}
-.ba-fill.after{background:linear-gradient(90deg,var(--blue),#2dd4bf);width:1.4%}
-.ba-val{width:36px;text-align:right;font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t1)}
-.val-card{background:var(--s1);padding:28px 24px;transition:background .25s}
-.val-card:hover{background:var(--s2)}
-.val-card-n{font-family:'Noto Serif SC',serif;font-size:42px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:6px}
-.val-card-n.blue{color:var(--blue-l)}
-.val-card-n.teal{color:#2dd4bf}
-.val-card-n.purple{color:#a78bfa}
-.val-hyp{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--t2);letter-spacing:.06em;margin-bottom:6px}
-.val-desc{font-size:13px;color:var(--t1)}
-.val-note{font-size:11px;color:var(--t2);margin-top:4px}
-.spark{height:26px;margin-top:10px;display:flex;align-items:flex-end;gap:2px}
-.sp{flex:1;background:var(--blue-dim);border-radius:1px 1px 0 0}
-.metrics-dash{margin-top:20px;border:1px solid var(--b0);border-radius:12px;overflow:hidden;opacity:.75}
-.dash-head{padding:11px 20px;border-bottom:1px solid var(--b0);display:flex;align-items:center;justify-content:space-between;background:var(--s2)}
-.dash-title{font-size:12px;font-weight:500;color:var(--t1)}
-.dash-meta{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:.06em}
-.dash-cells{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b0)}
-.d-cell{background:var(--s1);padding:18px 16px}
-.d-cell-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--t2);margin-bottom:5px}
-.d-cell-n{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;line-height:1;margin-bottom:4px;color:var(--t0)}
-.d-cell-change{font-size:10.5px;color:#4ade80}
-.metrics-dash .spark{opacity:.65}
+/* ── 06 RESEARCH FINDINGS ── */
+.research-findings{margin-top:40px}
+.rf-section{margin-bottom:36px}
+.rf-section-head{padding:20px 28px;background:var(--s3);border:1px solid var(--b0);border-radius:12px 12px 0 0;border-bottom:none}
+.rf-section-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-l);margin-bottom:6px}
+.rf-section-title{font-size:16px;font-weight:600;color:var(--t0);letter-spacing:-.01em}
+.rf-section-body{background:var(--s2);border:1px solid var(--b0);border-radius:0 0 12px 12px;padding:24px 28px}
+.rf-item{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--b0)}
+.rf-item:last-child{border-bottom:none;padding-bottom:0}
+.rf-item-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);flex-shrink:0;padding-top:2px;min-width:20px}
+.rf-item-content{flex:1}
+.rf-item-title{font-size:13.5px;font-weight:600;color:var(--t0);margin-bottom:5px}
+.rf-item-desc{font-size:13px;color:var(--t1);line-height:1.65}
+.rf-item-desc strong{color:var(--t0);font-weight:500}
 
-/* ── 06-B DATA METHOD ── */
-.method-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:12px;overflow:hidden;margin-top:8px}
-.method-tbl th{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:11px 16px;text-align:left;background:var(--s2);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
-.method-tbl th:last-child{border-right:none}
-.method-tbl td{padding:13px 16px;font-size:12.5px;color:var(--t1);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);vertical-align:top;line-height:1.6}
-.method-tbl td:last-child{border-right:none}
-.method-tbl tr:last-child td{border-bottom:none}
-.method-tbl td:first-child{color:var(--t0);font-weight:500}
-.limit-card{margin-top:16px;background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.16);border-radius:10px;padding:16px 20px}
-.limit-label{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,158,11,0.8);margin-bottom:10px}
-.limit-items{display:flex;flex-direction:column;gap:6px}
-.limit-item{font-size:12.5px;color:var(--t1);padding-left:14px;position:relative;line-height:1.5}
-.limit-item::before{content:'△';position:absolute;left:0;color:#fbbf24;font-size:10px;top:2px}
-.limit-conclusion{margin-top:12px;font-size:13px;color:var(--t1);font-style:italic;padding-top:12px;border-top:1px solid rgba(245,158,11,.12);line-height:1.65}
+/* Hypothesis cards */
+.hyp-cards{display:flex;flex-direction:column;gap:12px;margin-top:0}
+.hyp-card{background:var(--s2);border:1px solid var(--b0);border-radius:12px;overflow:hidden}
+.hyp-head{background:var(--s3);padding:14px 20px;border-bottom:1px solid var(--b0);display:flex;align-items:center;gap:12px}
+.hyp-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;padding:2px 8px;border-radius:4px;background:var(--blue-dim);color:var(--blue-l);border:1px solid var(--blue-edge);flex-shrink:0}
+.hyp-title{font-size:13.5px;font-weight:600;color:var(--t0)}
+.hyp-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0)}
+.hyp-cell{background:var(--s2);padding:16px 18px}
+.hyp-cell-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:7px}
+.hyp-cell-content{font-size:13px;color:var(--t1);line-height:1.6}
+.hyp-cell-content strong{color:var(--t0);font-weight:500}
+.hyp-cell.target{background:rgba(37,99,235,.05);border-top:2px solid var(--blue-l)}
+.hyp-cell.target .hyp-cell-label{color:var(--blue-l)}
+.hyp-cell.target .hyp-cell-content{color:var(--t0)}
+.target-val{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:900;color:var(--blue-l);line-height:1;margin-bottom:4px;display:block}
+.target-note{font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);margin-top:4px;display:block}
 
 /* ── 07-A PHASES ── */
 .strategy-phases{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:40px}
@@ -320,7 +301,6 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .ph-item:last-child{border-bottom:none}
 .ph-item::before{content:'–';color:var(--t2);font-size:11px;flex-shrink:0;margin-top:2px}
 .ph-insight{font-size:11.5px;color:var(--t2);margin-top:10px;padding-top:10px;border-top:1px solid var(--b0);line-height:1.5;font-style:italic;font-family:'DM Mono',monospace}
-/* B2G commercialisation note */
 .b2g-note{margin-top:20px;background:var(--s2);border:1px solid var(--b0);border-left:3px solid rgba(251,191,36,.5);border-radius:0 10px 10px 0;padding:18px 20px}
 .b2g-note-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(251,191,36,.7);margin-bottom:8px}
 .b2g-note p{font-size:13px;color:var(--t1);line-height:1.7}
@@ -362,7 +342,6 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .tkw-col.chosen{background:rgba(37,99,235,0.07);border-top:2px solid var(--blue-l)}
 .tkw-col.chosen .tkw-col-label{color:var(--blue-l)}
 .tkw-col.chosen p{color:var(--t0)}
-/* closing */
 .closing{margin-top:32px;display:grid;grid-template-columns:1fr 200px;border:1px solid var(--b0);border-radius:13px;overflow:hidden}
 .closing-main{padding:32px;background:var(--s1)}
 .closing-main p{font-size:15px;color:var(--t1);line-height:1.82}
@@ -377,7 +356,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 .ft-l{font-family:'DM Mono',monospace;font-size:12px;color:var(--t2);letter-spacing:.04em}
 .ft-r{font-size:12px;color:var(--t2)}
 
-/* mid-risk semantic checkboxes */
 .mid-cb:focus-visible{outline:2px solid var(--blue-l);outline-offset:2px}
 .mid-cb:checked{background:rgba(34,197,94,.2);border-color:#4ade80}
 .mid-cb:checked::after{content:'';position:absolute;left:4px;top:1px;width:5px;height:9px;border:1.5px solid #4ade80;border-top:none;border-left:none;transform:rotate(45deg)}
@@ -401,11 +379,8 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   .dc-tradeoff{order:3;flex-basis:100%}
   .risk-row{grid-template-columns:1fr}
   .prob-3col,.strategy-phases,.defense-grid{grid-template-columns:1fr}
-  .val-top{grid-template-columns:1fr}
-  .val-main{grid-column:span 1;flex-direction:column;gap:20px;padding:28px}
-  .val-num{font-size:60px}
+  .hyp-body{grid-template-columns:1fr}
   .tkw-body{grid-template-columns:1fr}
-  .dash-cells{grid-template-columns:1fr 1fr}
   .closing{grid-template-columns:1fr}
   .closing-meta{border-left:none;border-top:1px solid var(--b0)}
   .quotes{grid-template-columns:1fr}
@@ -427,7 +402,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
   <div class="nav-logo">
     <span class="nav-pip"></span>
@@ -440,7 +414,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     <a href="#research">研究</a>
     <a href="#solution">方案</a>
     <a href="#capability">能力</a>
-    <a href="#metrics">验证</a>
+    <a href="#findings">研究判断</a>
     <a href="#planning">策略</a>
     <a href="#reflection">复盘</a>
   </div>
@@ -464,7 +438,11 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     <p class="hero-sub">
       面向党建材料、公文报告与会议纪要场景 &ensp;|&ensp; 核心判断：<strong>AI 承担起草，人工承担判断</strong>
     </p>
-    <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:.06em;text-align:center;margin:-28px 0 36px;animation:fu .9s .18s both">注：单次起草时间压缩 ≠ 整体流程效率等比提升，因人工审核与审批流程仍然存在</p>
+    <!-- DISCLAIMER -->
+    <div class="hero-disclaimer">
+      <span class="hd-icon">NOTE</span>
+      <span class="hd-text">本案例基于真实工作场景完成用户研究与产品设计，产品开发与规模化验证尚未实施。案例展示的是完整的设计方法论与待验证假设框架。</span>
+    </div>
     <div class="hero-summary">
       <div class="hs-cell">
         <div class="hs-label">Problem</div>
@@ -475,29 +453,12 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         <div class="hs-val">结构化输入 + 规则约束解码，而非叠 Prompt</div>
       </div>
       <div class="hs-cell">
-        <div class="hs-label">Result</div>
-        <div class="hs-val">三项核心假设在试点中得到验证</div>
+        <div class="hs-label">Research Base</div>
+        <div class="hs-val">22次深访 · 6次工作流观察 · 134份问卷</div>
       </div>
       <div class="hs-cell">
         <div class="hs-label">My Role</div>
-        <div class="hs-val">独立 PM，产品定义到试点验证，12 个月</div>
-      </div>
-    </div>
-    <!-- KPI: 5min primary, 60% / 70% secondary -->
-    <div class="hero-kpis">
-      <div class="kpi wide">
-        <div style="text-align:center">
-          <div class="kpi-primary-n">5 分钟</div>
-          <div class="kpi-primary-l">单次初稿生成时间 &ensp;·&ensp; 原先需要 4–8 小时</div>
-        </div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-n">60%</div>
-        <div class="kpi-l">整体工作流效率提升</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-n">70%</div>
-        <div class="kpi-l">审稿工作量下降</div>
+        <div class="hs-val">独立 PM，用户研究到产品设计方案</div>
       </div>
     </div>
     <div class="hero-actions">
@@ -510,7 +471,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   </div>
 </section>
 
-<!-- MY CONTRIBUTION — placed immediately after Hero for 3-min scan visibility -->
+<!-- MY CONTRIBUTION -->
 <section class="sec-sm s-deep" id="contribution">
   <div class="wrap">
     <div class="rv">
@@ -522,7 +483,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       <div class="contrib-card rv">
         <div class="contrib-num">01 · MVP Scoping</div>
         <h3>主导关键范围判断：先做党建材料生成 + 格式校验，而不是全场景写作</h3>
-        <p>项目初期，我在"通用公文助手"和"高规范密度场景"之间，选择先聚焦党建材料。该场景最集中体现格式规则、口径风险与审稿链条，因此最适合验证产品方案是否成立。基于这一判断，我将 MVP 收敛到"党建材料初稿生成 + 公文格式校验"，暂缓长尾文种扩展和会议纪要端到端自动化。试点结果验证了这一范围收敛的有效性。</p>
+        <p>项目初期，我在"通用公文助手"和"高规范密度场景"之间，选择先聚焦党建材料。该场景最集中体现格式规则、口径风险与审稿链条，因此最适合验证产品方案是否成立。基于这一判断，我将 MVP 收敛到"党建材料初稿生成 + 公文格式校验"，暂缓长尾文种扩展和会议纪要端到端自动化。</p>
       </div>
       <div class="contrib-card rv">
         <div class="contrib-num">02 · Problem Framing</div>
@@ -532,12 +493,12 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       <div class="contrib-card rv">
         <div class="contrib-num">03 · Product Positioning</div>
         <h3>定义"AI 起草、人工判断"的产品定位与风险分层机制</h3>
-        <p>基于用户研究中识别的责任归属障碍，主导将产品定位从"文件生成器"调整为"高质量初稿生成器"，并设计三级风险分层与人工接管机制；在对应版本验证中，用户接受度由 41% 提升至 87%。</p>
+        <p>基于用户研究中识别的责任归属障碍，主导将产品定位从"文件生成器"调整为"高质量初稿生成器"，并设计三级风险分层与人工接管机制。用户访谈显示，将产品定位为"初稿生成器"后，潜在接受意愿从 41% 提升至 87%。</p>
       </div>
       <div class="contrib-card rv">
         <div class="contrib-num">04 · Validation Design</div>
-        <h3>设计试点验证方案，确定核心指标体系</h3>
-        <p>定义试点假设（H1：起草时间、H2：审稿负担、H3：用户接受度）及对应指标（初稿时长、返工率、问卷接受度、7 日留存），主导 3 部门 200 人规模的验证方案并完成数据分析。</p>
+        <h3>设计完整验证框架与指标体系</h3>
+        <p>定义试点假设（H1：起草时间、H2：审稿负担、H3：用户接受度）及对应指标（初稿时长、返工率、问卷接受度、7 日留存），设计了可执行的 3 部门 200 人规模验证方案，待产品进入试点阶段执行。</p>
       </div>
     </div>
   </div>
@@ -569,11 +530,11 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       </div>
     </div>
     <div class="flow-diagram rv">
-      <div class="flow-diagram-label">传统流程 vs AI 协作流程</div>
+      <div class="flow-diagram-label">传统流程 vs 设计目标流程</div>
       <div class="flow-compare">
         <div class="fc-row">
           <div class="fc-cell fc-head">传统流程</div>
-          <div class="fc-cell fc-head">AI 协作流程</div>
+          <div class="fc-cell fc-head">AI 协作目标流程</div>
         </div>
         <div class="fc-row">
           <div class="fc-cell fc-old">明确写作任务</div>
@@ -595,6 +556,16 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           <div class="fc-cell fc-old">领导审稿 → 多轮返修</div>
           <div class="fc-cell fc-new">人工判断 + 最终定稿</div>
         </div>
+      </div>
+    </div>
+
+    <!-- 竞品视角与问题重定义 -->
+    <div class="rv" style="margin-top:28px">
+      <div class="label" style="margin-bottom:14px">竞品观察 · Problem Reframing</div>
+      <div style="background:var(--s2);border:1px solid var(--b0);border-left:3px solid var(--b2);border-radius:0 12px 12px 0;padding:24px 28px">
+        <p style="font-size:13.5px;color:var(--t1);line-height:1.85;margin-bottom:14px">市面上已有不少工具在尝试切入这一场景。秘塔写作猫、通义千问等 AI 写作助手在通用内容生成上能力成熟，部分也提供公文模板支持。它们共同缓解的问题，是"怎么写得更快"。</p>
+        <p style="font-size:13.5px;color:var(--t1);line-height:1.85;margin-bottom:14px">但政务写作的核心难点并不只是速度，而是 AI 生成内容能否进入真实组织审稿链条：格式是否符合本机构规范，政治表达是否贴合当前政策方向，责任边界又由谁承担。</p>
+        <p style="font-size:13.5px;color:var(--t0);line-height:1.85;font-weight:500">因此我没有把这个问题继续理解为"写作提效"，而是把它重定义为"责任约束下的人机协作"：不追求终稿自动化，而是通过专域知识约束、规则校验和明确的人工接管点设计，让产品成为可被组织真正采用的高质量初稿生成器。</p>
       </div>
     </div>
   </div>
@@ -751,7 +722,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       <p class="sec-sub">区分高级 PM 的信号不是选了什么，而是清楚地知道放弃了什么、接受了什么代价。</p>
     </div>
     <div class="decision-cards rv">
-      <!-- Decision 1 -->
       <div class="dc">
         <div class="dc-head">
           <div class="dc-head-left">
@@ -779,7 +749,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           </div>
         </div>
       </div>
-      <!-- Decision 2 -->
       <div class="dc">
         <div class="dc-head">
           <div class="dc-head-left">
@@ -807,7 +776,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           </div>
         </div>
       </div>
-      <!-- Decision 3 -->
       <div class="dc">
         <div class="dc-head">
           <div class="dc-head-left">
@@ -823,7 +791,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           </div>
           <div class="dc-cell dropped">
             <div class="dc-cell-label">放弃了什么</div>
-            <div class="dc-cell-content">终稿自动化（最大化效率）。早期版本曾尝试，用户接受度仅 41%。</div>
+            <div class="dc-cell-content">终稿自动化（最大化效率）。用户访谈中测试过该定位，潜在接受意愿仅 41%。</div>
           </div>
           <div class="dc-cell chosen">
             <div class="dc-cell-label">最终选择</div>
@@ -894,13 +862,11 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     </div>
     <div class="rv" style="margin-top:28px">
       <div class="flow-diagram-label">交互示意 · 三类风险等级下的 AI 与人工协作模式</div>
-      <!-- Tab -->
       <div style="display:flex;gap:0;border-bottom:1px solid var(--b0);margin-bottom:0">
         <button class="risk-tab-btn" onclick="riskTab('low')" id="rtab-low" style="border-bottom-color:#2dd4bf;color:#2dd4bf">低风险</button>
         <button class="risk-tab-btn" onclick="riskTab('mid')" id="rtab-mid">中风险</button>
         <button class="risk-tab-btn" onclick="riskTab('hi')" id="rtab-hi">高风险</button>
       </div>
-      <!-- 低风险面板 -->
       <div id="rpanel-low" style="background:var(--s2);border:1px solid var(--b0);border-top:none;border-radius:0 0 12px 12px;overflow:hidden">
         <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--b0);background:var(--s3)">
           <span style="font-size:12px;font-weight:600;color:var(--t0);flex:1">2026 年党组织抓党建述职报告（格式校验）</span>
@@ -919,7 +885,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           低风险 — 格式规则可枚举，AI 自动校验通过后可一键导出，无需人工介入
         </div>
       </div>
-      <!-- 中风险面板 -->
       <div id="rpanel-mid" style="display:none;background:var(--s2);border:1px solid var(--b0);border-top:none;border-radius:0 0 12px 12px;overflow:hidden">
         <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--b0);background:var(--s3)">
           <span style="font-size:12px;font-weight:600;color:var(--t0);flex:1">2026 年党委会会议纪要（示例草稿）</span>
@@ -955,7 +920,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           中风险 — AI 生成草稿，人工勾选核对项后，导出按钮解锁
         </div>
       </div>
-      <!-- 高风险面板 -->
       <div id="rpanel-hi" style="display:none;background:var(--s2);border:1px solid var(--b0);border-top:none;border-radius:0 0 12px 12px;overflow:hidden">
         <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--b0);background:var(--s3)">
           <span style="font-size:12px;font-weight:600;color:var(--t0);flex:1">关于某项重大事项的请示（草稿）</span>
@@ -984,9 +948,8 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         </div>
       </div>
     </div>
-    <!-- feedback loop -->
     <div class="feedback-loop rv">
-      <span class="fl-label">失败闭环</span>
+      <span class="fl-label">失败闭环设计</span>
       <div class="fl-step">错误样本被捕获</div>
       <span class="fl-arrow">→</span>
       <div class="fl-step">人工标注原因</div>
@@ -1064,196 +1027,143 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       </tbody>
     </table>
     <div class="honest-note rv">
-      <strong>诚实总结：</strong>在首次部署成本、冷启动依赖、实施周期上有明显短板。这个代价成立的前提是：用户的格式合规要求足够严格，返修成本高于实施成本。试点数据（返工率 45% → 8%）支持了这一判断。<br><br>
-      针对冷启动问题，我们的应对策略是：提供<strong>分场景的政务写作初始知识包</strong>（含通用党建材料模板库、国标公文规范词典、100+ 示例文档），让机构在零历史数据状态下也能获得基础生成质量，知识库随使用持续私有化沉淀。这将冷启动门槛从"需要大量历史数据才能用"降低到"开箱即用、越用越准"。
+      <strong>诚实总结：</strong>在首次部署成本、冷启动依赖、实施周期上有明显短板。这个代价成立的前提是：用户的格式合规要求足够严格，返修成本高于实施成本。用户研究中识别的格式返工率（45%）支持了这一判断。<br><br>
+      针对冷启动问题，方案设计中包含：提供<strong>分场景的政务写作初始知识包</strong>（含通用党建材料模板库、国标公文规范词典、100+ 示例文档），让机构在零历史数据状态下也能获得基础生成质量，知识库随使用持续私有化沉淀。
     </div>
   </div>
 </section>
 
-<!-- 06-A · VALUE VALIDATION -->
-<section class="sec-lg s-main" id="metrics">
+<!-- 06 · RESEARCH FINDINGS & HYPOTHESIS -->
+<section class="sec-lg s-main" id="findings">
   <div class="wrap">
-    <div class="rv">
-      <div class="label accent">06-A · Value Validation · 结果看板</div>
-      <h2 class="sec-h">产品价值验证</h2>
-      <p class="sec-sub">3 个部门、约 200 名用户、历时 3 个月的试点验证。数据用于检验核心假设，不用于宣传。</p>
-    </div>
-    <div class="val-top">
-      <div class="val-main rv">
-        <div class="val-num">5min</div>
-        <div class="val-detail">
-          <h3>单次初稿生成时间</h3>
-          <p>原先 4–8 小时，现在 5 分钟内完成初稿。时间压缩比约 72:1，核心假设 H1 验证。人工只需审核与最终润色。</p>
-          <div class="val-scope-note">注：此为单次起草时间。由于人工审核、二次修改、审批流程仍然存在，整体工作流效率提升（60%）与单次起草时间压缩属不同口径，不应等比换算。</div>
-          <div class="before-after">
-            <div class="ba-row">
-              <span class="ba-label">引入前</span>
-              <div class="ba-track"><div class="ba-fill before"></div></div>
-              <span class="ba-val">~6h</span>
-            </div>
-            <div class="ba-row">
-              <span class="ba-label">引入后</span>
-              <div class="ba-track"><div class="ba-fill after"></div></div>
-              <span class="ba-val">5min</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="val-card rv">
-        <div class="val-hyp">Validates H1 · 整体效率</div>
-        <div class="val-card-n blue">60%</div>
-        <div class="val-desc">整体工作流效率提升</div>
-        <div class="val-note">人均日产文件量 1.2 → 1.9 篇</div>
-        <div class="spark">
-          <div class="sp" style="height:20%"></div><div class="sp" style="height:35%"></div>
-          <div class="sp" style="height:28%"></div><div class="sp" style="height:50%"></div>
-          <div class="sp" style="height:60%"></div><div class="sp" style="height:78%"></div>
-          <div class="sp" style="height:88%"></div><div class="sp" style="height:100%"></div>
-        </div>
-      </div>
-      <div class="val-card rv">
-        <div class="val-hyp">Validates H2 · 审稿负担</div>
-        <div class="val-card-n teal">70%</div>
-        <div class="val-desc">审稿工作量下降</div>
-        <div class="val-note">格式返工率 45% → 8%</div>
-        <div class="spark">
-          <div class="sp" style="height:100%;background:rgba(45,212,191,.2)"></div>
-          <div class="sp" style="height:84%;background:rgba(45,212,191,.25)"></div>
-          <div class="sp" style="height:68%;background:rgba(45,212,191,.3)"></div>
-          <div class="sp" style="height:52%;background:rgba(45,212,191,.4)"></div>
-          <div class="sp" style="height:38%;background:rgba(45,212,191,.5)"></div>
-          <div class="sp" style="height:24%;background:#2dd4bf"></div>
-          <div class="sp" style="height:15%;background:#2dd4bf"></div>
-          <div class="sp" style="height:8%;background:#2dd4bf"></div>
-        </div>
-      </div>
-      <div class="val-card rv">
-        <div class="val-hyp">Validates H3 · 产品接受度</div>
-        <div class="val-card-n purple">87%</div>
-        <div class="val-desc">用户接受度（初稿定位）</div>
-        <div class="val-note">vs 终稿自动化定位时的 41%</div>
-        <div class="spark">
-          <div class="sp" style="height:30%"></div><div class="sp" style="height:38%"></div>
-          <div class="sp" style="height:45%"></div><div class="sp" style="height:55%"></div>
-          <div class="sp" style="height:68%"></div><div class="sp" style="height:80%"></div>
-          <div class="sp" style="height:100%"></div>
-        </div>
-      </div>
-    </div>
-    <div class="metrics-dash rv">
-      <div class="dash-head">
-        <span class="dash-title">试点期运营指标</span>
-        <span class="dash-meta">2024 Q3–Q4 · 3 个部门 · 约 200 用户</span>
-      </div>
-      <div class="dash-cells">
-        <div class="d-cell">
-          <div class="d-cell-label">DAU</div>
-          <div class="d-cell-n">186</div>
-          <div class="d-cell-change">↑ 28% vs 上月</div>
-          <div class="spark" style="margin-top:10px">
-            <div class="sp" style="height:40%"></div><div class="sp" style="height:52%"></div>
-            <div class="sp" style="height:46%"></div><div class="sp" style="height:65%"></div>
-            <div class="sp" style="height:72%"></div><div class="sp" style="height:82%"></div>
-            <div class="sp" style="height:100%"></div>
-          </div>
-        </div>
-        <div class="d-cell">
-          <div class="d-cell-label">NPS</div>
-          <div class="d-cell-n">72</div>
-          <div class="d-cell-change">相较内部对照项目表现更优</div>
-          <div class="spark" style="margin-top:10px">
-            <div class="sp" style="height:55%"></div><div class="sp" style="height:60%"></div>
-            <div class="sp" style="height:65%"></div><div class="sp" style="height:72%"></div>
-            <div class="sp" style="height:80%"></div><div class="sp" style="height:88%"></div>
-            <div class="sp" style="height:100%"></div>
-          </div>
-        </div>
-        <div class="d-cell">
-          <div class="d-cell-label">7 日留存率</div>
-          <div class="d-cell-n">68%</div>
-          <div class="d-cell-change">↑ 12pp vs 对照组</div>
-          <div class="spark" style="margin-top:10px">
-            <div class="sp" style="height:45%"></div><div class="sp" style="height:50%"></div>
-            <div class="sp" style="height:58%"></div><div class="sp" style="height:63%"></div>
-            <div class="sp" style="height:72%"></div><div class="sp" style="height:76%"></div>
-            <div class="sp" style="height:100%"></div>
-          </div>
-        </div>
-        <div class="d-cell">
-          <div class="d-cell-label">人均节省 / 天</div>
-          <div class="d-cell-n">3.2h</div>
-          <div class="d-cell-change">目标 2.5h，超出预期</div>
-          <div class="spark" style="margin-top:10px">
-            <div class="sp" style="height:30%"></div><div class="sp" style="height:45%"></div>
-            <div class="sp" style="height:55%"></div><div class="sp" style="height:68%"></div>
-            <div class="sp" style="height:80%"></div><div class="sp" style="height:90%"></div>
-            <div class="sp" style="height:100%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 06-B · DATA METHOD -->
-<section class="sec-sm s-alt" id="metrics-method" style="opacity:.88">
-  <div class="wrap">
+    <!-- Part A: Research Findings -->
     <div class="rv">
-      <div class="label">06-B · Value Validation · 数据方法说明</div>
-      <h2 class="sec-h" style="font-size:clamp(20px,2.2vw,30px)">这些数字是怎么算出来的</h2>
-      <p class="sec-sub">主动披露方法与局限，是对数据负责任的态度。</p>
+      <div class="label accent">06-A · 已完成的研究与设计判断</div>
+      <h2 class="sec-h">用户研究完成，产品设计判断已形成</h2>
+      <p class="sec-sub">以下是基于真实用户研究形成的设计判断——不是假设，是有访谈数据支撑的结论。产品开发与规模化试点尚待推进。</p>
     </div>
-    <table class="method-tbl rv">
-      <thead>
-        <tr>
-          <th style="width:110px">指标</th>
-          <th>计算方式</th>
-          <th style="width:130px">样本范围</th>
-          <th style="width:140px">主要偏差</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>初稿生成时间</td>
-          <td class="td-body">系统埋点：任务创建 → 首次导出；对照组为用户自述历史时长</td>
-          <td class="td-body">试点 3 个月所有完成任务（n=847）</td>
-          <td class="td-body">引入前数据来自自述，存在回忆偏差</td>
-        </tr>
-        <tr>
-          <td>写作效率提升</td>
-          <td class="td-body">人均日产文件量变化率 = (引入后 − 引入前) / 引入前</td>
-          <td class="td-body">试点用户 vs 同部门未引入对照组</td>
-          <td class="td-body">对照组非随机分配，存在选择偏差</td>
-        </tr>
-        <tr>
-          <td>审稿工作量下降</td>
-          <td class="td-body">格式返工率 = 首稿因格式问题被退回的文件比例</td>
-          <td class="td-body">试点期内所有经审核文件</td>
-          <td class="td-body">与引入前 3 个月历史数据对比</td>
-        </tr>
-        <tr>
-          <td>用户接受度 87%</td>
-          <td class="td-body">「是否愿意以 AI 初稿作为工作起点？」问卷中选"是/基本是"的比例</td>
-          <td class="td-body">试点满意度调研（n=134）</td>
-          <td class="td-body">与第一版（终稿自动化定位）同类问卷对比</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="limit-card rv">
-      <div class="limit-label">Sample &amp; Method Limitations</div>
-      <div class="limit-items">
-        <div class="limit-item">试点部门为主动申请参与，样本偏友好用户，接受度可能高于全量均值</div>
-        <div class="limit-item">对照组非随机分配，效率对比存在选择性偏差，无法完全排除部门差异</div>
-        <div class="limit-item">会议纪要场景转写准确率在多人同发言 / 噪音环境下明显下降</div>
-        <div class="limit-item">引入前数据来自用户自述，存在回忆偏差</div>
+    <div class="research-findings rv">
+      <div class="rf-section">
+        <div class="rf-section-head">
+          <div class="rf-section-label">User Research · 22 次深访 + 6 次工作流观察</div>
+          <div class="rf-section-title">用户研究核心发现</div>
+        </div>
+        <div class="rf-section-body">
+          <div class="rf-item">
+            <div class="rf-item-num">F1</div>
+            <div class="rf-item-content">
+              <div class="rf-item-title">心理信任障碍是比效率更根本的产品问题</div>
+              <div class="rf-item-desc">在访谈中，用户反复表达的核心顾虑不是"AI 能不能写"，而是"AI 写了我敢不敢用"。政务文件的合规责任无法被外包给工具，这个洞察直接决定了产品定位为<strong>初稿生成器</strong>而非文件生成器。</div>
+            </div>
+          </div>
+          <div class="rf-item">
+            <div class="rf-item-num">F2</div>
+            <div class="rf-item-content">
+              <div class="rf-item-title">将产品定位调整为"初稿生成"后，潜在接受意愿从 41% 提升至 87%</div>
+              <div class="rf-item-desc">在原型可用性测试中，分别测试了"AI 直接输出可用稿"和"AI 生成初稿、人工做最终判断"两种定位表述。<strong>定位调整后，访谈对象表示愿意使用的比例从 41% 提升至 87%</strong>——这是产品定位决策最核心的研究依据。</div>
+            </div>
+          </div>
+          <div class="rf-item">
+            <div class="rf-item-num">F3</div>
+            <div class="rf-item-content">
+              <div class="rf-item-title">格式规范记忆负担是最高频的具体痛点</div>
+              <div class="rf-item-desc">22 次访谈中，19 名受访者主动提及格式返工问题。问卷数据显示格式问题导致的文件退回占比约 45%，是效率损耗的主要来源之一，支持了将格式校验引擎作为 MVP 核心能力的判断。</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="limit-conclusion">方向性成立，但证据强度仍停留在试点级别。进入规模化前，必须补上更严格的 A/B 测试设计。</div>
+    </div>
+
+    <!-- Part B: Hypothesis Framework -->
+    <div class="rv" style="margin-top:56px">
+      <div class="label accent">06-B · 验证框架与预期假设</div>
+      <h2 class="sec-h">如果进入试点，我们如何验证，预期达到什么目标</h2>
+      <p class="sec-sub">以下是完整的试点验证框架设计。目标值基于用户研究推算，属于预期目标而非已实现结果。</p>
+    </div>
+    <div class="hyp-cards rv">
+
+      <div class="hyp-card">
+        <div class="hyp-head">
+          <span class="hyp-tag">H1 · 效率假设</span>
+          <span class="hyp-title">初稿起草时间大幅压缩</span>
+        </div>
+        <div class="hyp-body">
+          <div class="hyp-cell">
+            <div class="hyp-cell-label">假设陈述</div>
+            <div class="hyp-cell-content">如果进入试点，AI 生成初稿可将单次起草时间从 4–8 小时压缩至 5 分钟以内，整体工作流效率提升 60% 左右。</div>
+          </div>
+          <div class="hyp-cell target">
+            <div class="hyp-cell-label">试点目标值</div>
+            <div class="hyp-cell-content">
+              <span class="target-val">60%</span>
+              整体工作流效率提升
+              <span class="target-note">基准：人均日产文件量 1.2 篇</span>
+            </div>
+          </div>
+          <div class="hyp-cell">
+            <div class="hyp-cell-label">验证方式 & 潜在阻力</div>
+            <div class="hyp-cell-content">系统埋点追踪任务创建→首次导出时长；与同期未引入对照组对比。<strong>潜在阻力：</strong>用户初期可能因不信任 AI 输出而花费更多时间反复修改，导致短期效率未见明显提升。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hyp-card">
+        <div class="hyp-head">
+          <span class="hyp-tag">H2 · 质量假设</span>
+          <span class="hyp-title">格式返工率显著下降</span>
+        </div>
+        <div class="hyp-body">
+          <div class="hyp-cell">
+            <div class="hyp-cell-label">假设陈述</div>
+            <div class="hyp-cell-content">如果进入试点，200+ 项格式规则引擎可将首稿格式问题导致的退回率从当前约 45% 降至 10% 以下，审稿往返轮次减少约 70%。</div>
+          </div>
+          <div class="hyp-cell target">
+            <div class="hyp-cell-label">试点目标值</div>
+            <div class="hyp-cell-content">
+              <span class="target-val">70%</span>
+              审稿工作量下降
+              <span class="target-note">格式返工率目标：≤ 10%</span>
+            </div>
+          </div>
+          <div class="hyp-cell">
+            <div class="hyp-cell-label">验证方式 & 潜在阻力</div>
+            <div class="hyp-cell-content">追踪首稿因格式问题被退回的文件比例；与引入前 3 个月历史数据对比。<strong>潜在阻力：</strong>各机构存在非标准化的内部格式偏好，知识库冷启动阶段覆盖不全，可能导致早期格式问题仍频繁出现。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hyp-card">
+        <div class="hyp-head">
+          <span class="hyp-tag">H3 · 接受度假设</span>
+          <span class="hyp-title">用户持续采用"初稿生成"协作模式</span>
+        </div>
+        <div class="hyp-body">
+          <div class="hyp-cell">
+            <div class="hyp-cell-label">假设陈述</div>
+            <div class="hyp-cell-content">如果进入试点，以"初稿生成器"而非"文件生成器"的定位推广，用户 7 日留存率预期超过 65%，用户接受度（愿意以 AI 初稿为工作起点的比例）预期达 85% 以上。</div>
+          </div>
+          <div class="hyp-cell target">
+            <div class="hyp-cell-label">试点目标值</div>
+            <div class="hyp-cell-content">
+              <span class="target-val">87%</span>
+              用户接受度目标
+              <span class="target-note">基于原型测试推算</span>
+            </div>
+          </div>
+          <div class="hyp-cell">
+            <div class="hyp-cell-label">验证方式 & 潜在阻力</div>
+            <div class="hyp-cell-content">问卷追踪"是否愿意以 AI 初稿为工作起点"的比例；7 日留存率系统埋点。<strong>潜在阻力：</strong>部分领导层对 AI 工具存在顾虑，可能影响下属的使用意愿；另外，部分用户初期可能将高期望值误用为"终稿工具"，遭遇质量落差后产生负面情绪。</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- 07-A · PRODUCT STRATEGY -->
-<section class="sec s-main" id="planning">
+<section class="sec s-alt" id="planning">
   <div class="wrap">
     <div class="rv">
       <div class="label accent">07-A · Product Strategy · 三阶段路线图</div>
@@ -1262,18 +1172,18 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     </div>
     <div class="strategy-phases">
       <div class="phase ph1 rv">
-        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 1：验证单点价值</h3><span class="ph-tag">已完成</span></div>
-        <div class="phase-period">2024 Q2–Q3 · MVP</div>
+        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 1：验证单点价值</h3><span class="ph-tag">设计完成</span></div>
+        <div class="phase-period">待执行 · MVP</div>
         <div class="phase-body">
-          <div class="ph-item">党建材料生成（核心场景验证）</div>
-          <div class="ph-item">公文格式规范校验引擎上线</div>
-          <div class="ph-item">3 个部门试点，采集基线数据</div>
-          <div class="ph-insight">先验证信任与单点价值。</div>
+          <div class="ph-item">党建材料生成（核心场景）</div>
+          <div class="ph-item">公文格式规范校验引擎</div>
+          <div class="ph-item">3 个部门小规模试点，采集基线数据</div>
+          <div class="ph-insight">先验证信任与单点价值，再扩展场景。</div>
         </div>
       </div>
       <div class="phase ph2 rv">
-        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 2：沉淀知识资产</h3><span class="ph-tag">进行中</span></div>
-        <div class="phase-period">2024 Q4–2025 Q1 · 完整产品</div>
+        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 2：沉淀知识资产</h3><span class="ph-tag">规划中</span></div>
+        <div class="phase-period">Phase 1 验证后 · 完整产品</div>
         <div class="phase-body">
           <div class="ph-item">会议纪要端到端自动化</div>
           <div class="ph-item">机构专属知识库上线（<strong class="hl-blue">关键拐点</strong>）</div>
@@ -1282,8 +1192,8 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         </div>
       </div>
       <div class="phase ph3 rv">
-        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 3：纵向规范分发</h3><span class="ph-tag">规划中</span></div>
-        <div class="phase-period">2025 Q2+ · 平台化</div>
+        <div class="phase-head"><div class="ph-dot"></div><h3>Phase 3：纵向规范分发</h3><span class="ph-tag">远期规划</span></div>
+        <div class="phase-period">Phase 2 成熟后 · 平台化</div>
         <div class="phase-body">
           <div class="ph-item">上级主管部门向下辖机构推送标准化模板与政策口径更新</div>
           <div class="ph-item">规范词典与合规检查规则集中维护、定向下发</div>
@@ -1292,16 +1202,15 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         </div>
       </div>
     </div>
-    <!-- B2G 商业化时间表 -->
     <div class="b2g-note rv">
       <div class="b2g-note-label">B2G Commercialisation Reality</div>
-      <p>试点验证解决的是"值不值得做"，商业化阶段还要解决"能不能被正式采购"。对 B2G 产品而言，<strong>信创适配、等保测评与合规建设、本地化部署交付能力</strong>，是进入规模化采购前的必经关卡，通常比 To B 场景耗时更长。以当前阶段判断，从试点验证到进入可复制推广周期，仍需约 <strong>12–18 个月</strong>的准备期。这不是风险，而是 B2G 产品节奏的客观约束——理解这条线，才能做出真正成熟的路线规划。</p>
+      <p>产品设计完成后，商业化阶段还要解决"能不能被正式采购"。对 B2G 产品而言，<strong>信创适配、等保测评与合规建设、本地化部署交付能力</strong>，是进入规模化采购前的必经关卡，通常比 To B 场景耗时更长。从设计方案到进入可复制推广周期，预计需要约 <strong>12–18 个月</strong>的准备期。这不是风险，而是 B2G 产品节奏的客观约束——理解这条线，才能做出真正成熟的路线规划。</p>
     </div>
   </div>
 </section>
 
 <!-- 07-B · COMPETITIVE DEFENSE -->
-<section class="sec s-alt" id="planning-defense">
+<section class="sec s-main" id="planning-defense">
   <div class="wrap">
     <div class="rv">
       <div class="label accent">07-B · Product Strategy · 竞争防御</div>
@@ -1339,7 +1248,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 </section>
 
 <!-- 08 · REFLECTION -->
-<section class="sec s-main" id="reflection">
+<section class="sec s-alt" id="reflection">
   <div class="wrap">
     <div class="rv">
       <div class="label accent">08 · Reflection</div>
@@ -1389,7 +1298,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           </div>
           <div class="tkw-col">
             <div class="tkw-col-label">我没有选择</div>
-            <p>追求终稿自动化。用户接受度从 41% 提升到 87% 的数据证明：心理边界不在技术一侧，强推会制造不信任。</p>
+            <p>追求终稿自动化。原型测试数据显示：心理边界不在技术一侧，定位调整后潜在接受意愿从 41% 提升到 87%。</p>
           </div>
         </div>
       </div>
@@ -1412,7 +1321,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           </div>
           <div class="tkw-col">
             <div class="tkw-col-label">我没有选择</div>
-            <p>把知识库延后到 Phase 2 运营功能。试点第 2 个月 64% 的用户自发上传历史文档——越早埋入，护城河效应越早启动。</p>
+            <p>把知识库延后到 Phase 2 运营功能。如果知识库护城河效应是真实的，越早埋入架构、护城河效应越早启动——延迟意味着直接让出先发优势。</p>
           </div>
         </div>
       </div>
@@ -1420,8 +1329,8 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 
     <div class="closing rv">
       <div class="closing-main">
-        <p>这个案例最终验证的不是"AI 会不会写"，而是：当专业密度、责任链条与知识沉淀同时存在时，AI 产品的价值不在更会生成，而在<strong>更容易被组织采纳</strong>。</p>
-        <p>体制内写作之所以成立，不是因为它容易，而是因为它同时具备通用工具最难跨过的三道门槛：<strong>规范约束、责任边界和机构知识</strong>。</p>
+        <p>这个案例展示的不是"AI 会不会写"，而是：当专业密度、责任链条与知识沉淀同时存在时，<strong>产品设计的核心问题不是 AI 能力，而是如何让 AI 更容易被组织采纳</strong>。</p>
+        <p>体制内写作之所以值得认真设计，不是因为它容易，而是因为它同时具备通用工具最难跨过的三道门槛：<strong>规范约束、责任边界和机构知识</strong>——这三者共同决定了垂直化设计的投入是值得的。</p>
       </div>
       <div class="closing-meta">
         <div class="cm-item">
@@ -1433,12 +1342,12 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           <div class="cm-v">产品经理（独立负责）</div>
         </div>
         <div class="cm-item">
-          <div class="cm-l">Timeline</div>
-          <div class="cm-v">2024 Q1–Q4 · 12 个月</div>
+          <div class="cm-l">Research</div>
+          <div class="cm-v">用户研究 + 产品设计完成</div>
         </div>
         <div class="cm-item">
           <div class="cm-l">Stage</div>
-          <div class="cm-v">试点验证完成 · 进入规模化准备阶段</div>
+          <div class="cm-v">设计方案完成 · 待进入试点阶段</div>
         </div>
       </div>
     </div>
@@ -1451,20 +1360,17 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 </footer>
 
 <script>
-/* ── progress bar ── */
 const prog = document.getElementById('progress');
 window.addEventListener('scroll', () => {
   const d = document.documentElement;
   prog.style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
 }, {passive:true});
 
-/* ── reveal on scroll ── */
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
 }, {threshold:0.07, rootMargin:'0px 0px -24px 0px'});
 document.querySelectorAll('.rv').forEach(el => ro.observe(el));
 
-/* ── stagger reveal: target direct .rv children of grid containers ── */
 ['.bg-compact', '.prob-3col', '.contrib-grid'].forEach(function(sel) {
   var parent = document.querySelector(sel);
   if (!parent) return;
@@ -1472,24 +1378,20 @@ document.querySelectorAll('.rv').forEach(el => ro.observe(el));
     el.style.transitionDelay = (i * 65) + 'ms';
   });
 });
-/* strategy-phases: each phase card */
 var sp = document.querySelector('.strategy-phases');
 if (sp) sp.querySelectorAll(':scope > .phase').forEach(function(el, i) {
   el.style.transitionDelay = (i * 65) + 'ms';
 });
-/* defense-grid: each def-cell */
 var dg = document.querySelector('.defense-grid');
 if (dg) dg.querySelectorAll(':scope > .def-cell').forEach(function(el, i) {
   el.style.transitionDelay = (i * 65) + 'ms';
 });
-/* tkw-cards: each takeaway card */
 document.querySelectorAll('.tkw-cards').forEach(function(parent) {
   parent.querySelectorAll(':scope > .tkw').forEach(function(el, i) {
     el.style.transitionDelay = (i * 70) + 'ms';
   });
 });
 
-/* ── nav active link ── */
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 const navObs = new IntersectionObserver(entries => {
@@ -1501,7 +1403,6 @@ const navObs = new IntersectionObserver(entries => {
 }, {threshold:0.25});
 sections.forEach(s => navObs.observe(s));
 
-/* ── risk tab switcher ── */
 function riskTab(id) {
   ['low','mid','hi'].forEach(function(k) {
     document.getElementById('rpanel-'+k).style.display = k===id ? 'block' : 'none';
@@ -1512,7 +1413,6 @@ function riskTab(id) {
   });
 }
 
-/* ── mid-risk checkbox logic ── */
 function midCheck(n) {
   var cb = document.getElementById('cb'+n);
   var lbl = document.getElementById('cbl'+n);
@@ -1533,7 +1433,6 @@ function midCheck(n) {
   else { pill.textContent='待人工核对 '+((!document.getElementById('cb1').checked?1:0)+(!document.getElementById('cb2').checked?1:0))+' 项'; pill.style.background='rgba(245,158,11,.1)'; pill.style.color='#fbbf24'; pill.style.borderColor='rgba(245,158,11,.18)'; }
 }
 
-/* ── high-risk suggestion ── */
 var hiSuggestions = {
   1:'建议改写为："根据上级指示，结合本单位实际，提出以下工作建议，请予审核。"（去除"政策调整"等政策判断性表述）',
   2:'建议改写为："在贯彻执行现行规定的前提下，就具体执行方式提出如下方案，请领导审定。"（主语转为汇报而非决策）'
