@@ -398,6 +398,34 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   .tkw-top{grid-template-columns:1fr}
   .tkw-num{display:none}
 }
+/* ── 06-C TECH LOG ── */
+.tl-config-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:10px;overflow:hidden;margin-bottom:0}
+.tl-config-tbl th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:10px 16px;text-align:left;background:var(--s3);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
+.tl-config-tbl th:last-child{border-right:none}
+.tl-config-tbl td{padding:11px 16px;font-size:12px;color:var(--t1);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);line-height:1.55;vertical-align:top}
+.tl-config-tbl td:last-child{border-right:none}
+.tl-config-tbl tr:last-child td{border-bottom:none}
+.tl-config-tbl td:first-child{font-family:'DM Mono',monospace;font-size:11px;color:var(--t0);font-weight:500;background:var(--s2);white-space:nowrap}
+.tl-config-tbl td:nth-child(2){color:var(--blue-l);font-family:'DM Mono',monospace;font-size:11.5px}
+.tl-finding{display:flex;flex-direction:column;gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:12px;overflow:hidden;margin-top:0}
+.tl-finding-row{background:var(--s2);display:grid;grid-template-columns:52px 1fr;border-bottom:1px solid var(--b0)}
+.tl-finding-row:last-child{border-bottom:none}
+.tl-finding-row.highlight{background:rgba(37,99,235,0.06)}
+.tl-finding-num{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--blue-l);padding:18px 0 18px 16px;display:flex;align-items:flex-start;flex-shrink:0;border-right:1px solid var(--b0)}
+.tl-finding-body{padding:16px 20px}
+.tl-finding-title{font-size:13px;font-weight:600;color:var(--t0);margin-bottom:5px;line-height:1.4}
+.tl-finding-row.highlight .tl-finding-title{color:var(--blue-l)}
+.tl-finding-desc{font-size:12.5px;color:var(--t1);line-height:1.65}
+.tl-finding-desc strong{color:var(--t0);font-weight:500}
+.tl-finding-insight{margin-top:8px;font-size:11.5px;color:var(--t2);font-family:'DM Mono',monospace;letter-spacing:.02em;line-height:1.55;padding-top:8px;border-top:1px solid var(--b0)}
+.tl-finding-insight::before{content:'→ ';color:var(--blue-l)}
+.tl-conclusion{margin-top:20px;background:rgba(37,99,235,0.09);border:1px solid var(--blue-edge);border-left:3px solid var(--blue-l);border-radius:0 12px 12px 0;padding:20px 24px}
+.tl-conclusion-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-l);margin-bottom:10px}
+.tl-conclusion p{font-size:13px;color:var(--t1);line-height:1.78}
+.tl-conclusion p+p{margin-top:10px}
+.tl-conclusion strong{color:var(--t0);font-weight:500}
+.tl-meta{margin-top:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tl-meta-chip{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;padding:3px 10px;border-radius:4px;border:1px solid var(--b0);color:var(--t2);background:var(--s3)}
 </style>
 </head>
 <body>
@@ -1159,6 +1187,149 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       </div>
 
     </div>
+    <!-- Part C: Tech Validation Log -->
+    <div class="rv" style="margin-top:56px">
+      <div class="label accent">06-C · 技术验证日志 · RAG 原型测试</div>
+      <h2 class="sec-h">动手搭原型：六个被实验验证或修正的产品判断</h2>
+      <p class="sec-sub" style="max-width:680px">基于 Dify 平台搭建 RAG 原型（智谱 GLM-4 · 7 个分场景知识库 · 15 个测试 Query），覆盖精准场景型、语义模糊型、高风险边界型三类。核心价值不是"搭出了能用的工具"，而是通过实验验证或修正了 6 个产品设计判断。</p>
+    </div>
+
+    <!-- Config params table -->
+    <div class="rv" style="margin-top:28px">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:12px">原型配置参数</div>
+      <div style="overflow-x:auto">
+        <table class="tl-config-tbl">
+          <thead>
+            <tr>
+              <th>参数项</th>
+              <th>设定值</th>
+              <th>设定依据</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>分块最大长度</td><td>500 字符</td><td style="color:var(--t1)">政务文件段落平均长度，平衡召回精度与上下文完整性</td></tr>
+            <tr><td>分块重叠长度</td><td>50 字符</td><td style="color:var(--t1)">防止关键信息被截断在块边界</td></tr>
+            <tr><td>索引方式</td><td>高质量 Embedding</td><td style="color:var(--t1)">语义理解优先，适配政务场景的长语义 Query</td></tr>
+            <tr><td>检索方式</td><td>混合检索</td><td style="color:var(--t1)">兼顾语义相似度与关键词精确匹配</td></tr>
+            <tr><td>Top K</td><td>3</td><td style="color:var(--t1)">控制召回数量，避免低相关块污染上下文</td></tr>
+            <tr><td>Score 阈值</td><td>0.5</td><td style="color:var(--t1)">放宽阈值提升召回覆盖率，后续可根据质量调紧</td></tr>
+            <tr><td>生成模型</td><td>GLM-4（智谱 AI）</td><td style="color:var(--t1)">中文政务语境下表现稳定，免费额度可支撑测试</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Six findings -->
+    <div class="rv" style="margin-top:28px">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:12px">核心测试发现</div>
+      <div class="tl-finding">
+
+        <div class="tl-finding-row">
+          <div class="tl-finding-num">F1</div>
+          <div class="tl-finding-body">
+            <div class="tl-finding-title">碎片化分块污染召回质量</div>
+            <div class="tl-finding-desc">Chunk-1 到 Chunk-4 均为极短片段（4字、5字、20字、15字），内容为标题行、日期行、落款行等无语义块。这类碎片块占用 Top K 名额，在真正有语义价值的段落被挤出召回列表前就已消耗完检索配额。</div>
+            <div class="tl-finding-insight">设计启示：增加"最小分块有效字数"过滤规则（建议阈值 50 字），低于阈值的块不进入向量索引。</div>
+          </div>
+        </div>
+
+        <div class="tl-finding-row">
+          <div class="tl-finding-num">F2</div>
+          <div class="tl-finding-body">
+            <div class="tl-finding-title">无结构化输入时，AI 生成数据全部虚构</div>
+            <div class="tl-finding-desc">生成内容格式正确、表达流畅，但所有数据均为通用虚构数字。对照真实原文数据（"交地超800亩""风险点95个"）——高度特异化，<strong>无法由 AI 自行推断</strong>。这直接验证了"AI 承担起草，人工承担判断"的产品定位。</div>
+            <div class="tl-finding-insight">设计启示：生成入口必须设置结构化要素填写表单，引导用户在生成前录入关键数据点，而非依赖纯对话式输入。</div>
+          </div>
+        </div>
+
+        <div class="tl-finding-row">
+          <div class="tl-finding-num">F3</div>
+          <div class="tl-finding-body">
+            <div class="tl-finding-title">有真实数据输入时，AI 会自行重组文章结构</div>
+            <div class="tl-finding-desc">生成内容正确使用了真实数字，但 AI 将原文"五大板块 + 问题反思 + 下一步打算"的三段式结构，自行压缩为无问题反思的纯成绩罗列。<strong>AI 倾向于省略"问题反思"模块</strong>——而这恰恰是述职报告中区分深度与质量的核心部分。</div>
+            <div class="tl-finding-insight">设计启示：结构约束需在表单预设大纲层实现，而非依赖 Prompt 描述结构。</div>
+          </div>
+        </div>
+
+        <div class="tl-finding-row">
+          <div class="tl-finding-num">F4</div>
+          <div class="tl-finding-body">
+            <div class="tl-finding-title">强制指定结构有效，但知识库内容影响原创性</div>
+            <div class="tl-finding-desc">Prompt 明确指定三段式结构后，框架被遵守，但第一部分内容与知识库文本高度相似，产生"召回污染"。当知识库文件与用户场景高度相似时，<strong>生成内容会向知识库靠拢</strong>，而非向用户提供的真实情况靠拢。</div>
+            <div class="tl-finding-insight">设计启示：知识库定位应明确区分"格式校验库"与"内容召回库"，两者在不同阶段调用，不应同时全程伴随内容生成。</div>
+          </div>
+        </div>
+
+        <div class="tl-finding-row">
+          <div class="tl-finding-num">F5</div>
+          <div class="tl-finding-body">
+            <div class="tl-finding-title">长文档生成需要分段策略</div>
+            <div class="tl-finding-desc">要求生成 2000 字以上完整述职报告时，GLM-4 多次在"二、存在问题"部分截断。单次可稳定生成约 800–1000 字。当前模型的单次 Token 输出上限无法支撑政务长文档的一次性生成。</div>
+            <div class="tl-finding-insight">设计启示：产品 UI 应按文档模块设计独立生成单元，用户逐模块确认后拼接完整文件。模块化生成也天然强制用户对每个部分进行审核，与"人工承担判断"定位一致。</div>
+          </div>
+        </div>
+
+        <div class="tl-finding-row highlight">
+          <div class="tl-finding-num">F6</div>
+          <div class="tl-finding-body">
+            <div class="tl-finding-title">移除知识库后，生成完整性与内容原创性显著提升（最重要发现）</div>
+            <div class="tl-finding-desc">
+              <div style="overflow-x:auto;margin-bottom:10px">
+                <table style="width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:8px;overflow:hidden;font-size:12px;min-width:380px">
+                  <thead>
+                    <tr>
+                      <th style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:400;padding:9px 14px;text-align:left;background:var(--s3);color:var(--t2);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)">对比维度</th>
+                      <th style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:400;padding:9px 14px;text-align:left;background:rgba(239,68,68,0.08);color:#f87171;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)">有知识库</th>
+                      <th style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:400;padding:9px 14px;text-align:left;background:rgba(34,197,94,0.08);color:#4ade80;border-bottom:1px solid var(--b0)">无知识库</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding:9px 14px;color:var(--t1);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);background:var(--s2)">是否生成完整</td>
+                      <td style="padding:9px 14px;color:#f87171;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);background:rgba(239,68,68,0.04)">❌ 多次截断</td>
+                      <td style="padding:9px 14px;color:#4ade80;border-bottom:1px solid var(--b0);background:rgba(34,197,94,0.04)">✅ 一次完整生成</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:9px 14px;color:var(--t1);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);background:var(--s2)">内容原创性</td>
+                      <td style="padding:9px 14px;color:#f87171;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);background:rgba(239,68,68,0.04)">❌ 内容向知识库靠拢</td>
+                      <td style="padding:9px 14px;color:#4ade80;border-bottom:1px solid var(--b0);background:rgba(34,197,94,0.04)">✅ 基于用户输入生成</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:9px 14px;color:var(--t1);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);background:var(--s2)">问题反思模块</td>
+                      <td style="padding:9px 14px;color:#f87171;border-bottom:1px solid var(--b0);border-right:1px solid var(--b0);background:rgba(239,68,68,0.04)">❌ 缺失或碎片化</td>
+                      <td style="padding:9px 14px;color:#4ade80;border-bottom:1px solid var(--b0);background:rgba(34,197,94,0.04)">✅ 完整，逻辑清晰</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:9px 14px;color:var(--t1);border-right:1px solid var(--b0);background:var(--s2)">生成速度</td>
+                      <td style="padding:9px 14px;color:#f87171;border-right:1px solid var(--b0);background:rgba(239,68,68,0.04)">慢，疑似卡在召回流程</td>
+                      <td style="padding:9px 14px;color:#4ade80;background:rgba(34,197,94,0.04)">正常</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              知识库全程伴随生成时，模型既要消耗上下文窗口处理召回内容，又要基于用户输入生成原创内容，两者产生竞争，导致生成截断、内容仿写、Token 异常消耗等问题。
+            </div>
+            <div class="tl-finding-insight">核心设计结论：<strong style="color:var(--t0)">知识库应与内容生成解耦</strong>——第一步纯 LLM 生成（不接知识库），第二步知识库介入做格式比对与合规检查。这与"五层架构"判断完全吻合，原型测试通过反向验证直接证明了这一架构判断的正确性。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="tl-conclusion rv">
+      <div class="tl-conclusion-label">验证结论</div>
+      <p>本次原型测试最重要的产出不是"搭出了一个能用的工具"，而是<strong>通过动手实验推翻了一个关键假设</strong>：原方案假设知识库全程伴随生成会带来更好的结果，实验证明这个假设是错误的。</p>
+      <p>这种"设计判断 → 原型测试 → 假设修正"的闭环，正是产品设计从概念走向落地的关键能力体现。F1–F6 的六条发现已直接反映在当前方案的五层架构设计中：生成引擎（Layer 03）与质控层（Layer 04）的分离，正是 F6 结论的产品化落点。</p>
+    </div>
+    <div class="tl-meta rv">
+      <span class="tl-meta-chip">Dify 平台</span>
+      <span class="tl-meta-chip">智谱 GLM-4</span>
+      <span class="tl-meta-chip">7 个知识库 · ~35 份政务文件</span>
+      <span class="tl-meta-chip">15 个测试 Query</span>
+      <span class="tl-meta-chip">原型测试完成</span>
+    </div>
+
   </div>
 </section>
 
