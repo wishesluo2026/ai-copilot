@@ -398,7 +398,31 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   .tkw-top{grid-template-columns:1fr}
   .tkw-num{display:none}
 }
-/* ── 06-C TECH LOG ── */
+/* ── 04-D PRD FRAGMENT ── */
+.prd-wrap{background:var(--s2);border:1px solid var(--b0);border-radius:14px;overflow:hidden;margin-top:40px}
+.prd-header{background:var(--s3);padding:20px 28px;border-bottom:1px solid var(--b0);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.prd-header-left{display:flex;flex-direction:column;gap:6px}
+.prd-header-title{font-size:16px;font-weight:600;color:var(--t0);letter-spacing:-.01em}
+.prd-header-sub{font-size:13px;color:var(--t1);line-height:1.65;max-width:680px}
+.prd-badges{display:flex;align-items:center;gap:7px;flex-shrink:0;flex-wrap:wrap;align-self:flex-start;margin-top:2px}
+.prd-badge{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;padding:3px 9px;border-radius:4px;border:1px solid var(--b0);color:var(--t2);background:var(--s2);white-space:nowrap}
+.prd-badge.hi{color:var(--blue-l);background:var(--blue-dim);border-color:var(--blue-edge)}
+.prd-sections{display:flex;flex-direction:column;gap:1px;background:var(--b0)}
+.prd-sec{background:var(--s2);padding:22px 28px}
+.prd-sec-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-l);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.prd-sec-label::before{content:'';width:12px;height:1px;background:var(--blue-l);flex-shrink:0}
+.prd-sec-title{font-size:13.5px;font-weight:600;color:var(--t0);margin-bottom:10px;letter-spacing:-.01em}
+.prd-prose{font-size:13px;color:var(--t1);line-height:1.8}
+.prd-prose p+p{margin-top:10px}
+.prd-prose strong{color:var(--t0);font-weight:500}
+.prd-list{display:flex;flex-direction:column;gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:8px;overflow:hidden}
+.prd-list-item{background:var(--s1);display:grid;grid-template-columns:28px 1fr;gap:0}
+.prd-list-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);padding:13px 0 13px 14px;border-right:1px solid var(--b0);display:flex;align-items:flex-start;flex-shrink:0;line-height:1.4}
+.prd-list-text{font-size:12.5px;color:var(--t1);padding:13px 16px;line-height:1.65}
+.prd-list-text strong{color:var(--t0);font-weight:500}
+.prd-list-item.accent .prd-list-num{color:var(--blue-l)}
+.prd-list-item.accent{background:rgba(37,99,235,0.04)}
+.prd-sec.alt{background:var(--s1)}
 .tl-config-tbl{width:100%;border-collapse:collapse;border:1px solid var(--b0);border-radius:10px;overflow:hidden;margin-bottom:0}
 .tl-config-tbl th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);font-weight:400;padding:10px 16px;text-align:left;background:var(--s3);border-bottom:1px solid var(--b0);border-right:1px solid var(--b0)}
 .tl-config-tbl th:last-child{border-right:none}
@@ -988,6 +1012,110 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       <span class="fl-arrow">→</span>
       <div class="fl-step">同类错误减少</div>
     </div>
+  </div>
+</section>
+
+<!-- 04-D · PRD FRAGMENT -->
+<section class="sec s-deep" id="solution-prd">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">04-D · PRD 片段 · 格式校验引擎</div>
+      <h2 class="sec-h">如果进入开发，我会如何写这个功能的 PRD</h2>
+      <p class="sec-sub">以下是格式校验引擎的核心 PRD 片段。选择这个功能点展示，是因为它处于低风险区间、规则可枚举，是最适合先做成确定性引擎而非交给生成模型的功能——这个判断本身就是产品决策，而不只是技术实现细节。</p>
+    </div>
+
+    <div class="prd-wrap rv">
+      <div class="prd-header">
+        <div class="prd-header-left">
+          <div class="prd-header-title">格式校验引擎 · Feature Spec Excerpt</div>
+          <div style="font-size:12px;color:var(--t2);font-family:'DM Mono',monospace;letter-spacing:.04em;margin-top:2px">Format Validation Engine · Layer 04 · 质控层</div>
+        </div>
+        <div class="prd-badges">
+          <span class="prd-badge hi">低风险规则型</span>
+          <span class="prd-badge">确定性引擎</span>
+          <span class="prd-badge">MVP 核心功能</span>
+        </div>
+      </div>
+
+      <div class="prd-sections">
+
+        <!-- ① 功能描述 -->
+        <div class="prd-sec">
+          <div class="prd-sec-label">① 功能描述</div>
+          <div class="prd-prose">
+            <p>格式校验引擎用于在用户完成初稿后，自动检查文档是否符合机构既定公文规范，并以<strong>内联标注 + 修正建议</strong>的方式提示问题。</p>
+            <p>对用户而言，这个功能最直接的感知不是"AI 帮我改格式"，而是：在导出前，我能快速知道哪些地方可以自动通过，哪些地方必须人工确认，从而<strong>减少低价值的反复排版和返修</strong>。</p>
+          </div>
+        </div>
+
+        <!-- ② 验收标准 -->
+        <div class="prd-sec alt">
+          <div class="prd-sec-label">② 验收标准 · Acceptance Criteria</div>
+          <div class="prd-list">
+            <div class="prd-list-item">
+              <span class="prd-list-num">AC1</span>
+              <span class="prd-list-text">系统应当在用户点击"校验格式"后，<strong>3 秒内</strong>完成对标题层级、编号格式、段落样式、字距行距等基础规则的检查并输出结果；若文档超过 5000 字，应显示进度提示，不得无响应超过 8 秒。</span>
+            </div>
+            <div class="prd-list-item">
+              <span class="prd-list-num">AC2</span>
+              <span class="prd-list-text">系统应当对可枚举、<strong>可自动修复的低风险问题</strong>提供内联修正建议，并允许用户一键应用。</span>
+            </div>
+            <div class="prd-list-item accent">
+              <span class="prd-list-num">AC3</span>
+              <span class="prd-list-text">系统应当对无法自动修复或存在歧义的中高风险问题明确标注<strong>"需人工确认"</strong>，且说明触发原因，<strong>不得直接静默修改</strong>。</span>
+            </div>
+            <div class="prd-list-item">
+              <span class="prd-list-num">AC4</span>
+              <span class="prd-list-text">系统应当在用户应用修正后<strong>实时刷新校验状态</strong>，保证"已修复 / 待确认 / 未通过"三类状态清晰可见。</span>
+            </div>
+            <div class="prd-list-item accent">
+              <span class="prd-list-num">AC5</span>
+              <span class="prd-list-text">系统应当在<strong>全部必过规则通过后才允许进入"一键导出"状态</strong>；若仍存在阻断性问题，应明确提示未通过项及对应位置。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ 边界 Case -->
+        <div class="prd-sec">
+          <div class="prd-sec-label">③ 边界 Case 处理 · Edge Cases</div>
+          <div class="prd-list">
+            <div class="prd-list-item">
+              <span class="prd-list-num">E1</span>
+              <span class="prd-list-text"><strong>用户上传非标格式文件时：</strong>若原文样式丢失、段落结构混乱或来源模板无法识别，系统不直接给出"通过 / 不通过"结论，而是先提示"当前文档未识别到标准模板结构"，引导用户选择目标文种模板后再执行校验。若用户跳过模板选择，系统降级为"基础通用规则校验"，仅检查标点、空格、段落编号等与文种无关的通用规则，并在校验结果顶部标注"当前以通用规则校验，未适配文种规范"。</span>
+            </div>
+            <div class="prd-list-item">
+              <span class="prd-list-num">E2</span>
+              <span class="prd-list-text"><strong>规则冲突时：</strong>若同一位置同时命中两条互斥规则（如历史模板规则与当前机构最新规则不一致），系统默认以"当前生效规则优先"，同时展示冲突来源，供用户人工确认，<strong>不做自动覆盖</strong>。</span>
+            </div>
+            <div class="prd-list-item accent">
+              <span class="prd-list-num">E3</span>
+              <span class="prd-list-text"><strong>内容与格式耦合时：</strong>若某项问题表面是格式错误、实质涉及内容判断（如标题层级正确但语义归属不清），系统只提示"疑似异常，建议人工复核"，<strong>不进入自动修复链路</strong>。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ④ 埋点指标 -->
+        <div class="prd-sec alt">
+          <div class="prd-sec-label">④ 埋点指标 · Metrics</div>
+          <div class="prd-list">
+            <div class="prd-list-item">
+              <span class="prd-list-num">M1</span>
+              <span class="prd-list-text"><strong>格式校验通过率：</strong>用户首次点击校验后，文档在几轮修正内达到"可导出状态"的比例——用于判断规则覆盖与建议有效性。</span>
+            </div>
+            <div class="prd-list-item">
+              <span class="prd-list-num">M2</span>
+              <span class="prd-list-text"><strong>自动修正采纳率：</strong>用户对系统给出的内联修正建议的应用比例——用于判断建议是否准确、是否真正节省操作成本。</span>
+            </div>
+            <div class="prd-list-item accent">
+              <span class="prd-list-num">M3</span>
+              <span class="prd-list-text"><strong>人工复核回退率：</strong>已通过格式校验并导出的文档，后续在人工审稿中仍因格式问题被打回的比例——用于判断"校验通过"是否真实可信，是最终衡量引擎质量的核心指标。</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
