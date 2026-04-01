@@ -342,12 +342,12 @@ body{background:var(--s0);color:var(--t0);font-family:'Noto Sans SC',sans-serif;
 .tkw-col.chosen{background:rgba(37,99,235,0.07);border-top:2px solid var(--blue-l)}
 .tkw-col.chosen .tkw-col-label{color:var(--blue-l)}
 .tkw-col.chosen p{color:var(--t0)}
-.closing{margin-top:32px;display:grid;grid-template-columns:1fr 200px;border:1px solid var(--b0);border-radius:13px;overflow:hidden}
-.closing-main{padding:32px;background:var(--s1)}
-.closing-main p{font-size:15px;color:var(--t1);line-height:1.82}
+.closing{margin-top:32px;display:flex;flex-direction:column;border:1px solid var(--b0);border-radius:13px;overflow:hidden}
+.closing-main{padding:32px 40px;background:var(--s1)}
+.closing-main p{font-size:15px;color:var(--t1);line-height:1.82;max-width:680px}
 .closing-main p+p{margin-top:13px}
 .closing-main strong{color:var(--t0);font-weight:500}
-.closing-meta{background:var(--s2);border-left:1px solid var(--b0);padding:24px 20px;display:flex;flex-direction:column;gap:15px;justify-content:center}
+.closing-meta{background:var(--s2);border-top:1px solid rgba(255,255,255,0.06);padding:20px 28px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.03)}.closing-meta-item{background:var(--s1);padding:11px 18px}
 .cm-item .cm-l{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:4px}
 .cm-item .cm-v{font-size:12.5px;color:var(--t1)}
 
@@ -382,7 +382,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   .hyp-body{grid-template-columns:1fr}
   .tkw-body{grid-template-columns:1fr}
   .closing{grid-template-columns:1fr}
-  .closing-meta{border-left:none;border-top:1px solid var(--b0)}
+  .closing-meta{grid-template-columns:1fr}
   .quotes{grid-template-columns:1fr}
   .cmp-tbl,.method-tbl{display:block;overflow-x:auto}
   footer{flex-direction:column;gap:8px;text-align:center}
@@ -450,6 +450,83 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 .tl-conclusion strong{color:var(--t0);font-weight:500}
 .tl-meta{margin-top:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .tl-meta-chip{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;padding:3px 10px;border-radius:4px;border:1px solid var(--b0);color:var(--t2);background:var(--s3)}
+
+/* ── 04-E MATRIX ── */
+.matrix-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+.matrix-card{background:var(--s2);border:1px solid var(--b0);border-radius:14px;overflow:hidden}
+.matrix-top{background:var(--s3);padding:16px 22px;border-bottom:1px solid var(--b0);display:flex;align-items:center;gap:12px}
+.matrix-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--blue-l);flex-shrink:0}
+.matrix-q{font-size:14px;font-weight:600;color:var(--t0);letter-spacing:-.01em}
+.matrix-choices{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0)}
+.choice-block{background:var(--s2);padding:13px 16px}
+.choice-block.final{background:rgba(37,99,235,0.09);border-top:2px solid var(--blue-l)}
+.choice-label{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:5px}
+.choice-block.final .choice-label{color:var(--blue-l)}
+.choice-val{font-size:12px;color:var(--t1);line-height:1.5}
+.choice-block.final .choice-val{color:var(--t0);font-weight:500}
+.matrix-body{padding:18px 22px;display:flex;flex-direction:column;gap:12px}
+.matrix-reason-label{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:5px}
+.matrix-reason-text{font-size:12.5px;color:var(--t1);line-height:1.7}
+.matrix-risk-row{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:7px;padding:10px 14px;display:flex;align-items:flex-start;gap:9px}
+.matrix-risk-dot{width:5px;height:5px;border-radius:50%;background:#fbbf24;flex-shrink:0;margin-top:5px}
+.matrix-risk-text{font-size:12px;color:var(--t2);line-height:1.6}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.insight-card{background:var(--s2);border:1px solid var(--b0);border-top:2px solid var(--blue-l);border-radius:0 0 12px 12px;padding:22px 20px}
+.insight-card h4{font-size:13.5px;font-weight:600;color:var(--t0);margin-bottom:10px;letter-spacing:-.01em;line-height:1.35}
+.insight-card p{font-size:12.5px;color:var(--t1);line-height:1.72}
+.matrix-close{margin-top:24px;background:rgba(37,99,235,0.07);border:1px solid var(--blue-edge);border-left:3px solid var(--blue-l);border-radius:0 12px 12px 0;padding:20px 26px}
+.matrix-close p{font-size:13px;color:var(--t1);line-height:1.82}
+@media(max-width:960px){
+  .matrix-grid{grid-template-columns:1fr}
+  .matrix-choices{grid-template-columns:1fr}
+  .insight-grid{grid-template-columns:1fr}
+}
+/* ── 06-D PILOT EXECUTION ── */
+.pilot-scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.pilot-card{background:var(--s2);border:1px solid var(--b0);border-radius:14px;overflow:hidden}
+.pilot-card-head{background:var(--s3);padding:16px 22px;border-bottom:1px solid var(--b0)}
+.pilot-card-head h4{font-size:14px;font-weight:600;color:var(--t0);letter-spacing:-.01em;margin-bottom:0}
+.pilot-card-body{padding:18px 22px}
+.pilot-card-body p{font-size:13px;color:var(--t1);line-height:1.75}
+.pilot-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.pilot-chip{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.07em;padding:4px 11px;border-radius:5px;border:1px solid var(--b1);color:var(--t1);background:var(--s3)}
+.pilot-chip.keep{border-color:var(--blue-edge);color:var(--blue-l);background:var(--blue-dim)}
+.pilot-chip.cut{border-color:rgba(239,68,68,0.25);color:var(--red-l);background:var(--red-dim)}
+.timeline-stack{display:flex;flex-direction:column;gap:10px;margin-top:32px}
+.timeline-card{background:var(--s2);border:1px solid var(--b0);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:100px 1fr}
+.stage-tag{background:var(--s3);border-right:1px solid var(--b0);padding:20px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px}
+.stage-week{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--blue-l);font-weight:500}
+.stage-title{font-size:11.5px;color:var(--t2);line-height:1.4}
+.timeline-body{padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.timeline-body h4{font-size:13.5px;font-weight:600;color:var(--t0);letter-spacing:-.01em}
+.tl-goal{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--t2);background:var(--s3);border:1px solid var(--b0);border-radius:5px;padding:5px 10px;display:inline-block}
+.tl-action{font-size:12.5px;color:var(--t1);line-height:1.7}
+.tl-why{font-size:12px;color:var(--t2);line-height:1.6;font-style:italic;padding-top:8px;border-top:1px solid var(--b0)}
+.role-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+.role-card{background:var(--s2);border:1px solid var(--b0);border-top:2px solid var(--blue-l);border-radius:0 0 12px 12px;padding:20px 18px}
+.role-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-l);margin-bottom:10px}
+.role-card p{font-size:12.5px;color:var(--t1);line-height:1.7}
+.role-note{font-size:11px;color:var(--t2);margin-top:10px;padding-top:8px;border-top:1px solid var(--b0);font-family:'DM Mono',monospace;letter-spacing:.02em}
+.fallback-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
+.fallback-card{background:var(--s2);border:1px solid var(--b0);border-radius:12px;overflow:hidden}
+.fallback-head{background:var(--s3);padding:12px 18px;border-bottom:1px solid var(--b0);display:flex;align-items:center;gap:10px}
+.fallback-num{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:var(--t2)}
+.fallback-trigger{font-size:12.5px;font-weight:600;color:var(--t0);line-height:1.4}
+.fallback-body{padding:14px 18px;display:flex;flex-direction:column;gap:10px}
+.fb-row-label{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:4px}
+.fb-action{font-size:12.5px;color:var(--blue-l);font-weight:500;line-height:1.55}
+.fb-why{font-size:12px;color:var(--t1);line-height:1.65}
+.pilot-close{margin-top:28px;background:rgba(37,99,235,0.07);border:1px solid var(--blue-edge);border-left:3px solid var(--blue-l);border-radius:0 12px 12px 0;padding:20px 26px}
+.pilot-close p{font-size:13px;color:var(--t1);line-height:1.85}
+.pilot-sub-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-l);margin:32px 0 12px;display:flex;align-items:center;gap:8px}
+.pilot-sub-label::before{content:'';width:12px;height:1px;background:var(--blue-l);flex-shrink:0}
+@media(max-width:960px){
+  .pilot-scope-grid{grid-template-columns:1fr}
+  .timeline-card{grid-template-columns:1fr}
+  .stage-tag{flex-direction:row;border-right:none;border-bottom:1px solid var(--b0);justify-content:flex-start;padding:12px 16px}
+  .role-grid{grid-template-columns:1fr 1fr}
+  .fallback-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -465,8 +542,9 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     <a href="#problem">问题</a>
     <a href="#research">研究</a>
     <a href="#solution">方案</a>
-    <a href="#capability">能力</a>
+    <a href="#capability">对比</a>
     <a href="#findings">研究与假设</a>
+    <a href="#pilot">试点</a>
     <a href="#planning">策略</a>
     <a href="#reflection">复盘</a>
   </div>
@@ -611,15 +689,6 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
       </div>
     </div>
 
-    <!-- 竞品视角与问题重定义 -->
-    <div class="rv" style="margin-top:28px">
-      <div class="label" style="margin-bottom:14px">竞品观察 · Problem Reframing</div>
-      <div style="background:var(--s2);border:1px solid var(--b0);border-left:3px solid var(--b2);border-radius:0 12px 12px 0;padding:24px 28px">
-        <p style="font-size:13.5px;color:var(--t1);line-height:1.85;margin-bottom:14px">市面上已有不少工具在尝试切入这一场景。秘塔写作猫、通义千问等 AI 写作助手在通用内容生成上能力成熟，部分也提供公文模板支持。它们共同缓解的问题，是"怎么写得更快"。</p>
-        <p style="font-size:13.5px;color:var(--t1);line-height:1.85;margin-bottom:14px">但政务写作的核心难点并不只是速度，而是 AI 生成内容能否进入真实组织审稿链条：格式是否符合本机构规范，政治表达是否贴合当前政策方向，责任边界又由谁承担。</p>
-        <p style="font-size:13.5px;color:var(--t0);line-height:1.85;font-weight:500">因此我没有把这个问题继续理解为"写作提效"，而是把它重定义为"责任约束下的人机协作"：不追求终稿自动化，而是通过专域知识约束、规则校验和明确的人工接管点设计，让产品成为可被组织真正采用的高质量初稿生成器。</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -668,6 +737,17 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         <div class="quote-meta">深访 #11 · 某区级政府 · 工作年限 12 年</div>
       </div>
     </div>
+
+    <!-- 竞品观察移入 Problem -->
+    <div class="rv" style="margin-top:28px">
+      <div class="label" style="margin-bottom:14px">竞品观察 · 问题重定义</div>
+      <div style="background:var(--s2);border:1px solid var(--b0);border-left:3px solid var(--blue-l);border-radius:0 12px 12px 0;padding:24px 28px">
+        <p style="font-size:13.5px;color:var(--t1);line-height:1.85;margin-bottom:14px">市面上已有不少工具在尝试切入这一场景。秘塔写作猫、通义千问等 AI 写作助手在通用内容生成上能力成熟，部分也提供公文模板支持。它们共同缓解的问题，是"怎么写得更快"。</p>
+        <p style="font-size:13.5px;color:var(--t1);line-height:1.85;margin-bottom:14px">但政务写作的核心难点并不只是速度，而是 AI 生成内容能否进入真实组织审稿链条：格式是否符合本机构规范，政治表达是否贴合当前政策方向，责任边界又由谁承担。</p>
+        <p style="font-size:13.5px;color:var(--t0);line-height:1.85;font-weight:500">因此我没有把这个问题继续理解为"写作提效"，而是把它重定义为"责任约束下的人机协作"：不追求终稿自动化，而是通过专域知识约束、规则校验和明确的人工接管点设计，让产品成为可被组织真正采用的高质量初稿生成器。</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1119,75 +1199,269 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   </div>
 </section>
 
-<!-- 05 · CAPABILITY -->
-<section class="sec-sm s-deep" id="capability">
+<!-- 04-E · TECHNICAL DECISION MATRIX -->
+<section class="sec s-alt" id="matrix">
   <div class="wrap">
     <div class="rv">
-      <div class="label accent">05 · Capability · 替代方案对比</div>
-      <h2 class="sec-h">为什么这个方案，而不是更简单的替代方案</h2>
-      <p class="sec-sub">诚实的产品定位：我们的优势建立在更深场景耦合上，代价是更重的实施与知识运营成本。</p>
+      <div class="label accent">04-E · Technical Decision Matrix</div>
+      <h2 class="sec-h">技术选型决策矩阵</h2>
+      <p class="sec-sub">这不是"用了哪些 AI 技术"，而是"为什么必须这样组合"。这个产品不是在追求模型越强越好，而是在高责任场景下追求三件事：生成结果可控、错误来源可解释、失败后可以回退。</p>
+      <p class="sec-sub" style="margin-top:10px">因此，我没有把技术选型理解为"选一个最强大模型"，而是先把系统拆成不同风险层级的问题：哪些问题适合交给生成模型，哪些问题应该交给检索，哪些问题必须由规则引擎兜底，哪些问题一旦涉及责任归属，就必须回到人工确认。最终形成了"结构化输入 + 纯生成起草 + RAG 后置质控 + 规则引擎兜底 + Human-in-the-loop"的组合架构。</p>
     </div>
-    <table class="cmp-tbl rv">
-      <thead>
-        <tr>
-          <th>维度</th>
-          <th>通用大模型 + Prompt</th>
-          <th>模板库 / OA 插件</th>
-          <th>垂直行业通用工具</th>
-          <th class="hl">体制内写作 AI Copilot</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="cmp-dim">公文格式规范</td>
-          <td><span class="icon-p">△</span> Prompt 描述，不稳定</td>
-          <td><span class="icon-y">✓</span> 模板固定，准确但死板</td>
-          <td><span class="icon-p">△</span> 覆盖部分规范</td>
-          <td class="hl"><span class="icon-y">✓</span> 200+ 规则内置，实时校验</td>
-        </tr>
-        <tr>
-          <td class="cmp-dim">体制内文风与术语</td>
-          <td><span class="icon-n">✗</span> 通用语气，政治表达易偏</td>
-          <td><span class="icon-n">✗</span> 无 AI 生成能力</td>
-          <td><span class="icon-p">△</span> 通用文风，非政务专用</td>
-          <td class="hl"><span class="icon-y">✓</span> 专域语料微调，文风贴合</td>
-        </tr>
-        <tr>
-          <td class="cmp-dim">机构专属知识</td>
-          <td><span class="icon-n">✗</span> 无法接入内部文档</td>
-          <td><span class="icon-n">✗</span> 无</td>
-          <td><span class="icon-n">✗</span> 无私有化方案</td>
-          <td class="hl"><span class="icon-y">✓</span> 私有知识库，越用越准</td>
-        </tr>
-        <tr>
-          <td class="cmp-dim">数据安全合规</td>
-          <td><span class="icon-n">✗</span> 默认无法满足内网部署</td>
-          <td><span class="icon-y">✓</span> 本地存储</td>
-          <td><span class="icon-p">△</span> 部分支持私有化</td>
-          <td class="hl"><span class="icon-y">✓</span> 私有化部署，数据不出内网</td>
-        </tr>
-        <tr>
-          <td class="cmp-dim">实施成本</td>
-          <td><span class="icon-y">✓</span> 即开即用</td>
-          <td><span class="icon-y">✓</span> 低，套模板即可</td>
-          <td><span class="icon-p">△</span> 中等</td>
-          <td class="hl"><span class="icon-p">△</span> <strong>较高 — 需知识运营与冷启动</strong></td>
-        </tr>
-        <tr>
-          <td class="cmp-dim">上手门槛</td>
-          <td><span class="icon-p">△</span> 需要 Prompt 技巧</td>
-          <td><span class="icon-y">✓</span> 低，操作直观</td>
-          <td><span class="icon-p">△</span> 中等</td>
-          <td class="hl"><span class="icon-y">✓</span> 场景引导，无需 Prompt</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="honest-note rv">
-      <strong>诚实总结：</strong>在首次部署成本、冷启动依赖、实施周期上有明显短板。这个代价成立的前提是：用户的格式合规要求足够严格，返修成本高于实施成本。用户研究中识别的格式返工率（45%）支持了这一判断。<br><br>
-      针对冷启动问题，方案设计中包含：提供<strong>分场景的政务写作初始知识包</strong>（含通用党建材料模板库、国标公文规范词典、100+ 示例文档），让机构在零历史数据状态下也能获得基础生成质量，知识库随使用持续私有化沉淀。
+
+    <div class="matrix-grid rv">
+
+      <!-- D01 -->
+      <div class="matrix-card">
+        <div class="matrix-top">
+          <span class="matrix-num">Decision 01</span>
+          <span class="matrix-q">生成入口应该如何收集需求</span>
+        </div>
+        <div class="matrix-choices">
+          <div class="choice-block">
+            <div class="choice-label">备选 A</div>
+            <div class="choice-val">纯聊天式输入，让用户直接描述需求</div>
+          </div>
+          <div class="choice-block">
+            <div class="choice-label">备选 B</div>
+            <div class="choice-val">结构化表单 + 对话补充</div>
+          </div>
+          <div class="choice-block final">
+            <div class="choice-label">最终选择</div>
+            <div class="choice-val">结构化表单 + 对话补充</div>
+          </div>
+        </div>
+        <div class="matrix-body">
+          <div>
+            <div class="matrix-reason-label">为什么这么选</div>
+            <div class="matrix-reason-text">原型测试证明，在没有结构化输入时，模型会生成格式正确但数据虚构的内容。政务写作里的关键数据高度具体，不能依赖模型自行补全。结构化输入先锁定事实边界，对话补充再承接模糊表达，更符合真实工作流。</div>
+          </div>
+          <div class="matrix-risk-row">
+            <div class="matrix-risk-dot"></div>
+            <div class="matrix-risk-text">用户前置填写成本更高，首次使用体验不如纯对话轻盈。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D02 -->
+      <div class="matrix-card">
+        <div class="matrix-top">
+          <span class="matrix-num">Decision 02</span>
+          <span class="matrix-q">知识库应在何时介入生成</span>
+        </div>
+        <div class="matrix-choices">
+          <div class="choice-block">
+            <div class="choice-label">备选 A</div>
+            <div class="choice-val">全程挂载知识库，边检索边生成</div>
+          </div>
+          <div class="choice-block">
+            <div class="choice-label">备选 B</div>
+            <div class="choice-val">生成与知识库解耦：先生成，后校验</div>
+          </div>
+          <div class="choice-block final">
+            <div class="choice-label">最终选择</div>
+            <div class="choice-val">先生成，后校验</div>
+          </div>
+        </div>
+        <div class="matrix-body">
+          <div>
+            <div class="matrix-reason-label">为什么这么选</div>
+            <div class="matrix-reason-text">原型测试直接推翻了"知识库全程伴随生成更优"的假设。知识库全程介入会挤占上下文窗口，引发生成截断、内容仿写、Token 消耗异常等问题。更合理的方式是：第一步只基于用户输入生成初稿，第二步再让知识库介入做格式与合规检查。</div>
+          </div>
+          <div class="matrix-risk-row">
+            <div class="matrix-risk-dot"></div>
+            <div class="matrix-risk-text">生成阶段对知识显式约束较弱，可能增加后置校验负担。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D03 -->
+      <div class="matrix-card">
+        <div class="matrix-top">
+          <span class="matrix-num">Decision 03</span>
+          <span class="matrix-q">低风险格式问题应由谁处理</span>
+        </div>
+        <div class="matrix-choices">
+          <div class="choice-block">
+            <div class="choice-label">备选 A</div>
+            <div class="choice-val">全交给 LLM 判断和修改</div>
+          </div>
+          <div class="choice-block">
+            <div class="choice-label">备选 B</div>
+            <div class="choice-val">规则引擎做确定性校验，模型仅辅助解释</div>
+          </div>
+          <div class="choice-block final">
+            <div class="choice-label">最终选择</div>
+            <div class="choice-val">规则引擎优先</div>
+          </div>
+        </div>
+        <div class="matrix-body">
+          <div>
+            <div class="matrix-reason-label">为什么这么选</div>
+            <div class="matrix-reason-text">格式校验属于低风险、规则可枚举问题，是最适合用确定性引擎处理的部分。规则引擎的优势在于稳定、可解释、可复现，也更适合作为 MVP 的首个确定性能力。</div>
+          </div>
+          <div class="matrix-risk-row">
+            <div class="matrix-risk-dot"></div>
+            <div class="matrix-risk-text">规则维护成本会随文种扩展上升，需要持续更新规则库。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D04 -->
+      <div class="matrix-card">
+        <div class="matrix-top">
+          <span class="matrix-num">Decision 04</span>
+          <span class="matrix-q">专业知识如何注入系统</span>
+        </div>
+        <div class="matrix-choices">
+          <div class="choice-block">
+            <div class="choice-label">备选 A</div>
+            <div class="choice-val">仅靠 Prompt 约束模型</div>
+          </div>
+          <div class="choice-block">
+            <div class="choice-label">备选 B</div>
+            <div class="choice-val">RAG 检索专业知识 + 专域模型适配</div>
+          </div>
+          <div class="choice-block final">
+            <div class="choice-label">最终选择</div>
+            <div class="choice-val">RAG + 专域适配</div>
+          </div>
+        </div>
+        <div class="matrix-body">
+          <div>
+            <div class="matrix-reason-label">为什么这么选</div>
+            <div class="matrix-reason-text">纯 Prompt 很难稳定承载政务写作里的口径、结构和历史材料差异。RAG 解决"调取相关专业知识"，专域适配解决"表达风格与结构习惯"，两者分工不同，缺一不可。</div>
+          </div>
+          <div class="matrix-risk-row">
+            <div class="matrix-risk-dot"></div>
+            <div class="matrix-risk-text">实施成本高于通用模型直出，对知识运营能力要求更高。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D05 -->
+      <div class="matrix-card">
+        <div class="matrix-top">
+          <span class="matrix-num">Decision 05</span>
+          <span class="matrix-q">高风险内容如何处理</span>
+        </div>
+        <div class="matrix-choices">
+          <div class="choice-block">
+            <div class="choice-label">备选 A</div>
+            <div class="choice-val">让模型继续生成，并提示"仅供参考"</div>
+          </div>
+          <div class="choice-block">
+            <div class="choice-label">备选 B</div>
+            <div class="choice-val">风险识别后锁定导出，必须人工处理</div>
+          </div>
+          <div class="choice-block final">
+            <div class="choice-label">最终选择</div>
+            <div class="choice-val">识别后锁定导出，强制人工接管</div>
+          </div>
+        </div>
+        <div class="matrix-body">
+          <div>
+            <div class="matrix-reason-label">为什么这么选</div>
+            <div class="matrix-reason-text">一旦涉及政策判断、责任归属、口径背书，问题就不再是"文本质量"，而是"责任能否外包给 AI"。这类内容必须被识别为高风险，系统只能提示、不能代判，且导出前必须人工确认。</div>
+          </div>
+          <div class="matrix-risk-row">
+            <div class="matrix-risk-dot"></div>
+            <div class="matrix-risk-text">自动化率被主动压低，用户会觉得系统"没那么智能"。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D06 -->
+      <div class="matrix-card">
+        <div class="matrix-top">
+          <span class="matrix-num">Decision 06</span>
+          <span class="matrix-q">输出质量应该如何评估</span>
+        </div>
+        <div class="matrix-choices">
+          <div class="choice-block">
+            <div class="choice-label">备选 A</div>
+            <div class="choice-val">看模型文本是否顺滑</div>
+          </div>
+          <div class="choice-block">
+            <div class="choice-label">备选 B</div>
+            <div class="choice-val">看是否可导出、是否被人工打回</div>
+          </div>
+          <div class="choice-block final">
+            <div class="choice-label">最终选择</div>
+            <div class="choice-val">以可交付性为核心指标</div>
+          </div>
+        </div>
+        <div class="matrix-body">
+          <div>
+            <div class="matrix-reason-label">为什么这么选</div>
+            <div class="matrix-reason-text">在这个场景里，"像不像人写的"不是第一目标，"能不能进入正式工作流"才是核心目标。因此更重要的指标不是文风惊艳度，而是格式校验通过率、自动修正采纳率、人工复核回退率等。</div>
+          </div>
+          <div class="matrix-risk-row">
+            <div class="matrix-risk-dot"></div>
+            <div class="matrix-risk-text">指标体系更偏业务结果，难以用单一模型分数展示"智能感"。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D07 -->
+      <div class="matrix-card">
+        <div class="matrix-top">
+          <span class="matrix-num">Decision 07</span>
+          <span class="matrix-q">模型能力该如何迭代</span>
+        </div>
+        <div class="matrix-choices">
+          <div class="choice-block">
+            <div class="choice-label">备选 A</div>
+            <div class="choice-val">持续换更强通用模型</div>
+          </div>
+          <div class="choice-block">
+            <div class="choice-label">备选 B</div>
+            <div class="choice-val">错误样本回流，更新规则库 / 检索库 / 模型</div>
+          </div>
+          <div class="choice-block final">
+            <div class="choice-label">最终选择</div>
+            <div class="choice-val">错误闭环驱动迭代</div>
+          </div>
+        </div>
+        <div class="matrix-body">
+          <div>
+            <div class="matrix-reason-label">为什么这么选</div>
+            <div class="matrix-reason-text">系统演进依赖的不是"换模型"本身，而是"把错误拆对并回流到正确层级"。错误样本被捕获后，由人工标注原因，再分别进入规则库、检索库和模型迭代，才能让系统真正变得更稳。</div>
+          </div>
+          <div class="matrix-risk-row">
+            <div class="matrix-risk-dot"></div>
+            <div class="matrix-risk-text">需要建立持续运营机制，否则系统会停留在一次性 demo 水平。</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end matrix-grid -->
+
+    <!-- Insight cards -->
+    <div class="rv" style="margin-top:48px">
+      <div class="label accent">我在这套矩阵里的核心判断</div>
+      <div class="insight-grid">
+        <div class="insight-card">
+          <h4>不是所有 AI 问题都该交给模型</h4>
+          <p>这个案例里最关键的产品判断，不是"模型选哪家"，而是先划清哪些问题根本不该交给模型。格式校验属于可枚举问题，更适合规则引擎；政策判断属于责任问题，必须回到人工；只有"在已知事实边界内生成表达草稿"这部分，才适合交给 LLM。</p>
+        </div>
+        <div class="insight-card">
+          <h4>我放弃的是更惊艳的演示，换来的是更可控的结果</h4>
+          <p>如果只追求演示效果，全程挂知识库、直接生成接近终稿的内容，页面会更好看；但那会带来更高的幻觉风险、上下文竞争和不可解释错误。于是我主动放弃"全自动终稿"的叙事，转而选择"高质量初稿 + 后置校验 + 人工判断"的路径。</p>
+        </div>
+        <div class="insight-card">
+          <h4>本质不是功能堆叠，而是风险分层</h4>
+          <p>表面上看，这是 RAG、规则引擎、专域适配和 Human-in-the-loop 的组合；但底层逻辑其实更简单：低风险问题交给确定性系统，中风险问题交给检索与生成协同，高风险问题留给人。真正被设计出来的，不是一个"会写材料的 AI"，而是一套能在责任边界内工作的协作系统。</p>
+        </div>
+      </div>
+      <div class="matrix-close">
+        <p>最终，这个产品的技术选型不是围绕"最强模型"展开，而是围绕"最可控的责任分配"展开。我更关心的是：当系统出错时，能不能知道错在输入、检索、规则还是模型；当系统遇到高风险内容时，能不能及时停下并把判断权交还给人；当产品进入试点时，能不能通过确定性的格式能力先建立最小可信度。真正被验证的，不是"这个模型有多聪明"，而是这套架构是否足够稳，能够支撑一个高约束场景中的人机协作流程。</p>
+      </div>
     </div>
+
   </div>
 </section>
+
 
 <!-- 06 · RESEARCH FINDINGS & HYPOTHESIS -->
 <section class="sec-lg s-main" id="findings">
@@ -1195,7 +1469,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 
     <!-- Part A: Research Findings -->
     <div class="rv">
-      <div class="label accent">06-A · 已完成的研究与设计判断</div>
+      <div class="label accent">05-A · 已完成的研究与设计判断</div>
       <h2 class="sec-h">用户研究完成，产品设计判断已形成</h2>
       <p class="sec-sub">以下是基于真实用户研究形成的设计判断——不是假设，是有访谈数据支撑的结论。产品开发与规模化试点尚待推进。</p>
     </div>
@@ -1233,7 +1507,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 
     <!-- Part B: Hypothesis Framework -->
     <div class="rv" style="margin-top:56px">
-      <div class="label accent">06-B · 验证框架与预期假设</div>
+      <div class="label accent">05-B · 验证框架与预期假设</div>
       <h2 class="sec-h">如果进入试点，我们如何验证，预期达到什么目标</h2>
       <p class="sec-sub">以下是完整的试点验证框架设计。目标值基于用户研究推算，属于预期目标而非已实现结果。</p>
     </div>
@@ -1317,7 +1591,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     </div>
     <!-- Part C: Tech Validation Log -->
     <div class="rv" style="margin-top:56px">
-      <div class="label accent">06-C · 技术验证日志 · RAG 原型测试</div>
+      <div class="label accent">05-C · 技术验证日志 · RAG 原型测试</div>
       <h2 class="sec-h">动手搭原型：六个被实验验证或修正的产品判断</h2>
       <p class="sec-sub" style="max-width:680px">基于 Dify 平台搭建 RAG 原型（智谱 GLM-4 · 7 个分场景知识库 · 15 个测试 Query），覆盖精准场景型、语义模糊型、高风险边界型三类。核心价值不是"搭出了能用的工具"，而是通过实验验证或修正了 6 个产品设计判断。</p>
     </div>
@@ -1461,11 +1735,331 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   </div>
 </section>
 
+<!-- 05 · CAPABILITY -->
+<section class="sec-sm s-deep" id="capability">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">07 · Capability · 替代方案对比</div>
+      <h2 class="sec-h">为什么这个方案，而不是更简单的替代方案</h2>
+      <p class="sec-sub">诚实的产品定位：我们的优势建立在更深场景耦合上，代价是更重的实施与知识运营成本。</p>
+    </div>
+    <table class="cmp-tbl rv">
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>通用大模型 + Prompt</th>
+          <th>模板库 / OA 插件</th>
+          <th>垂直行业通用工具</th>
+          <th class="hl">体制内写作 AI Copilot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cmp-dim">公文格式规范</td>
+          <td><span class="icon-p">△</span> Prompt 描述，不稳定</td>
+          <td><span class="icon-y">✓</span> 模板固定，准确但死板</td>
+          <td><span class="icon-p">△</span> 覆盖部分规范</td>
+          <td class="hl"><span class="icon-y">✓</span> 200+ 规则内置，实时校验</td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">体制内文风与术语</td>
+          <td><span class="icon-n">✗</span> 通用语气，政治表达易偏</td>
+          <td><span class="icon-n">✗</span> 无 AI 生成能力</td>
+          <td><span class="icon-p">△</span> 通用文风，非政务专用</td>
+          <td class="hl"><span class="icon-y">✓</span> 专域语料微调，文风贴合</td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">机构专属知识</td>
+          <td><span class="icon-n">✗</span> 无法接入内部文档</td>
+          <td><span class="icon-n">✗</span> 无</td>
+          <td><span class="icon-n">✗</span> 无私有化方案</td>
+          <td class="hl"><span class="icon-y">✓</span> 私有知识库，越用越准</td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">数据安全合规</td>
+          <td><span class="icon-n">✗</span> 默认无法满足内网部署</td>
+          <td><span class="icon-y">✓</span> 本地存储</td>
+          <td><span class="icon-p">△</span> 部分支持私有化</td>
+          <td class="hl"><span class="icon-y">✓</span> 私有化部署，数据不出内网</td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">实施成本</td>
+          <td><span class="icon-y">✓</span> 即开即用</td>
+          <td><span class="icon-y">✓</span> 低，套模板即可</td>
+          <td><span class="icon-p">△</span> 中等</td>
+          <td class="hl"><span class="icon-p">△</span> <strong>较高 — 需知识运营与冷启动</strong></td>
+        </tr>
+        <tr>
+          <td class="cmp-dim">上手门槛</td>
+          <td><span class="icon-p">△</span> 需要 Prompt 技巧</td>
+          <td><span class="icon-y">✓</span> 低，操作直观</td>
+          <td><span class="icon-p">△</span> 中等</td>
+          <td class="hl"><span class="icon-y">✓</span> 场景引导，无需 Prompt</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="honest-note rv">
+      <strong>诚实总结：</strong>在首次部署成本、冷启动依赖、实施周期上有明显短板。这个代价成立的前提是：用户的格式合规要求足够严格，返修成本高于实施成本。用户研究中识别的格式返工率（45%）支持了这一判断。<br><br>
+      针对冷启动问题，方案设计中包含：提供<strong>分场景的政务写作初始知识包</strong>（含通用党建材料模板库、国标公文规范词典、100+ 示例文档），让机构在零历史数据状态下也能获得基础生成质量，知识库随使用持续私有化沉淀。
+    </div>
+  </div>
+</section>
+
+<!-- 06-D · PILOT EXECUTION SIMULATION -->
+<section class="sec s-deep" id="pilot">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">06 · Pilot Execution Simulation</div>
+      <h2 class="sec-h">如果明天立项，我会怎么带第一版上线</h2>
+      <p class="sec-sub">这不是"把功能做完"，而是"把风险压到组织能接受的范围内"。这个产品的第一版目标，不是做出一个看起来很完整的 AI 写作系统，而是验证：在真实组织流程中，用户是否愿意把 AI 初稿当作工作起点；格式校验是否能成为第一块稳定建立信任的能力；以及产品能否在不突破责任边界的前提下，真正进入审稿链条。</p>
+      <p class="sec-sub" style="margin-top:10px">因此，第一版上线不应该追求大而全，而应该围绕"初稿生成 + 格式校验 + 人工确认"构成最小闭环，并用"先控风险、再扩范围"的方式渐进发布。真正要验证的，不只是 AI 能否生成更快，而是这套流程是否足够稳，能否在高责任场景里先建立最小可信度。</p>
+    </div>
+
+    <!-- 分区一：范围冻结 -->
+    <div class="rv">
+      <div class="pilot-sub-label">分区一 · 第一版范围冻结</div>
+      <div class="pilot-scope-grid">
+        <div class="pilot-card">
+          <div class="pilot-card-head">
+            <h4>首发能力：只保留 3 个验证价值最强的环节</h4>
+          </div>
+          <div class="pilot-card-body">
+            <p>第一版我会只做三件事：党建材料初稿生成、格式校验与内联修复、导出前人工确认。原因不是这些能力刚好够做一个 demo，而是它们正好构成了最小可验证闭环：生成解决"从零起草"的负担，格式校验解决最高频、最确定的返工问题，人工确认则保证系统始终停留在"高质量初稿生成器"而不是"终稿自动化工具"的边界内。</p>
+            <div class="pilot-chips">
+              <span class="pilot-chip keep">党建材料初稿生成</span>
+              <span class="pilot-chip keep">格式校验 + 自动修正</span>
+              <span class="pilot-chip keep">导出前人工确认</span>
+            </div>
+          </div>
+        </div>
+        <div class="pilot-card">
+          <div class="pilot-card-head">
+            <h4>暂缓能力：第一版明确不做大而全</h4>
+          </div>
+          <div class="pilot-card-body">
+            <p>我会主动把这些内容放到 Phase 2 以后：跨文种泛化、多部门复杂协同审批、领导个性化风格学习、长链路知识沉淀运营、终稿级自动改写。第一版不是要证明"AI 能写多少种东西"，而是要证明"用户愿不愿意把它纳入真实工作流"。范围一旦过大，任何不稳定点都会被组织放大为对 AI 的不信任。</p>
+            <div class="pilot-chips">
+              <span class="pilot-chip cut">跨文种扩展</span>
+              <span class="pilot-chip cut">复杂审批链协同</span>
+              <span class="pilot-chip cut">领导风格学习</span>
+              <span class="pilot-chip cut">知识运营体系</span>
+              <span class="pilot-chip cut">终稿级自动改写</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分区二：试点节奏 -->
+    <div class="rv">
+      <div class="pilot-sub-label">分区二 · 试点节奏安排</div>
+      <div class="timeline-stack">
+
+        <div class="timeline-card">
+          <div class="stage-tag">
+            <span class="stage-week">Week 0</span>
+            <span class="stage-title">前置准备</span>
+          </div>
+          <div class="timeline-body">
+            <h4>试点前准备：先采基线，不急着开放全量功能</h4>
+            <span class="tl-goal">目标：统一预期，锁定试点对象，建立后续判断的基线</span>
+            <p class="tl-action">选择 3 个试点部门，每个部门只选 5–8 名高频写作者；采集现有起草耗时、返工轮次、格式退回率和 AI 接受意愿；同时把培训口径讲死——这是初稿工具，不是终稿工具，AI 负责起草，人工负责判断。</p>
+            <p class="tl-why">第一版最容易失败的地方，不是功能本身，而是用户对产品边界的误解。如果一开始就把它当成"自动写完"的工具，后续所有质量问题都会被放大。</p>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="stage-tag">
+            <span class="stage-week">Week 1–2</span>
+            <span class="stage-title">影子试点</span>
+          </div>
+          <div class="timeline-body">
+            <h4>影子试点：允许生成和校验，但不直接进入正式流转</h4>
+            <span class="tl-goal">目标：先验证真实可用性，把首轮出错成本压到最低</span>
+            <p class="tl-action">开放结构化输入、初稿生成、格式校验，但系统默认只提供预览，不直接替代正式报送文本。用户在原有人工流程中对照使用，记录"是否节省时间、哪些段落需要重写、哪些格式提示有用"。</p>
+            <p class="tl-why">在高责任场景里，首轮试点最重要的不是渗透率，而是避免一次大错直接击穿信任。Shadow mode 能把学习成本和组织风险一起压低。</p>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="stage-tag">
+            <span class="stage-week">Week 3–4</span>
+            <span class="stage-title">有限导出</span>
+          </div>
+          <div class="timeline-body">
+            <h4>有限导出：只放开低风险材料</h4>
+            <span class="tl-goal">目标：把真实使用切到低责任、可回退、可人工兜底的区域</span>
+            <p class="tl-action">对部分低风险材料放开导出权限，例如周报、简讯、常规党建材料中的标准段落生成与格式修正；同时保留强制性导出前确认、风险提示和留痕。</p>
+            <p class="tl-why">真实上线不是"终于开放全部功能"，而是先在组织能承受的责任范围内，验证产品是否真的能进入流程而不出大问题。</p>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="stage-tag">
+            <span class="stage-week">Week 5–6</span>
+            <span class="stage-title">试点复盘</span>
+          </div>
+          <div class="timeline-body">
+            <h4>试点复盘：只决定两件事——扩不扩、往哪扩</h4>
+            <span class="tl-goal">目标：判断产品是否具备从小范围试点走向下一阶段的资格</span>
+            <p class="tl-action">从效率、采纳、风险三个维度复盘：是否缩短初稿耗时，是否减少格式返工，是否有人愿意持续把它作为日常起点，是否出现过足以伤害组织信任的风险事件。</p>
+            <p class="tl-why">试点结束后的关键不是"汇报做了多少功能"，而是判断下一步应该扩到更多文种，还是先继续打磨规则引擎和质控层。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 分区三：跨团队接口 -->
+    <div class="rv">
+      <div class="pilot-sub-label">分区三 · 跨团队接口划分</div>
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-title">Product</div>
+          <p>产品负责的不是盯某个模型"写得像不像人"，而是先把问题拆对：哪些错误属于输入不全，哪些属于知识库缺失，哪些属于规则误判，哪些才属于模型生成问题。第一版最重要的是冻结首发范围、定义输入结构、划清风险边界、建立验证指标。</p>
+          <div class="role-note">先把问题拆对，再把资源配对。</div>
+        </div>
+        <div class="role-card">
+          <div class="role-title">Model / Algorithm</div>
+          <p>算法侧第一版不追求"更像人写"，而是优先处理两个问题：初稿生成是否稳定、高风险内容能否及时停下。模型的目标不是制造终稿幻觉，而是提供一个足够稳、能被人工继续加工的起点。</p>
+          <div class="role-note">稳定与可控，优先于惊艳。</div>
+        </div>
+        <div class="role-card">
+          <div class="role-title">Backend / Platform</div>
+          <p>后端第一版最重要的不是复杂能力，而是日志和回退能力。至少要保证三类记录：用户输入保留、生成结果版本留痕、规则命中与风险拦截日志。没有日志，试点后的所有问题都会退化成"感觉不太对"，无法复盘。</p>
+          <div class="role-note">没有日志，就没有试点闭环。</div>
+        </div>
+        <div class="role-card">
+          <div class="role-title">Frontend</div>
+          <p>前端第一版最重要的是预期管理。界面不能给人"一键出终稿"的错觉，而要持续提醒：当前是初稿、哪些地方系统不确定、导出前需要人工确认。前端不是把 AI 包装得更万能，而是把边界表达得更清楚。</p>
+          <div class="role-note">边界可见，信任才可建立。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分区四：Fallback -->
+    <div class="rv">
+      <div class="pilot-sub-label">分区四 · Fallback 方案设计</div>
+      <div class="fallback-grid">
+
+        <div class="fallback-card">
+          <div class="fallback-head">
+            <span class="fallback-num">Fallback 01</span>
+            <span class="fallback-trigger">整篇生成经常出现结构失衡、口径漂移或长文本失控</span>
+          </div>
+          <div class="fallback-body">
+            <div>
+              <div class="fb-row-label">降级动作</div>
+              <div class="fb-action">从"整篇生成"降级为"按模块 / 按段落生成"，分别生成背景、进展、计划等区块</div>
+            </div>
+            <div>
+              <div class="fb-row-label">设计原因</div>
+              <div class="fb-why">牺牲一点爽感，换来更低的长文本失控概率，也更符合结构化输入先锁定事实边界的产品逻辑。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fallback-card">
+          <div class="fallback-head">
+            <span class="fallback-num">Fallback 02</span>
+            <span class="fallback-trigger">知识库召回效果波动，导致质控结果不稳</span>
+          </div>
+          <div class="fallback-body">
+            <div>
+              <div class="fb-row-label">降级动作</div>
+              <div class="fb-action">弱化知识库介入，优先让规则引擎驱动的格式校验独立上线，先释放最稳定的确定性价值</div>
+            </div>
+            <div>
+              <div class="fb-row-label">设计原因</div>
+              <div class="fb-why">第一版不能因知识能力不稳而拖垮整个验证；格式校验本身就是更容易建立信任的 MVP 能力。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fallback-card">
+          <div class="fallback-head">
+            <span class="fallback-num">Fallback 03</span>
+            <span class="fallback-trigger">高风险内容识别命中不稳，政策判断类段落可能误放行</span>
+          </div>
+          <div class="fallback-body">
+            <div>
+              <div class="fb-row-label">降级动作</div>
+              <div class="fb-action">锁死相关内容自动导出，只保留高风险提示，不给自动修正文案，强制人工处理</div>
+            </div>
+            <div>
+              <div class="fb-row-label">设计原因</div>
+              <div class="fb-why">这类错误伤害的不是单次体验，而是整个组织对 AI 的信任，必须优先保护边界。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fallback-card">
+          <div class="fallback-head">
+            <span class="fallback-num">Fallback 04</span>
+            <span class="fallback-trigger">系统响应超时、生成中断或性能波动明显</span>
+          </div>
+          <div class="fallback-body">
+            <div>
+              <div class="fb-row-label">降级动作</div>
+              <div class="fb-action">保证三件事：用户输入不丢、已生成段落可保存、支持从中断处继续生成，而非整轮重来</div>
+            </div>
+            <div>
+              <div class="fb-row-label">设计原因</div>
+              <div class="fb-why">对真实工作流用户来说，"局部可恢复"远比"彻底失败后重试"更容易被接受。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fallback-card">
+          <div class="fallback-head">
+            <span class="fallback-num">Fallback 05</span>
+            <span class="fallback-trigger">组织阻力过高，领导层顾虑明显，首批使用意愿不足</span>
+          </div>
+          <div class="fallback-body">
+            <div>
+              <div class="fb-row-label">降级动作</div>
+              <div class="fb-action">从"全员试点"退回"种子用户试点"，先沉淀成功样例和失败样例，再做二次内部沟通</div>
+            </div>
+            <div>
+              <div class="fb-row-label">设计原因</div>
+              <div class="fb-why">组织采纳往往不是靠功能说明推动，而是靠"这个案例确实省了时间，而且没出事"的具体证据推动。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fallback-card">
+          <div class="fallback-head">
+            <span class="fallback-num">Fallback 06</span>
+            <span class="fallback-trigger">用户频繁把系统输出直接当终稿，导致预期错位和失望</span>
+          </div>
+          <div class="fallback-body">
+            <div>
+              <div class="fb-row-label">降级动作</div>
+              <div class="fb-action">主动调整产品表达：把"生成文稿"改成"生成初稿"，强化导出前确认，把高风险提示做得更明显</div>
+            </div>
+            <div>
+              <div class="fb-row-label">设计原因</div>
+              <div class="fb-why">这不是用户教育问题，而是产品定位表达问题。第一版必须持续帮助用户理解系统真正的边界。</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end fallback-grid -->
+
+      <div class="pilot-close">
+        <p>如果明天立项，我不会把第一版当成一次"功能发布"，而会把它当成一次"组织信任实验"。真正要验证的，不只是 AI 能否生成更快，而是这套"结构化输入 + 初稿生成 + 格式校验 + 人工确认"的闭环，是否足够稳，能否在真实工作链条里先建立最小可信度。只要第一版能在低风险场景里证明"可省时间、可控风险、可人工兜底"，后续扩到更多文种和更多部门才有意义；反过来，如果第一版一上来就追求全自动和大范围覆盖，组织对 AI 的不信任会先于产品价值到来。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 <!-- 07-A · PRODUCT STRATEGY -->
 <section class="sec s-alt" id="planning">
   <div class="wrap">
     <div class="rv">
-      <div class="label accent">07-A · Product Strategy · 三阶段路线图</div>
+      <div class="label accent">07 · Product Strategy · 三阶段路线图</div>
       <h2 class="sec-h">从工具到平台</h2>
       <p class="sec-sub">知识库积累是从"写作工具"演化为"机构智能资产平台"的关键拐点——它让护城河从技术优势转变为数据优势。</p>
     </div>
@@ -1509,12 +2103,11 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 </section>
 
 <!-- 07-B · COMPETITIVE DEFENSE -->
-<section class="sec s-main" id="planning-defense">
+<section class="sec-sm s-alt" id="planning-defense">
   <div class="wrap">
     <div class="rv">
-      <div class="label accent">07-B · Product Strategy · 竞争防御</div>
+      <div class="label accent">08 · Product Strategy · 竞争防御</div>
       <h2 class="sec-h">真正难复制的，不是模型能力，而是组织嵌入深度</h2>
-      <p class="sec-sub">大厂最容易复制的是能力，最难复制的是组织已经形成的工作方式。</p>
     </div>
     <div class="defense-block rv">
       <div class="defense-head">
@@ -1526,21 +2119,18 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         <div class="def-cell rv">
           <div class="def-num">Defense 01 · 深场景适配</div>
           <h4>规范内置密度，不是靠模型规模能补的</h4>
-          <p>党建材料的政治表达要求、公文的标题层级，是对具体场景的深度耦合。这是<strong class="hl-t0">场景积累壁垒</strong>，不是技术壁垒。</p>
+          <p>党建材料的政治表达要求、公文的标题层级，是对具体场景的深度耦合——<strong class="hl-t0">场景积累壁垒</strong>，不是技术壁垒。</p>
         </div>
         <div class="def-cell rv">
           <div class="def-num">Defense 02 · 机构专属知识资产</div>
           <h4>知识库随时间非线性增值，无法迁移</h4>
-          <p>机构历史文档、惯用表达沉淀在私有知识库中。用得越久，生成越准，<strong class="hl-t0">替换成本越高</strong>。</p>
+          <p>机构历史文档、惯用表达沉淀在私有知识库中，用得越久越准，<strong class="hl-t0">替换成本越高</strong>。</p>
         </div>
         <div class="def-cell rv">
           <div class="def-num">Defense 03 · 工作流嵌入能力</div>
           <h4>成为工作流一部分，而非独立工具</h4>
-          <p>通过 OA 系统和审批流程嵌入，产品已内化为日常节奏。<strong class="hl-t0">习惯性依赖</strong>比功能优势更难打破。</p>
+          <p>通过 OA 系统和审批流程嵌入，产品内化为日常节奏，<strong class="hl-t0">习惯性依赖</strong>比功能优势更难打破。</p>
         </div>
-      </div>
-      <div class="defense-footer">
-        <p><strong>战略核心：</strong>模型能力可以被复制，<strong>组织嵌入和知识沉淀不能</strong>。在竞争者到来之前，把产品从"可替换的写作工具"变成"机构的知识基础设施"——这是唯一能让护城河随时间加深而非消失的策略。</p>
       </div>
     </div>
   </div>
@@ -1550,9 +2140,9 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
 <section class="sec s-alt" id="reflection">
   <div class="wrap">
     <div class="rv">
-      <div class="label accent">08 · Reflection</div>
-      <h2 class="sec-h">三个产品判断，每个都锚定到一个具体决策</h2>
-      <p class="sec-sub">不是感悟，是可复用的判断框架。</p>
+      <div class="label accent">09 · Reflection</div>
+      <h2 class="sec-h">两个可复用的产品判断</h2>
+      <p class="sec-sub">不是感悟，是下一个 AI 产品同样适用的判断框架。</p>
     </div>
     <div class="tkw-cards rv">
       <div class="tkw rv">
@@ -1601,29 +2191,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
           </div>
         </div>
       </div>
-      <div class="tkw rv">
-        <div class="tkw-top">
-          <div class="tkw-num"><div class="tkw-n">03</div></div>
-          <div class="tkw-header">
-            <h3>知识库必须在设计期埋入，不能当运营工作</h3>
-            <div class="tkw-sub">B2G SaaS 护城河的真正来源</div>
-          </div>
-        </div>
-        <div class="tkw-body">
-          <div class="tkw-col">
-            <div class="tkw-col-label">我的判断</div>
-            <p>大多数 SaaS 工具的价值是线性的。知识库让价值变为复利——每次使用都在沉淀，替换成本持续上升。但这需要在架构阶段就设计好沉淀路径。</p>
-          </div>
-          <div class="tkw-col chosen">
-            <div class="tkw-col-label">因此我选择了</div>
-            <p>MVP 阶段就内置知识库上传和结构化存储，接受早期投入不能立即转化为用户价值的时间差成本。</p>
-          </div>
-          <div class="tkw-col">
-            <div class="tkw-col-label">我没有选择</div>
-            <p>把知识库延后到 Phase 2 运营功能。如果知识库护城河效应是真实的，越早埋入架构、护城河效应越早启动——延迟意味着直接让出先发优势。</p>
-          </div>
-        </div>
-      </div>
+</div>
     </div>
 
     <div class="closing rv">
@@ -1632,19 +2200,19 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
         <p>体制内写作之所以值得认真设计，不是因为它容易，而是因为它同时具备通用工具最难跨过的三道门槛：<strong>规范约束、责任边界和机构知识</strong>——这三者共同决定了垂直化设计的投入是值得的。</p>
       </div>
       <div class="closing-meta">
-        <div class="cm-item">
+        <div class="closing-meta-item">
           <div class="cm-l">Project Type</div>
           <div class="cm-v">B2G SaaS · AI Writing Copilot</div>
         </div>
-        <div class="cm-item">
+        <div class="closing-meta-item">
           <div class="cm-l">My Role</div>
           <div class="cm-v">产品经理（独立负责）</div>
         </div>
-        <div class="cm-item">
+        <div class="closing-meta-item">
           <div class="cm-l">Research</div>
           <div class="cm-v">用户研究 + 产品设计完成</div>
         </div>
-        <div class="cm-item">
+        <div class="closing-meta-item">
           <div class="cm-l">Stage</div>
           <div class="cm-v">设计方案完成 · 待进入试点阶段</div>
         </div>
