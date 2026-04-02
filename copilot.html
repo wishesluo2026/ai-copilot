@@ -527,6 +527,50 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   .role-grid{grid-template-columns:1fr 1fr}
   .fallback-grid{grid-template-columns:1fr}
 }
+
+/* ── NEW MODULES: Decision Pivot / MVP / Commercial ── */
+.pivot-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.pivot-card{background:var(--s2);border:1px solid var(--b0);border-radius:12px;padding:20px 22px}
+.pivot-card h4{font-size:13.5px;font-weight:600;color:var(--t0);margin-bottom:8px;letter-spacing:-.01em}
+.pivot-card p{font-size:12.5px;color:var(--t1);line-height:1.72}
+.pivot-highlight{background:rgba(37,99,235,0.08);border:1px solid var(--blue-edge);border-left:3px solid var(--blue-l);border-radius:0 12px 12px 0;padding:20px 26px;margin-top:20px}
+.pivot-highlight p{font-size:13px;color:var(--t0);line-height:1.78;font-weight:500}
+.pivot-steps{display:flex;flex-direction:column;gap:1px;background:var(--b0);border:1px solid var(--b0);border-radius:10px;overflow:hidden;margin-top:16px}
+.pivot-step{background:var(--s2);display:grid;grid-template-columns:28px 1fr;gap:0}
+.pivot-step-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);padding:12px 0 12px 14px;border-right:1px solid var(--b0);display:flex;align-items:flex-start;flex-shrink:0}
+.pivot-step-body{padding:12px 16px}
+.pivot-step-title{font-size:13px;font-weight:600;color:var(--t0);margin-bottom:3px}
+.pivot-step-desc{font-size:12.5px;color:var(--t1);line-height:1.65}
+.mvp-metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.mvp-metric-card{background:var(--s2);border:1px solid var(--b0);border-top:2px solid var(--blue-l);border-radius:0 0 10px 10px;padding:18px 16px}
+.mvp-metric-title{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-l);margin-bottom:10px}
+.mvp-metric-items{display:flex;flex-direction:column;gap:5px}
+.mvp-metric-item{font-size:12.5px;color:var(--t1);line-height:1.5;display:flex;align-items:flex-start;gap:7px}
+.mvp-metric-item::before{content:'·';color:var(--t2);flex-shrink:0}
+.mvp-verdict{background:var(--s2);border:1px solid var(--b0);border-radius:12px;padding:20px 24px;margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mvp-verdict-block h5{font-size:11.5px;font-family:'DM Mono',monospace;letter-spacing:.07em;color:var(--t2);text-transform:uppercase;margin-bottom:7px}
+.mvp-verdict-block.good h5{color:#4ade80}
+.mvp-verdict-block.bad h5{color:var(--red-l)}
+.mvp-verdict-block p{font-size:12.5px;color:var(--t1);line-height:1.65}
+.biz-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.biz-card{background:var(--s2);border:1px solid var(--b0);border-radius:12px;padding:18px 20px}
+.biz-card h4{font-size:13px;font-weight:600;color:var(--t0);margin-bottom:8px;letter-spacing:-.01em}
+.biz-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px}
+.biz-card ul li{font-size:12.5px;color:var(--t1);line-height:1.55;display:flex;align-items:flex-start;gap:7px}
+.biz-card ul li::before{content:'–';color:var(--t2);flex-shrink:0;margin-top:1px}
+.biz-pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.biz-price-item{background:var(--s3);border:1px solid var(--b0);border-radius:8px;padding:13px 14px}
+.biz-price-phase{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:5px}
+.biz-price-text{font-size:12px;color:var(--t1);line-height:1.55}
+.biz-close{margin-top:20px;background:rgba(37,99,235,0.07);border:1px solid var(--blue-edge);border-left:3px solid var(--blue-l);border-radius:0 12px 12px 0;padding:16px 22px}
+.biz-close p{font-size:13px;color:var(--t1);line-height:1.78;font-style:italic}
+@media(max-width:960px){
+  .pivot-grid{grid-template-columns:1fr}
+  .mvp-metric-grid{grid-template-columns:1fr}
+  .mvp-verdict{grid-template-columns:1fr}
+  .biz-grid{grid-template-columns:1fr}
+  .biz-pricing{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -571,7 +615,7 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     <!-- DISCLAIMER -->
     <div class="hero-disclaimer">
       <span class="hd-icon">NOTE</span>
-      <span class="hd-text">本案例基于真实工作场景完成用户研究与产品设计，产品开发与规模化验证尚未实施。案例展示的是完整的设计方法论与待验证假设框架。</span>
+      <span class="hd-text">本案例基于真实工作场景完成用户研究与产品设计，并补充了 MVP 验证路径与商业化初步判断。产品开发与规模化试点尚待推进。</span>
     </div>
     <div class="hero-summary">
       <div class="hs-cell">
@@ -802,6 +846,60 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     </div>
   </div>
 </section>
+
+<!-- MODULE A: DECISION PIVOT -->
+<section class="sec-sm s-alt" id="pivot">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">Research · 关键决策转向</div>
+      <h2 class="sec-h">From Full Automation to Controlled Collaboration</h2>
+      <p class="sec-sub">用户研究完成后，我推动了一次产品方向的关键调整。</p>
+    </div>
+
+    <div class="pivot-grid rv">
+      <div class="pivot-card">
+        <h4>原始设想</h4>
+        <p>项目早期，我曾倾向于把"更强的全文自动生成能力"作为首阶段主卖点，希望通过一次生成更完整的材料，直接拉升用户对 AI 写作效率的感知。</p>
+      </div>
+      <div class="pivot-card">
+        <h4>研究后的转向</h4>
+        <p>在 22 次深度访谈、6 次工作流观察与问卷反馈中，一个信号持续重复出现：用户真正的阻力并不是"不会写"，而是<strong style="color:var(--t0)">不敢直接使用 AI 生成结果</strong>。相比"写得更快"，他们更在意"是否可控、是否可审、是否能放心进入正式流程"。</p>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:20px">
+      <div class="label" style="margin-bottom:12px">我推动的方案调整</div>
+      <div class="pivot-steps">
+        <div class="pivot-step">
+          <div class="pivot-step-num">01</div>
+          <div class="pivot-step-body">
+            <div class="pivot-step-title">初稿生成</div>
+            <div class="pivot-step-desc">缩短从空白到可编辑文本的启动成本，解决"起笔难"问题</div>
+          </div>
+        </div>
+        <div class="pivot-step">
+          <div class="pivot-step-num">02</div>
+          <div class="pivot-step-body">
+            <div class="pivot-step-title">格式校验</div>
+            <div class="pivot-step-desc">提前暴露结构与规范问题，降低审稿往返成本</div>
+          </div>
+        </div>
+        <div class="pivot-step">
+          <div class="pivot-step-num">03</div>
+          <div class="pivot-step-body">
+            <div class="pivot-step-title">人工确认</div>
+            <div class="pivot-step-desc">保留最终判断权与责任边界，确保 AI 始终处于辅助角色</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pivot-highlight rv">
+      <p>这个转向本质上不是能力收缩，而是优先级重排：在高风险知识工作场景中，先解决可用性与组织采纳，再逐步提升自动化深度，比一开始追求"全自动"更有机会跑通真实落地闭环。</p>
+    </div>
+  </div>
+</section>
+
 
 <!-- 04-A · SOLUTION: ARCH -->
 <section class="sec s-main" id="solution">
@@ -1805,6 +1903,88 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
   </div>
 </section>
 
+<!-- MODULE B: MVP PLAN -->
+<section class="sec-sm s-main" id="mvp-plan">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">Validation · MVP 验证路径</div>
+      <h2 class="sec-h">3 个月 MVP 验证路径</h2>
+      <p class="sec-sub">用 3 个月验证一个核心问题：这套 Copilot 能否在高规范写作场景中真正降低首稿门槛，并在保证可控性的前提下进入日常工作流。</p>
+    </div>
+
+    <div class="rv" style="margin-top:24px">
+      <div class="label" style="margin-bottom:10px">第一版 3 个核心功能</div>
+      <div class="pivot-steps">
+        <div class="pivot-step">
+          <div class="pivot-step-num">01</div>
+          <div class="pivot-step-body">
+            <div class="pivot-step-title">初稿生成</div>
+            <div class="pivot-step-desc">基于固定输入结构生成首版文稿，解决起笔难、结构不稳的问题。</div>
+          </div>
+        </div>
+        <div class="pivot-step">
+          <div class="pivot-step-num">02</div>
+          <div class="pivot-step-body">
+            <div class="pivot-step-title">格式校验</div>
+            <div class="pivot-step-desc">针对标题层级、结构完整性、规范问题进行规则化检查，覆盖最容易被用户感知价值的环节。</div>
+          </div>
+        </div>
+        <div class="pivot-step">
+          <div class="pivot-step-num">03</div>
+          <div class="pivot-step-body">
+            <div class="pivot-step-title">人工确认 / 导出前拦截</div>
+            <div class="pivot-step-desc">导出前保留人工审阅机制，确保系统始终处于辅助而非替代的角色。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:24px">
+      <div class="label" style="margin-bottom:10px">验证指标</div>
+      <div class="mvp-metric-grid">
+        <div class="mvp-metric-card">
+          <div class="mvp-metric-title">效率</div>
+          <div class="mvp-metric-items">
+            <div class="mvp-metric-item">首稿产出时间</div>
+            <div class="mvp-metric-item">单次写作总耗时</div>
+            <div class="mvp-metric-item">任务完成率 / 流程放弃率</div>
+          </div>
+        </div>
+        <div class="mvp-metric-card">
+          <div class="mvp-metric-title">质量</div>
+          <div class="mvp-metric-items">
+            <div class="mvp-metric-item">格式校验命中率</div>
+            <div class="mvp-metric-item">人工改写率</div>
+            <div class="mvp-metric-item">导出前拦截率</div>
+          </div>
+        </div>
+        <div class="mvp-metric-card">
+          <div class="mvp-metric-title">信任与采纳</div>
+          <div class="mvp-metric-items">
+            <div class="mvp-metric-item">AI 建议采纳率</div>
+            <div class="mvp-metric-item">关键场景复用率</div>
+            <div class="mvp-metric-item">连续使用意愿</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:16px">
+      <div class="mvp-verdict">
+        <div class="mvp-verdict-block good">
+          <h5>继续推进</h5>
+          <p>用户愿意下次继续使用，首稿明显降低起稿成本，格式校验稳定有效，且用户接受"人工确认后再导出"的流程。</p>
+        </div>
+        <div class="mvp-verdict-block bad">
+          <h5>调整方向</h5>
+          <p>频繁中途放弃，人工整体重写比例过高，或用户认可能力但仍不愿正式使用——说明问题在信任机制与流程嵌入设计。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- 06-D · PILOT EXECUTION SIMULATION -->
 <section class="sec s-deep" id="pilot">
   <div class="wrap">
@@ -2135,6 +2315,72 @@ footer{background:var(--s0);border-top:1px solid var(--b0);padding:24px 48px;dis
     </div>
   </div>
 </section>
+
+<!-- MODULE C: COMMERCIAL VIABILITY -->
+<section class="sec-sm s-main" id="commercial">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label accent">Strategy · 商业可行性</div>
+      <h2 class="sec-h">Why This Could Become a Real Product</h2>
+      <p class="sec-sub">这不是一个只追求生成效果的 AI 写作工具设想，而是一个围绕"可控、可审、可进入真实流程"构建的组织级 Copilot 产品方向。</p>
+    </div>
+
+    <div class="biz-grid rv">
+      <div class="biz-card">
+        <h4>目标客户</h4>
+        <ul>
+          <li>大型国企及平台型组织</li>
+          <li>地方政府办公室及相关行政支持部门</li>
+          <li>金融、能源、基建等高规范行业的后台知识工作部门</li>
+        </ul>
+      </div>
+      <div class="biz-card">
+        <h4>谁会使用，谁会推动，谁会买单</h4>
+        <ul>
+          <li><strong style="color:var(--t0)">直接使用者：</strong>办公室、综合文秘、党群宣传、行政支持等高频写作岗位</li>
+          <li><strong style="color:var(--t0)">内部推动者：</strong>信息化 / 数字化部门，或承担提效与流程优化职责的业务管理者</li>
+          <li><strong style="color:var(--t0)">潜在决策者：</strong>分管办公室领导、信息化负责人，具备数字化采购预算权限的部门</li>
+        </ul>
+      </div>
+      <div class="biz-card">
+        <h4>付费价值来自哪里</h4>
+        <ul>
+          <li>降低低质量 AI 输出带来的返工与审核成本</li>
+          <li>提升规范性材料的标准化程度与一致性</li>
+          <li>缩短新人进入岗位后的达标周期</li>
+          <li>将依赖个人经验的写作能力沉淀为可复用的规则、模板与知识资产</li>
+        </ul>
+      </div>
+      <div class="biz-card">
+        <h4>市场进入路径</h4>
+        <p style="font-size:12.5px;color:var(--t1);line-height:1.7">先从高规范、文种集中、流程清晰的组织型客户切入，验证一个小闭环场景中的可控性与复用价值；再逐步从写作辅助扩展到模板管理、规则校验、知识沉淀与审阅协同。</p>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:20px">
+      <div class="label" style="margin-bottom:12px">定价思路</div>
+      <div class="biz-pricing">
+        <div class="biz-price-item">
+          <div class="biz-price-phase">初期</div>
+          <div class="biz-price-text">按部门 / 团队试点包收费，结合席位制授权</div>
+        </div>
+        <div class="biz-price-item">
+          <div class="biz-price-phase">中期</div>
+          <div class="biz-price-text">席位制 + 调用量混合计费</div>
+        </div>
+        <div class="biz-price-item">
+          <div class="biz-price-phase">私有化 / 本地部署</div>
+          <div class="biz-price-text">更适合项目制或年度框架合作</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="biz-close rv">
+      <p>这不是一个只追求生成效果的 AI 写作工具设想，而是一个围绕"可控、可审、可进入真实流程"构建的组织级 Copilot 产品方向。</p>
+    </div>
+  </div>
+</section>
+
 
 <!-- 08 · REFLECTION -->
 <section class="sec s-alt" id="reflection">
