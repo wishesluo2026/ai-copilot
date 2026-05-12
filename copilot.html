@@ -2727,13 +2727,88 @@ h1 .sub-title{color:var(--t1)}
 </div>
     </div>
 
+    <!-- 2026 架构重审 -->
+    <div class="rv" style="margin-top:52px;margin-bottom:40px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:9px">
+          <span style="width:18px;height:1px;background:var(--blue);display:inline-block;flex-shrink:0"></span>
+          2026 · 架构重审
+        </div>
+        <div style="font-size:12.5px;color:var(--t2);font-family:'DM Mono',monospace;letter-spacing:.02em">如果今天重做，三个判断会变</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1px;border:1px solid var(--b0);border-radius:14px;overflow:hidden;background:var(--b0)">
+
+        <!-- 判断 01 -->
+        <div style="display:grid;grid-template-columns:188px 1fr;background:var(--s1)">
+          <div style="padding:22px 20px;border-right:1px solid var(--b0);display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">判断 · 01</div>
+            <div style="font-size:13.5px;font-weight:600;color:var(--t0);line-height:1.4">长上下文模型重划了 RAG 的必要性边界</div>
+          </div>
+          <div style="padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:22px">
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:8px">原始设计依据</div>
+              <p style="font-size:13px;color:var(--t1);line-height:1.7">RAG 是必选架构——主流模型 8K～32K 上下文窗口无法容纳完整的格式规则集，检索是唯一出路。</p>
+            </div>
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">2026 年重审</div>
+              <p style="font-size:13px;color:var(--t1);line-height:1.7">Claude 3.7 / Gemini 2.5 的 200K～1M token 窗口让"直接注入全量规则"在规则集规模适中时成为可行选项。RAG 从"必选"变成"规则集超出单次上下文时才必须"。但<strong style="color:var(--t0);font-weight:500">党建材料的核心约束是精度而非容量</strong>——把 500 条格式规则全丢进 Context，模型会在噪音中判断失准。RAG 的价值从解决容量问题，转移到解决精度问题。结论不变，理由更清晰了。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 判断 02 -->
+        <div style="display:grid;grid-template-columns:188px 1fr;background:var(--s0)">
+          <div style="padding:22px 20px;border-right:1px solid var(--b0);display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">判断 · 02</div>
+            <div style="font-size:13.5px;font-weight:600;color:var(--t0);line-height:1.4">推理模型能压缩规则引擎，但不能替代它</div>
+          </div>
+          <div style="padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:22px">
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:8px">原始设计依据</div>
+              <p style="font-size:13px;color:var(--t1);line-height:1.7">规则引擎独立于 LLM 存在，承担显式格式校验——覆盖数百条条件逻辑，维护成本高但合规性可审计。</p>
+            </div>
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">2026 年重审</div>
+              <p style="font-size:13px;color:var(--t1);line-height:1.7">o3、Claude 3.7 extended thinking 等推理模型在复杂条件规则遵循上已大幅改善，<strong style="color:var(--t0);font-weight:500">可以压缩规则引擎的覆盖范围</strong>，让它只保留高风险强合规的核心规则集。但规则引擎不能被完全替代——<strong style="color:var(--t0);font-weight:500">它解决的不是能力问题，而是可审计性问题</strong>：用户需要知道"哪条规则被触发、为什么被拦截"，推理模型的 thinking trace 无法提供同等确定性的答案。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 判断 03 -->
+        <div style="display:grid;grid-template-columns:188px 1fr;background:var(--s1)">
+          <div style="padding:22px 20px;border-right:1px solid var(--b0);display:flex;flex-direction:column;gap:7px">
+            <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)">判断 · 03</div>
+            <div style="font-size:13.5px;font-weight:600;color:var(--t0);line-height:1.4">冷启动周期可以缩短，但信任建立周期不能</div>
+          </div>
+          <div style="padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:22px">
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t2);margin-bottom:8px">原始设计依据</div>
+              <p style="font-size:13px;color:var(--t1);line-height:1.7">Shadow Mode 冷启动阶段预估 4～8 周——主要成本在数据准备和模型微调，是技术瓶颈主导的节奏。</p>
+            </div>
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">2026 年重审</div>
+              <p style="font-size:13px;color:var(--t1);line-height:1.7">基础模型能力提升使技术冷启动大幅压缩——few-shot 示例 + 长上下文规则注入，1～2 周内可搭出可演示原型。<strong style="color:var(--t0);font-weight:500">但组织信任建立的节奏不随模型能力提升而加速</strong>：用户接受"AI 初稿"的心理门槛是人的问题，不是技术问题。试点路径的核心瓶颈从"模型准备好了吗"转移到"组织准备好了吗"。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 综合判断 -->
+      <div style="margin-top:14px;padding:18px 24px;background:var(--blue-dim);border:1px solid var(--blue-edge);border-radius:10px;display:flex;gap:16px;align-items:flex-start">
+        <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);flex-shrink:0;padding-top:3px;white-space:nowrap">综合判断</div>
+        <p style="font-size:13px;color:var(--t1);line-height:1.75;margin:0">2024 年的架构选型是对当时模型能力边界的正确响应。2026 年重做，技术层的决策密度会降低（更少的硬编码规则、更短的冷启动），但<strong style="color:var(--t0);font-weight:500">产品层的核心判断不变</strong>：高责任场景的 AI 介入边界由可审计性和责任归属结构决定由模型能力决定。模型越来越强，这个结论越来越稳固，而不是越来越过时。</p>
+      </div>
+    </div>
+
     <div style="margin-bottom:24px;background:var(--s2);border:1px solid var(--b0);border-radius:12px;overflow:hidden">
       <div style="padding:12px 20px;background:var(--s3);border-bottom:1px solid var(--b0)">
         <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2)">Scope &amp; Current Status</span>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b0)">
         <div style="background:var(--s2);padding:14px 18px">
-          <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;margin-bottom:7px">已完成</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#059669;margin-bottom:7px">已完成</div>
           <p style="font-size:12px;color:var(--t1);line-height:1.65">用户研究、产品定位、MVP 设计、试点路径规划、技术选型决策、商业化初步判断</p>
         </div>
         <div style="background:var(--s1);padding:14px 18px">
@@ -2826,7 +2901,7 @@ function riskTab(id) {
   ['low','mid','hi'].forEach(function(k) {
     document.getElementById('rpanel-'+k).style.display = k===id ? 'block' : 'none';
     var btn = document.getElementById('rtab-'+k);
-    var colors = {low:'#2dd4bf', mid:'#fbbf24', hi:'var(--red-l)'};
+    var colors = {low:'#0ea5e9', mid:'#d97706', hi:'var(--red-l)'};
     btn.style.borderBottomColor = k===id ? colors[k] : 'transparent';
     btn.style.color = k===id ? colors[k] : 'var(--t2)';
   });
@@ -2848,8 +2923,8 @@ function midCheck(n) {
   btn.style.cursor = allDone ? 'pointer' : 'not-allowed';
   btn.style.opacity = allDone ? '1' : '0.4';
   hint.textContent = allDone ? '核对完成，可以导出' : '请先完成上方核对项，再导出';
-  if(allDone) { pill.textContent='核对完成'; pill.style.background='rgba(34,197,94,.1)'; pill.style.color='#4ade80'; pill.style.borderColor='rgba(34,197,94,.2)'; }
-  else { pill.textContent='待人工核对 '+((!document.getElementById('cb1').checked?1:0)+(!document.getElementById('cb2').checked?1:0))+' 项'; pill.style.background='rgba(245,158,11,.1)'; pill.style.color='#fbbf24'; pill.style.borderColor='rgba(245,158,11,.18)'; }
+  if(allDone) { pill.textContent='核对完成'; pill.style.background='rgba(34,197,94,.1)'; pill.style.color='#059669'; pill.style.borderColor='rgba(34,197,94,.2)'; }
+  else { pill.textContent='待人工核对 '+((!document.getElementById('cb1').checked?1:0)+(!document.getElementById('cb2').checked?1:0))+' 项'; pill.style.background='rgba(245,158,11,.1)'; pill.style.color='#d97706'; pill.style.borderColor='rgba(245,158,11,.18)'; }
 }
 
 var hiSuggestions = {
